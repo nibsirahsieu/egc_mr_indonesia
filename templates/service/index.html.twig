@@ -1,0 +1,60 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+    {% if metaPage.metaTitle %}
+        <title>{{ metaPage.metaTitle }}</title>
+    {% else %}
+        {{ parent() }}
+    {% endif %}    
+{% endblock %}
+{% block meta_title %}
+   {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+   <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+   <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+   <meta name="description" content="{{ metaPage.metaDescription }}">
+   <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+   <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+   <meta property="og:url" content="{{ url('app_services_index') }}" />  
+   <link rel="canonical" href="{{ url('app_services_index') }}" />
+{% endblock %}
+
+{% block inline_stylesheets %}
+    <style>
+        .our-services {background-image: url('{{ asset("images/ant-rozetsky-_qWeqqmpBpU-unsplash.webp") }}');}
+    </style>
+{% endblock %}
+
+{% block header %}
+    <header><div class="mt-[72px] lg:mt-[83px] container py-8 lg:py-14"><h1 class="our-services text-center font-heading heading-1 text-6xl lg:text-9xl xl:text-[12rem] xl:!leading-tight bg-clip-text text-transparent bg-center bg-[url('{{ asset('images/ant-rozetsky-_qWeqqmpBpU-unsplash.webp') }}')]">Our Services</h1></div></header>
+{% endblock %}
+
+{% block content %}
+   <section id="overview">
+      <div class="bg-white">
+         <div class="py-8 lg:py-14 relative">
+            <img src="/_astro/blob-1.W-ZlDNrE_2dove0.svg" alt="blob" loading="lazy" decoding="async" fetchpriority="auto" width="462" height="468" class="absolute top-0 left-0 opacity-25"> <img src="/_astro/blob-2.CJ7mioKI_Z186L1y.svg" alt="blob" loading="lazy" decoding="async" fetchpriority="auto" width="622" height="762" class="absolute bottom-0 right-0 opacity-25"> 
+            <div class="container grid lg:grid-cols-12 gap-0 lg:gap-8 lg:items-center relative">
+               <div class="lg:col-span-5 lg:h-full relative"> <img src="/_astro/services-overview.AJpNxT1v_Z4vtKU.webp" srcset="/_astro/services-overview.AJpNxT1v_1pQ0rL.webp 360w, /_astro/services-overview.AJpNxT1v_2oKyBS.webp 480w, /_astro/services-overview.AJpNxT1v_1umytN.webp 768w" alt="image" sizes=" (max-width: 360px) 360px, (max-width: 480px) 480px, (max-width: 768px) 768px, 768px" loading="lazy" decoding="async" fetchpriority="auto" width="2304" height="3072" class="w-full h-full object-cover aspect-video lg:aspect-auto"> </div>
+               <div class="flex flex-col lg:col-span-7 py-8 lg:py-14 gap-4 lg:gap-6">
+                  <div class="flex flex-col">
+                     <h2 class="heading-2 text-4xl lg:text-5xl">
+                        Our suite of services is intricately designed to address the intricate challenges and necessities of organizations navigating the Indonesian marketplace.
+                     </h2>
+                  </div>
+                  <p class="text-base font-bold">
+                     At the core of our offerings is an unwavering commitment to strategic advisory, pioneering solutions, and practical insights. This commitment ensures our clients are well-equipped to accomplish their ambitions and cultivate enduring growth.
+                  </p>
+                  <p class="text-base">
+                     Key to our approach is our expertise in market research Indonesia, where we delve deeply into the market dynamics, uncovering industry-specific growth opportunities and sectoral insights that are crucial for our clients’ success. Our strategic consulting offerings are bespoke, crafted to bolster businesses, governmental bodies, and stakeholders within the Indonesian context. By prioritizing excellence and a steadfast resolve to deliver impactful outcomes, Eurogroup Consulting emerges as your dependable partner in mastering the complexities and seizing the opportunities of Indonesia’s dynamic economic landscape.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   {% include 'service/_services.html.twig' %}
+{% endblock %}

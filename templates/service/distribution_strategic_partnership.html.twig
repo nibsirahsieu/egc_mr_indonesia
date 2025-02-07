@@ -1,0 +1,153 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+   {% if metaPage.metaTitle %}
+      <title>{{ metaPage.metaTitle }}</title>
+   {% else %}
+      {{ parent() }}
+   {% endif %}
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_services_show', {'slug': slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_services_show', {'slug': slug}) }}" />
+{% endblock %}
+
+{% block header %}
+   <header class="relative overflow-hidden">
+      <img src="/_astro/7-distribution-white-collar-worker-working-and-meeting-at-office-2024-10-22-08-00-54-utc.DdZRrjjv_1spI6T.webp" alt="Distribution &#38; Strategic Partnership in Indonesia" inferSize="true" loading="lazy" decoding="async" fetchpriority="auto" width="6000" height="4000" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+      <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+      <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+         <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/services" class="text-sm text-white hover:underline">Services</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Distribution &amp; Strategic Partnership</span></div>
+         <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">Distribution & Strategic Partnership in Indonesia</h1>
+      </div>
+   </header>
+{% endblock %}
+
+{% block content %}
+   <section id="overview">
+      <div class="bg-white">
+         <div class="container py-8 lg:py-14">
+            <div class="space-y-4">
+               <p class="text-lg lg:text-xl">
+                  In Indonesia’s rapidly changing business environment, having an
+                  effective distribution network and forming strategic partnerships
+                  are crucial elements for achieving market success. Eurogroup
+                  Consulting recognizes the critical importance of these aspects and
+                  offers specialized Distribution & Strategic Partnership services
+                  aimed at enabling businesses to enhance their operational
+                  efficiency, broaden their market presence, and establish
+                  meaningful collaborations in Indonesia.
+               </p>
+            </div>
+            <div class="py-8 lg:py-14 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  The Importance of Distribution & Strategic Partnership
+               </h3>
+               <p>
+                  The strategic management of distribution channels and partnerships
+                  holds significant value in realizing business goals:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Market Reach Expansion:</strong> A carefully devised distribution
+                     strategy can facilitate entry into new market segments and customer
+                     bases across Indonesia.
+                  </li>
+                  <li> <strong>Operational Efficiency Enhancement:</strong> Streamlining
+                     distribution processes can lead to significant cost reductions and
+                     operational improvements.
+                  </li>
+                  <li> <strong>Risk Diversification:</strong> Forming strategic partnerships
+                     can spread risk and provide access to essential resources, knowledge,
+                     and capabilities.
+                  </li>
+                  <li> <strong>Gaining a Competitive Edge:</strong> Collaborative efforts
+                     can yield a competitive advantage through the amalgamation of shared
+                     expertise and resources.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Our Methodology for Distribution & Strategic Partnership
+               </h3>
+               <p>
+                  Eurogroup Consulting’s structured approach is designed to maximize
+                  the benefits of distribution networks and strategic partnerships
+                  in Indonesia:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Comprehensive Needs Analysis:</strong> We start with a detailed
+                     assessment of your business objectives and distribution needs.
+                  </li>
+                  <li> <strong>In-depth Market Study:</strong> Our experts conduct thorough
+                     market research to pinpoint potential channels and partners.
+                  </li>
+                  <li> <strong>Partner Selection:</strong> We aid in finding and selecting
+                     partners or distributors that match your business goals and ethos.
+                  </li>
+                  <li> <strong>Facilitation of Negotiations &amp; Agreements:</strong> Eurogroup
+                     Consulting provides support throughout the negotiation process and
+                     helps in formalizing agreements.
+                  </li>
+                  <li> <strong>Guidance on Implementation:</strong> Our team offers advice
+                     during the rollout phase to ensure effective integration.
+                  </li>
+                  <li> <strong>Ongoing Performance Monitoring:</strong> We implement continuous
+                     review mechanisms to evaluate the success of the distribution strategy
+                     and partnerships.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Why Partner with Eurogroup Consulting
+               </h3>
+               <p>
+                  Choosing Eurogroup Consulting for Distribution & Strategic
+                  Partnership services in Indonesia brings unparalleled advantages:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Local Market Acumen:</strong> Our consultants are well-versed
+                     in the nuances of the Indonesian market, ensuring tailored and effective
+                     strategies.
+                  </li>
+                  <li> <strong>Extensive Global Connections:</strong> We utilize our broad
+                     network to identify the most suitable partners and distribution opportunities.
+                  </li>
+                  <li> <strong>Bespoke Strategies:</strong> Our services are customized
+                     to meet the unique needs of your business and the specific challenges
+                     of the Indonesian market.
+                  </li>
+                  <li> <strong>Enhanced Risk Management:</strong> Through thorough due diligence,
+                     we help identify and mitigate potential risks associated with new
+                     distribution channels and partnerships.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <p>
+                  In Indonesia’s dynamic marketplace, the strategic optimization of
+                  distribution channels and the cultivation of strategic
+                  partnerships are key to fostering growth and achieving long-term
+                  success. Eurogroup Consulting stands ready as your partner in
+                  refining your distribution approach and developing strategic
+                  alliances. Reach out to us to discover how our Distribution &
+                  Strategic Partnership services can propel your business forward in
+                  Indonesia.
+               </p>
+            </div>
+         </div>
+      </div>
+   </section>
+   {% include 'service/_services.html.twig' %}
+{% endblock %}

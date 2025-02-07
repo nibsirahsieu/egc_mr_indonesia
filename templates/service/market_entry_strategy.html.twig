@@ -1,0 +1,152 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+   {% if metaPage.metaTitle %}
+      <title>{{ metaPage.metaTitle }}</title>
+   {% else %}
+      {{ parent() }}
+   {% endif %}
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_services_show', {'slug': slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_services_show', {'slug': slug}) }}" />
+{% endblock %}
+
+{% block header %}
+   <header class="relative overflow-hidden">
+      <img src="/_astro/3-market-entry-getty-images-xy_EsAjFKWI-unsplash.b9ottPwO_ZheJwe.webp" alt="Market Entry Strategy in Indonesia" inferSize="true" loading="lazy" decoding="async" fetchpriority="auto" width="6000" height="4000" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+      <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+      <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+         <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/services" class="text-sm text-white hover:underline">Services</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Market Entry Strategy</span></div>
+         <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">Market Entry Strategy in Indonesia</h1>
+      </div>
+   </header>
+{% endblock %}
+
+{% block content %}
+   <section id="overview">
+      <div class="bg-white">
+         <div class="container py-8 lg:py-14">
+            <div class="space-y-4">
+               <p class="text-lg lg:text-xl">
+                  Venturing into a new market is a significant step, particularly in
+                  a market as diverse and promising as Indonesia. To guarantee a
+                  successful market entry, companies need a meticulously devised
+                  strategy that not only pinpoints opportunities but also tackles
+                  the unique challenges of the Indonesian market. Eurogroup
+                  Consulting offers specialized Market Entry Strategy services,
+                  aimed at assisting businesses in navigating the complexities of
+                  making a mark in Indonesia.
+               </p>
+            </div>
+            <div class="py-8 lg:py-14 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Why Market Entry Strategy Is Crucial
+               </h3>
+               <p>
+                  A solid Market Entry Strategy is essential for a successful launch
+                  in Indonesia for several reasons:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Risk Management:</strong> Every market comes with its inherent
+                     risks. A detailed strategy aids in identifying these risks and formulating
+                     plans to mitigate them effectively.
+                  </li>
+                  <li> <strong>Market Understanding:</strong> It enables a comprehensive
+                     evaluation of the market, including insights into consumer behavior,
+                     demand patterns, competition, and regulatory obligations.
+                  </li>
+                  <li> <strong>Resource Optimization:</strong> Strategically planning your
+                     entry ensures efficient use of resources, optimizing cost efficiency
+                     and maximizing return on investment.
+                  </li>
+                  <li> <strong>Accelerated Market Entry:</strong> A clear and concise strategy
+                     allows for a quicker entrance into the market, providing a competitive
+                     edge from the get-go.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Our Market Entry Strategy Process
+               </h3>
+               <p>
+                  Our method for crafting a Market Entry Strategy in Indonesia is
+                  detailed and customized to meet your unique requirements:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>In-depth Market Research:</strong> We conduct thorough market
+                     research to understand consumer preferences, demand fluctuations,
+                     and the competitive landscape.
+                  </li>
+                  <li> <strong>Risk Evaluation:</strong> We pinpoint potential risks and
+                     obstacles specific to your sector and the broader market.
+                  </li>
+                  <li> <strong>Regulatory Navigation:</strong> Our team assists in deciphering
+                     the regulatory landscape, ensuring full compliance with Indonesian
+                     laws and regulations.
+                  </li>
+                  <li> <strong>Market Segmentation:</strong> We help define your target
+                     market segments and devise effective strategies to engage them.
+                  </li>
+                  <li> <strong>Strategic Partnerships and Distribution:</strong> We explore
+                     avenues for strategic partnerships, distribution networks, and entry
+                     modes that align with your business goals.
+                  </li>
+                  <li> <strong>Gradual Market Entry:</strong> We recommend a step-by-step
+                     approach to entering the market, aimed at ensuring a smooth and impactful
+                     introduction.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Advantages of Partnering with Eurogroup Consulting
+               </h3>
+               <p>
+                  Choosing Eurogroup Consulting for your Market Entry Strategy in
+                  Indonesia offers several benefits:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Local Insights:</strong> Our consultants bring a deep understanding
+                     of the Indonesian market, culture, and business practices.
+                  </li>
+                  <li> <strong>Global Expertise:</strong> Leveraging global knowledge and
+                     best practices, we ensure your entry strategy adheres to the highest
+                     international standards.
+                  </li>
+                  <li> <strong>Tailored Strategies:</strong> Our market entry plans are
+                     specifically designed with your business goals, industry specifics,
+                     and the dynamics of the Indonesian market in mind.
+                  </li>
+                  <li> <strong>Actionable Support:</strong> Beyond strategic planning, we
+                     offer practical advice and assistance in implementing your market
+                     entry initiatives.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <p>
+                  Entering the Indonesian market opens up a realm of opportunities,
+                  but achieving success requires a well-thought-out strategic
+                  approach. With Eurogroup Consulting by your side, you can
+                  confidently tackle the intricacies of the Indonesian market. Reach
+                  out to us today to learn how our Market Entry Strategy services
+                  can facilitate your business’s successful launch in Indonesia.
+               </p>
+            </div>
+         </div>
+      </div>
+   </section>
+   {% include 'service/_services.html.twig' %}
+{% endblock %}

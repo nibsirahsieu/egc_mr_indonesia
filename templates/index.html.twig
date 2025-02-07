@@ -1,0 +1,267 @@
+{% extends 'front.html.twig' %}
+
+{% block meta_title %}
+    <meta name="title" content="{{ metaPage.metaTitle }}">
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+
+{% block content %}
+    <section id="hero">
+        <div class="relative bg-big-stone-950 overflow-hidden xl:min-h-[calc(80dvh)] flex items-center">
+            <div class="container mt-[102px] lg:mt-0 py-8 lg:py-32 relative z-10">
+                <div class="flex flex-col justify-center relative">
+                    <h1 class="relative text-white text-6xl lg:text-8xl heading-1 max-w-3xl">
+                    <span class="relative z-10">Market Research Indonesia</span> 
+                    <svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute left-0 inset-y-0">
+                        <path opacity="0.4" d="M123.687 0H180L56.3128 160H0L123.687 0Z" fill="#00B7EF"></path>
+                    </svg>
+                    </h1>
+                    <p class="text-white text-xl lg:text-3xl relative">
+                    Exploring Indonesia's Market Opportunities
+                    </p>
+                    <p class="text-white text-base lg:text-xl max-w-3xl mt-6 relative">
+                    Eurogroup Consulting, leveraging its 40 years of unparalleled
+                    expertise, excels in delivering top-tier strategic consulting
+                    services, with a focus on market research in Indonesia. Our committed
+                    team provides outstanding guidance and analytical depth, positioning
+                    us as your ideal partner for penetrating and succeeding in Indonesia’s
+                    diverse and rapidly evolving market landscape.
+                    </p>
+                    <div class="mt-6"> <a href="#overview" class="uppercase tracking-wider font-bold inline-flex items-center gap-3 group duration-300 ease-out text-white hover:text-picton-blue-500 text-sm lg:text-base">
+                    Explore
+                    <i data-lucide="arrow-right" class="size-4 group-hover:translate-x-1 duration-200 ease-out"></i> </a> 
+                    </div>
+                </div>
+            </div>
+            <div class="absolute inset-0 bg-big-stone-950 w-full h-full xl:min-h-dvh"> <img src="/_astro/hero.ByVFTj-u_pwWmU.webp" srcset="/_astro/hero.ByVFTj-u_Z6ooGw.webp 360w, /_astro/hero.ByVFTj-u_LE9Or.webp 480w, /_astro/hero.ByVFTj-u_1U77VS.webp 768w, /_astro/hero.ByVFTj-u_1qIHz8.webp 1024w, /_astro/hero.ByVFTj-u_ZXIFv5.webp 1440w, /_astro/hero.ByVFTj-u_1pAgy9.webp 1920w, /_astro/hero.ByVFTj-u_pwWmU.webp 6000w" alt="image" sizes="(max-width: 360px) 360px, (max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, (max-width: 1920px) 1920px, 6000px" loading="lazy" decoding="async" fetchpriority="auto" width="6000" height="3376" class="relative pointer-events-none bg-mask-hero select-none w-full h-full xl:min-h-dvh object-cover"> </div>
+            <div class="absolute right-0 bottom-0 blur-3xl w-80 h-40 -rotate-45 bg-picton-blue-500/50"></div>
+            <div class="w-full h-full bg-gradient-to-br from-big-stone-950/40 via-big-stone-950/60 to-picton-blue-500/30 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"></div>
+        </div>
+    </section>
+    
+    <section id="overview">
+        <div class="bg-gradient-to-b from-[#DEF5FF] to-[#EFFAFF]">
+            <div class="py-8 lg:py-14 relative">
+                <div class="container grid lg:grid-cols-12 gap-0 lg:gap-8 lg:items-center relative">
+                    <div class="lg:col-span-5 lg:h-full relative"> <img src="/_astro/overview.DpD2tHch_1zY0vt.webp" srcset="/_astro/overview.DpD2tHch_Z29x6lk.webp 360w, /_astro/overview.DpD2tHch_oFvb2.webp 480w, /_astro/overview.DpD2tHch_ZXzU06.webp 768w" alt="image" sizes=" (max-width: 360px) 360px, (max-width: 480px) 480px, (max-width: 768px) 768px, 768px" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="668" class="w-full h-full object-cover aspect-video lg:aspect-auto"> </div>
+                    <div class="flex flex-col lg:col-span-7 py-8 lg:py-14 gap-4 lg:gap-6">
+                    <div class="flex flex-col">
+                        <p class="mb-2 uppercase text-xs tracking-[0.1em]"> <span class="text-picton-blue-500">/</span> Introduction</p>
+                        <h2 class="heading-2 text-3xl lg:text-4xl">
+                            Eurogroup Consulting, boasting a distinguished legacy of over four
+                            decades of exceptional service, has become the consultancy of
+                            choice for businesses aiming to penetrate the flourishing
+                            Indonesian market.
+                        </h2>
+                    </div>
+                    <p class="text-base lg:text-xl">
+                        Our dedication to developing innovative solutions is driven by the
+                        unique set of challenges and opportunities presented by Indonesia’s
+                        dynamic economic environment.
+                    </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="navigate">
+        <div class="container py-8 lg:py-14">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+                <div class="flex flex-col py-8 lg:py-14 gap-4 lg:gap-6">
+                    <h2 class="heading-2 text-4xl lg:text-6xl">
+                    Exploring Indonesia’s Market Dynamics
+                    </h2>
+                    <p class="text-base">
+                    The Indonesian market is vibrant, driven by factors such as
+                    technological advancements, sustainability initiatives, and
+                    demographic trends. Indonesia’s open approach to foreign investments
+                    demands that companies are flexible and well-versed with market
+                    conditions. We provide profound insights into the forces shaping
+                    Indonesia, including:
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+                    <div class="bg-[#fafafa] p-4 lg:p-6 rounded border border-gray-100 hover:border-gray-200 duration-300 ease-out">
+                    <i data-lucide="cpu" class="size-8 mb-3"></i> 
+                    <p> <strong>Technological Advancement</strong>: The push towards digital
+                        transformation across various industries creates avenues for
+                        technological growth and e-commerce development.
+                    </p>
+                    </div>
+                    <div class="bg-[#fafafa] p-4 lg:p-6 rounded border border-gray-100 hover:border-gray-200 duration-300 ease-out">
+                    <i data-lucide="sprout" class="size-8 mb-3"></i> 
+                    <p> <strong>Sustainability Efforts</strong>: Emphasis on sustainable
+                        development opens doors in renewable energy, environmental
+                        consultancy, and sustainable practices.
+                    </p>
+                    </div>
+                    <div class="bg-[#fafafa] p-4 lg:p-6 rounded border border-gray-100 hover:border-gray-200 duration-300 ease-out">
+                    <i data-lucide="heart-pulse" class="size-8 mb-3"></i> 
+                    <p> <strong>Healthcare Expansion</strong>: The healthcare sector is
+                        witnessing significant expansion, propelled by investments in
+                        infrastructure, research, and services.
+                    </p>
+                    </div>
+                    <div class="bg-[#fafafa] p-4 lg:p-6 rounded border border-gray-100 hover:border-gray-200 duration-300 ease-out">
+                    <i data-lucide="building-2" class="size-8 mb-3"></i> 
+                    <p> <strong>Infrastructure Development</strong>: Extensive projects
+                        offer substantial prospects in construction, tourism, and related
+                        sectors.
+                    </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="strategies">
+        <div class="bg-gradient-to-b from-[#022037] to-[#043459] py-8 lg:py-14">
+            <div class="container">
+                <div class="flex flex-col pb-8 gap-4 lg:gap-6 items-center justify-center">
+                    <h2 class="heading-2 text-4xl lg:text-6xl max-w-2xl text-left lg:text-center text-white">
+                    Tailored Strategies for Market Success
+                    </h2>
+                    <p class="text-base text-left lg:text-center max-w-3xl text-white">
+                    Navigating the intricacies of Indonesia’s market trends demands a
+                    partnership with a consultancy that delivers strategic insights and
+                    customized solutions. Eurogroup Consulting’s team of specialists
+                    excels in:
+                    </p>
+                </div>
+            </div>
+            <div class="px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+                <div class="group bg-gradient-to-br from-white/10 via-white/15 to-white/5 p-4 lg:p-6 rounded overflow-hidden relative">
+                    <div class="bg-gradient-to-r from-transparent to-white/20 opacity-20 group-hover:opacity-100 top-full duration-300 ease-out group-hover:-mt-1 w-full h-1 absolute inset-0 -translate-x-full group-hover:-translate-x-0"></div>
+                    <i data-lucide="sparkles" class="size-8 text-white mb-3"></i> 
+                    <h3 class="text-white heading-3 mb-2 text-xl lg:text-2xl"> Market Research in Indonesia </h3>
+                    <p class="text-white">Thorough analysis of market dynamics, consumer trends, and competitive environments to guide strategic decisions.</p>
+                </div>
+                <div class="group bg-gradient-to-br from-white/10 via-white/15 to-white/5 p-4 lg:p-6 rounded overflow-hidden relative">
+                    <div class="bg-gradient-to-r from-transparent to-white/20 opacity-20 group-hover:opacity-100 top-full duration-300 ease-out group-hover:-mt-1 w-full h-1 absolute inset-0 -translate-x-full group-hover:-translate-x-0"></div>
+                    <i data-lucide="waypoints" class="size-8 text-white mb-3"></i> 
+                    <h3 class="text-white heading-3 mb-2 text-xl lg:text-2xl"> Strategic Planning for Indonesia </h3>
+                    <p class="text-white">Developing tailored strategies that align with Indonesia’s distinct business landscape.</p>
+                </div>
+                <div class="group bg-gradient-to-br from-white/10 via-white/15 to-white/5 p-4 lg:p-6 rounded overflow-hidden relative">
+                    <div class="bg-gradient-to-r from-transparent to-white/20 opacity-20 group-hover:opacity-100 top-full duration-300 ease-out group-hover:-mt-1 w-full h-1 absolute inset-0 -translate-x-full group-hover:-translate-x-0"></div>
+                    <i data-lucide="square-check-big" class="size-8 text-white mb-3"></i> 
+                    <h3 class="text-white heading-3 mb-2 text-xl lg:text-2xl"> Market Entry Strategy for Indonesia </h3>
+                    <p class="text-white">Easing the complexities of entering the Indonesian market, from regulatory compliance to establishing local alliances.</p>
+                </div>
+                <div class="group bg-gradient-to-br from-white/10 via-white/15 to-white/5 p-4 lg:p-6 rounded overflow-hidden relative">
+                    <div class="bg-gradient-to-r from-transparent to-white/20 opacity-20 group-hover:opacity-100 top-full duration-300 ease-out group-hover:-mt-1 w-full h-1 absolute inset-0 -translate-x-full group-hover:-translate-x-0"></div>
+                    <i data-lucide="chart-candlestick" class="size-8 text-white mb-3"></i> 
+                    <h3 class="text-white heading-3 mb-2 text-xl lg:text-2xl"> Value Chain Optimization in Indonesia </h3>
+                    <p class="text-white">Assessing the entire value chain to pinpoint opportunities for improvement and efficiency enhancements.</p>
+                </div>
+                <div class="group bg-gradient-to-br from-white/10 via-white/15 to-white/5 p-4 lg:p-6 rounded overflow-hidden relative">
+                    <div class="bg-gradient-to-r from-transparent to-white/20 opacity-20 group-hover:opacity-100 top-full duration-300 ease-out group-hover:-mt-1 w-full h-1 absolute inset-0 -translate-x-full group-hover:-translate-x-0"></div>
+                    <i data-lucide="grid-2x2-check" class="size-8 text-white mb-3"></i> 
+                    <h3 class="text-white heading-3 mb-2 text-xl lg:text-2xl"> Competitive Benchmarking in Indonesia </h3>
+                    <p class="text-white">In-depth competitor analysis and market positioning to secure a competitive advantage.</p>
+                </div>
+                <div class="group bg-gradient-to-br from-white/10 via-white/15 to-white/5 p-4 lg:p-6 rounded overflow-hidden relative">
+                    <div class="bg-gradient-to-r from-transparent to-white/20 opacity-20 group-hover:opacity-100 top-full duration-300 ease-out group-hover:-mt-1 w-full h-1 absolute inset-0 -translate-x-full group-hover:-translate-x-0"></div>
+                    <i data-lucide="handshake" class="size-8 text-white mb-3"></i> 
+                    <h3 class="text-white heading-3 mb-2 text-xl lg:text-2xl"> Distribution &amp; Partnership Building in Indonesia </h3>
+                    <p class="text-white">Facilitating growth through effective distribution methods and strategic partnership cultivation.</p>
+                </div>
+                <div class="group bg-gradient-to-br from-white/10 via-white/15 to-white/5 p-4 lg:p-6 rounded overflow-hidden relative">
+                    <div class="bg-gradient-to-r from-transparent to-white/20 opacity-20 group-hover:opacity-100 top-full duration-300 ease-out group-hover:-mt-1 w-full h-1 absolute inset-0 -translate-x-full group-hover:-translate-x-0"></div>
+                    <i data-lucide="list-todo" class="size-8 text-white mb-3"></i> 
+                    <h3 class="text-white heading-3 mb-2 text-xl lg:text-2xl"> Mergers and Acquisitions Guidance in Indonesia </h3>
+                    <p class="text-white">Assistance in identifying M&A opportunities and managing transaction processes.</p>
+                </div>
+                <div class="group bg-gradient-to-br from-white/10 via-white/15 to-white/5 p-4 lg:p-6 rounded overflow-hidden relative">
+                    <div class="bg-gradient-to-r from-transparent to-white/20 opacity-20 group-hover:opacity-100 top-full duration-300 ease-out group-hover:-mt-1 w-full h-1 absolute inset-0 -translate-x-full group-hover:-translate-x-0"></div>
+                    <i data-lucide="users-round" class="size-8 text-white mb-3"></i> 
+                    <h3 class="text-white heading-3 mb-2 text-xl lg:text-2xl"> Consumer Behavior Insights in Indonesia </h3>
+                    <p class="text-white">Understanding consumer preferences to inform business strategies.</p>
+                </div>
+            </div>
+            <div class="container">
+                <p class="mt-8 lg:mt-14 text-base text-left lg:text-center max-w-3xl mx-auto text-white">
+                    Eurogroup Consulting is your gateway to success in Indonesia’s dynamic
+                    market. We are eager to collaborate with your business, driving its
+                    growth in the face of Indonesia’s promising prospects.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    {{ render(controller('App\\Controller\\Whitepaper\\FeaturedController::featured')) }}
+
+    {% include 'service/_services.html.twig' %}
+    {% include 'sector/_sectors.html.twig' %}
+
+    <section id="case-studies">
+        <div class="bg-gradient-to-b from-[#022037] to-[#043459] py-8 lg:py-14">
+            <div class="container">
+                <div class="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center justify-between">
+                    <div class="flex flex-col lg:w-1/2">
+                        <p class="text-white mb-2 uppercase text-xs tracking-[0.1em]"> <span class="text-picton-blue-500">/</span> Case Studies</p>
+                        <h2 class="heading-2 text-3xl lg:text-5xl text-white">
+                            We have successfully completed hundreds of projects for our clients
+                        </h2>
+                    </div>
+                    <h3 class="heading-2 relative text-white text-6xl lg:text-8xl text-right hidden lg:block"> <span class="lg:text-6xl">Trusted</span><br>Since <span class="text-picton-blue-500">1982</span> </h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mt-8">
+                    {% for cs in caseStudies %}
+                        {% set thumbnail = cs.thumbnail %}
+                        <a href="{{ path('app_case_studies_show', {'slug': cs.slug}) }}" class="relative aspect-square flex items-end justify-start bg-black group overflow-hidden rounded" aria-label="{{ cs.title }}">
+                            <h4 class="p-4 lg:p-6 relative text-white z-10 text-left text-xl font-heading font-medium !leading-tight"> {{ cs.title }} </h4>
+                            <img 
+                                {% if thumbnail.hash %}src="{{ path('app_upload_files_from_hash', {'hash': thumbnail.hash}) }}"{% endif %}
+                                data-src="{{ thumbnail.image | imagine_filter('thumb_sm') }}" 
+                                data-sizes="auto" 
+                                class="absolute opacity-50 group-hover:opacity-75 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-full h-full object-cover group-hover:scale-105 duration-300 ease-out lazy" 
+                                alt="{{ cs.title }}"
+                            > 
+                        </a>   
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="insights">
+        <div class="container py-8 lg:py-14">
+            <div class="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center justify-between">
+                <div class="flex flex-col lg:w-full">
+                    <p class="mb-2 uppercase text-xs tracking-[0.1em]"> <span class="text-picton-blue-500">/</span> Insights</p>
+                    <div class="flex items-center justify-between w-full">
+                        <h2 class="heading-2 text-3xl lg:text-5xl max-w-xl">
+                            Our views on the Indonesia market 
+                        </h2>
+                        <a href="/insights" class="uppercase tracking-wider font-bold inline-flex items-center gap-3 group duration-300 ease-out text-picton-blue-500 text-sm lg:text-base">
+                        See All Insights
+                        <i data-lucide="arrow-right" class="size-4 group-hover:translate-x-1 duration-200 ease-out"></i> </a> 
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-8">
+                {% for p in posts %}
+                    {% set thumbnail = p.thumbnail %}
+                    <a href="{{ path('app_insights_show', {'slug': p.slug}) }}" class="relative aspect-video lg:aspect-[3/4] flex items-end justify-start bg-black group overflow-hidden p-4 lg:p-6 rounded" aria-label="{{ p.title }}">
+                        <h3 class="relative text-white z-10 text-left text-xl font-heading font-medium !leading-tight"> {{ p.title | raw }} </h3>
+                        <img 
+                            {% if thumbnail.hash %}src="{{ path('app_upload_files_from_hash', {'hash': thumbnail.hash}) }}"{% endif %}
+                            data-src="{{ thumbnail.image | imagine_filter('thumb_sm') }}" 
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 duration-300 ease-out lazy"
+                            alt="{{ p.title }}"
+                            data-sizes="auto"
+                        > 
+                        <div class="opacity-60 bg-gradient-to-bl from-[#065B9D]/50 to-[#022037] w-full h-full absolute inset-0"></div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

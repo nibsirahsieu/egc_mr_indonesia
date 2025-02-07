@@ -1,0 +1,156 @@
+{% extends 'admin.html.twig' %}
+
+{% block javascripts %}
+    {% block importmap %}{{ importmap(['admin', 'case_study_form']) }}{% endblock %}
+{% endblock %}
+
+{% block pagetitle %}
+    Edit Case Study
+{% endblock %}
+
+{% block body %}
+    <form data-case-study-id="{{ case_study.id }}" method="POST" action="{{ path('app_admin_case_studies_update', {'id': case_study.id}) }}" class="parsley-style-1" data-parsley-validate novalidate>
+        <div class="row row-xs">
+            <div class="col-lg-8 col-xl-7">
+                <fieldset class="form-fieldset">
+                    <legend>Case Study</legend>
+                    <div class="form-group">
+                        <label for="title" class="d-block required">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" maxlength="255" required value="{{ case_study.title }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="client" class="d-block required">Client</label>
+                        <textarea class="form-control" rows="2" id="client" name="client" maxlength="500" required>{{ case_study.client }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between mg-b-5">
+                            <label for="issue" class="d-block required">Issue</label>
+                            <a href="javascript:;" class="spinner-container btn btn-xs btn-link cursor-default d-none">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Uploading images...
+                            </a>
+                        </div>
+                        <textarea class="form-control wysiwyg" rows="4" id="issue" name="issue" required>{{ case_study.issue }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between mg-b-5">
+                            <label for="solution" class="d-block required">Solution</label>
+                            <a href="javascript:;" class="spinner-container btn btn-xs btn-link cursor-default d-none">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Uploading images...
+                            </a>
+                        </div>
+                        <textarea class="form-control wysiwyg" rows="4" id="solution" name="solution" required>{{ case_study.solution }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between mg-b-5">
+                            <label for="approach" class="d-block required">Approach</label>
+                            <a href="javascript:;" class="spinner-container btn btn-xs btn-link cursor-default d-none">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Uploading images...
+                            </a>
+                        </div>
+                        <textarea class="form-control wysiwyg" rows="4" id="approach" name="approach" required>{{ case_study.approach }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between mg-b-5">
+                            <label for="recommendation" class="d-block required">Recommendation</label>
+                            <a href="javascript:;" class="spinner-container btn btn-xs btn-link cursor-default d-none">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Uploading images...
+                            </a>
+                        </div>
+                        <textarea class="form-control wysiwyg" rows="4" id="recommendation" name="recommendation" required>{{ case_study.recommendation }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between mg-b-5">
+                            <label for="engagement_roi" class="d-block required">Engagement ROI</label>
+                            <a href="javascript:;" class="spinner-container btn btn-xs btn-link cursor-default d-none">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Uploading images...
+                            </a>
+                        </div>
+                        <textarea class="form-control wysiwyg" rows="4" id="engagement_roi" name="engagement_roi" required>{{ case_study.engagementRoi }}</textarea>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-lg-4 col-xl-5">
+                <div class="sticky-lg-top">
+                    <fieldset class="form-fieldset mg-b-20">
+                        <legend>SEO Data</legend>
+                        <div class="form-group">
+                            <div class="d-flex justify-content-between mg-b-5">
+                                <label for="slug" class="d-block required">Slug</label>
+                                <a href="javascript:;" class="tx-13" id="btn_slugify">Generate from title</a>
+                            </div>
+                            <input type="text" class="form-control" id="slug" name="slug" maxlength="255" data-parsley-trigger="change" data-parsley-validate-slug="validateSlug" required value="{{ case_study.slug }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="meta_title" class="d-block required">Meta Title</label>
+                            <input type="text" class="form-control" id="meta_title" name="meta_title" maxlength="255" required value="{{ case_study.metaTitle }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="meta_description" class="d-block required">Meta Description</label>
+                            <input type="text" class="form-control" id="meta_description" name="meta_description" maxlength="255" required value="{{ case_study.metaDescription }}">
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        <label for="sector" class="d-block required">Sector</label>
+                        <div class="parsley-checkbox" id="cb_sector_wrapper">
+                            {% set csSectorIds = case_study.sectorIds %}
+                            {% for s in sectors %}
+                                <div class="custom-control custom-checkbox">
+                                    <input {{ s.id in csSectorIds ? 'checked' : '' }} type="checkbox" class="custom-control-input" id="sector_{{ s.id }}"  name="sector_ids[]" value="{{ s.id }}" {{ loop.first ? 'required data-parsley-class-handler="#cb_sector_wrapper" data-parsley-errors-container="#cb_sector_error_container"' : ''}}>
+                                    <label class="custom-control-label" for="sector_{{ s.id }}">{{ s.name }}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div id="cb_sector_error_container"></div>
+                    </div>
+                    <div class="form-group" id="header_image_container">
+                        {% if case_study.image %}
+                            <img src="{{ case_study.image.relativePath | imagine_filter('post_sm') }}" class="img-fluid mg-b-10" id="hero_image" style="width: 300px">    
+                        {% else %}
+                            <img src="https://placehold.co/300x200" class="img-fluid mg-b-10" id="hero_image" style="width: 300px; height: 200px">
+                        {% endif %}
+                        <label for="header_file" class="d-block required">Header Image</label>
+                        <div class="input-group custom-file-button">
+                            <label class="input-group-text" for="header_file" role="button">Browse...</label>
+                            <label for="header_file" class="form-control original_name" role="button">{{ case_study.image ? case_study.image.originalName : '' }}</label>
+                            <input type="file" class="d-none" id="header_file" accept="image/*">
+                        </div>
+                        <input type="text" id="header_image_id" name="image_id" class="d-none" value="{{ case_study.image ? case_study.image.id : '' }}" required />
+                        <div class="progress mg-b-10">
+                            <div id="header_image_pb" class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="published_at" class="d-block">Published On</label>
+                        <input type="date" class="form-control" id="published_at" name="published_at" {% if case_study.publishedAt %}value="{{ case_study.publishedAt.format('Y-m-d') }}"{% endif %}>
+                    </div>
+                    <input type="hidden" id="status" name="status" value="{{ case_study.status.value }}">
+                    <div class="row g-2">
+                        {% if case_study.isPublished %}
+                            <div class="col-md-12">
+                                <div class="d-grid d-block">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col-md-6">
+                                <div class="d-grid d-block">
+                                    <button type="submit" class="btn btn-primary" id="btn_publish">Publish</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-grid d-block">
+                                    <button type="submit" class="btn btn-secondary" id="btn_draft">Save as Draft & Preview</button>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

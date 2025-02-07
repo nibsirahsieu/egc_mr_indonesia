@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="robots" content="noindex">
+        <title>{% block title %}{{ app_name }}{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('admin') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        {% set errors = app.session.flashbag.get('error') %}
+        {% set successes = app.session.flashbag.get('success') %}
+        {% if errors|length > 0 or successes|length > 0 %}
+            <div aria-live="polite" aria-atomic="true" class="position-relative">
+                <div class="toast-container position-absolute top-0 end-0 p-3">
+                    {% for success in successes %}
+                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <strong class="me-auto">Success!</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                {{ success|trans }}
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    {% for error in errors %}
+                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <strong class="me-auto">Error!</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                {{ success|trans }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        
+        {% include '_admin_aside.html.twig' %}
+        <div class="content ht-100v pd-0">
+            <div class="content-header">
+                <div class="content-search">
+                    <i data-feather="search"></i>
+                    <input type="search" class="form-control" placeholder="Search...">
+                </div>
+                {#<nav class="nav">
+                    <a href="" class="nav-link"><i data-feather="help-circle"></i></a>
+                    <a href="" class="nav-link"><i data-feather="grid"></i></a>
+                    <a href="" class="nav-link"><i data-feather="align-left"></i></a>
+                </nav>#}
+            </div>
+            <div class="content-body">
+                <div class="container pd-x-0">
+                    <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+                        <div>
+                            {{ slope_it_breadcrumb() }}
+                            <h4 class="mg-b-0 tx-spacing--1">{% block pagetitle %}Dashboard{% endblock %}</h4>
+                        </div>
+                    </div>
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

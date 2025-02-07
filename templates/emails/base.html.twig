@@ -1,0 +1,27 @@
+{% apply inky_to_html|inline_css(source('@styles/foundation-emails.css')) %}
+
+<spacer size="16"></spacer>
+
+<container>
+
+  <spacer size="16"></spacer>
+
+  <row>
+    <columns>
+      {% block body %}{% endblock %}
+    </columns>
+  </row>
+
+  <wrapper class="secondary">
+    <spacer size="16"></spacer>
+    <row class="footer">
+        <columns>
+          <p class="text-center">
+              Eurogroup Consulting &copy; {{ "now"|date('Y') }}
+          </p>
+        </columns>
+    </row>
+  </wrapper>
+
+</container>
+{% endapply %}

@@ -1,0 +1,95 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+    {% if post.metaTitle %}
+        <title>{{ post.metaTitle }}</title>
+    {% else %}
+        <title>{{ post.title | raw }}</title>
+    {% endif %}
+{% endblock %}
+
+{% block meta_title %}
+    {#<meta name="title" content="{{ post.metaTitle }}" />#}
+    <meta property="og:title" content="{{ post.metaTitle }}" />
+    <meta name="twitter:title" content="{{ post.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ post.metaDescription }}" />
+    <meta property="og:description" content="{{ post.metaDescription }}" />
+    <meta name="twitter:description" content="{{ post.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_insights_show', {'slug': post.slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_insights_show', {'slug': post.slug}) }}" />
+{% endblock %}
+{% block meta_image %}
+    <meta property="og:image" content="{{ post.headerImage.relativePath | imagine_filter('header_xlg') }}" />
+    <meta property="og:image:secure_url" content="{{ post.headerImage.relativePath | imagine_filter('header_xlg') }}" />
+    <meta property="og:image:width" content="1512" />
+    <meta property="og:image:height" content="851" />  
+    <meta name="twitter:image" content="{{ post.headerImage.relativePath | imagine_filter('header_xlg') }}" />
+{% endblock %}
+{% block others_meta %}
+    <meta property="og:type" content="article" />
+    <meta name="author" content="{{ post.author }}" />
+    {% if post.publishedAt %}<meta property="article:published_time" content="{{ post.publishedAt|date('c') }}" />{% endif %}
+    <meta property="article:modified_time" content="{{ post.updatedAt|date('c') }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="relative overflow-hidden">
+        <img 
+            {% if post.headerImage.hash %}src="{{ path('app_upload_files_from_hash', {'hash': post.headerImage.hash}) }}"{% endif %}
+            data-srcset="{{ post.headerImage.relativePath | imagine_filter('header_xlg') }} 1520w, {{ post.headerImage.relativePath | imagine_filter('header_lg') }} 1048w, {{ post.headerImage.relativePath | imagine_filter('header_md') }} 840w, {{ post.headerImage.relativePath | imagine_filter('header_sm') }} 500w" 
+            alt="{{ post.title }}" 
+            class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none lazy"
+            data-sizes="auto"
+        >
+        <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+        <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+            <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="{{ path('app_insights_index') }}" class="text-sm text-white hover:underline">Insights</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">{{ post.title | raw }}</span></div>
+            <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">{{ post.title | raw }}</h1>
+            <p class="text-center text-base text-white mt-8">
+                {% if post.publishedAt %}
+                    Published on: {{ post.publishedAt|date('M d, Y') }} <span class="text-picton-blue-500 text-xl">|</span>     
+                {% endif %}
+                Author: {{ post.author }}
+            </p>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <section id="content">
+        <div class="container py-8 lg:py-14 space-y-8">
+            {#<p id="excerpt" class="text-base mx-auto max-w-5xl">
+                {{ post.summary | raw }}
+            </p>
+            <hr class="border-t border-gray-100 mx-auto max-w-5xl">#}
+            <article class="prose mx-auto max-w-5xl">
+                {{ post.content | lazify_image_content | raw }}
+            </article>
+        </div>
+    </section>
+    {% if other_posts|length > 0 %}
+        <section id="related">
+            <div class="container py-8 lg:py-14">
+                <h2 class="heading-2 text-4xl lg:text-6xl"> Related Insights </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mt-8">
+                    {% for p in other_posts %}
+                        {% set thumbnail = p.thumbnail %}
+                        <a href="{{ path('app_insights_show', {'slug': p.slug}) }}" class="relative aspect-square flex items-end justify-start bg-black group overflow-hidden p-4 lg:p-6 rounded" aria-label="{{ p.title }}"> 
+                            <span class="relative inline-flex items-center gap-6 lg:gap-8 text-white z-10 leading-none font-medium text-left text-2xl bg-big-stone-950 group-hover:bg-picton-blue-500 -ml-4 lg:-ml-6 group-hover:-mr-4 group-hover:lg:-mr-6 -mt-4 lg:-mt-6 mb-4 group-hover:-mb-4 group-hover:lg:-mb-6 p-4 lg:p-6 duration-300"> {{ p.title | raw }} <i data-lucide="arrow-up-right" class="min-w-6 size-6 group-hover:rotate-90 duration-300 ease-out"></i> </span> 
+                            <img 
+                                {% if thumbnail.hash %}src="{{ path('app_upload_files_from_hash', {'hash': thumbnail.hash}) }}"{% endif %}
+                                data-src="{{ thumbnail.image | imagine_filter('thumb_sm') }}" 
+                                class="lazy absolute opacity-50 group-hover:opacity-75 inset-0 w-full h-full object-cover group-hover:scale-105 duration-300 ease-out" 
+                                data-sizes="auto"
+                            > 
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+    <title>{{ caseStudy.metaTitle }}</title>
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ caseStudy.metaTitle }}">#}
+    <meta property="og:title" content="{{ caseStudy.metaTitle }}" />
+    <meta name="twitter:title" content="{{ caseStudy.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ caseStudy.metaDescription }}">
+    <meta property="og:description" content="{{ caseStudy.metaDescription }}" />
+    <meta name="twitter:description" content="{{ caseStudy.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_case_studies_show', {'slug': caseStudy.slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_case_studies_show', {'slug': caseStudy.slug}) }}" />
+{% endblock %}
+{% block meta_image %}
+    <meta property="og:image" content="{{ caseStudy.image.relativePath | imagine_filter('header_xlg') }}" />
+    <meta property="og:image:secure_url" content="{{ caseStudy.image.relativePath | imagine_filter('header_xlg') }}" />
+    <meta property="og:image:width" content="1512" />
+    <meta property="og:image:height" content="851" />  
+    <meta name="twitter:image" content="{{ caseStudy.image.relativePath | imagine_filter('header_xlg') }}" />
+{% endblock %}
+{% block others_meta %}
+    <meta property="og:type" content="article">
+    {% if caseStudy.publishedAt %}<meta property="article:published_time" content="{{ caseStudy.publishedAt|date('c') }}" />{% endif %}
+    <meta property="article:modified_time" content="{{ caseStudy.updatedAt|date('c') }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="relative overflow-hidden">
+        <img 
+            {% if caseStudy.image.hash %}src="{{ path('app_upload_files_from_hash', {'hash': caseStudy.image.hash}) }}"{% endif %}
+            data-srcset="{{ caseStudy.image.relativePath | imagine_filter('header_xlg') }} 1520w, {{ caseStudy.image.relativePath | imagine_filter('header_lg') }} 1048w, {{ caseStudy.image.relativePath | imagine_filter('header_md') }} 840w, {{ caseStudy.image.relativePath | imagine_filter('header_sm') }} 500w" 
+            alt="{{ caseStudy.title }}" 
+            class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none lazy"
+            data-sizes="auto"
+        >
+        <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+        <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+            <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4">
+                <a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a>
+                <span class="text-picton-blue-500">/</span>
+                <a href="{{ path('app_case_studies_index') }}" class="text-sm text-white hover:underline">Case Study</a>
+                <span class="text-picton-blue-500">/</span>
+                <span class="text-sm text-white">{{ caseStudy.title }}</span>
+            </div>
+            <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">{{ caseStudy.title }}</h1>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <section id="content"> 
+        <div class="container py-8 lg:py-14 space-y-8">
+            <div class="space-y-1">
+                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> <i data-lucide="briefcase" class="size-8"></i>
+                    Client
+                </h3> 
+                <div class="prose max-w-full prose-li:my-0 prose-p:mb-1 prose-ul:mt-1">
+                    {{ caseStudy.client | raw }}
+                </div>
+            </div>
+            <div class="space-y-1">
+                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> <i data-lucide="triangle-alert" class="size-8"></i>
+                    Issues
+                </h3>
+                <div class="prose max-w-full prose-li:my-0 prose-p:mb-1 prose-ul:mt-1">
+                    {{ caseStudy.issue | lazify_image_content | raw }}
+                </div>
+            </div>
+            <div class="space-y-1">
+                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> <i data-lucide="puzzle" class="size-8"></i>
+                    Solution
+                </h3>
+                <div class="prose max-w-full prose-li:my-0 prose-p:mb-1 prose-ul:mt-1">
+                    {{ caseStudy.solution | lazify_image_content | raw }}
+                </div>
+            </div>
+            <div class="space-y-1">
+                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> <i data-lucide="user-cog" class="size-8"></i>
+                    Approach
+                </h3>
+                <div class="prose max-w-full prose-li:my-0 prose-p:mb-1 prose-ul:mt-1">
+                    {{ caseStudy.approach | lazify_image_content | raw }}
+                </div>
+            </div>
+            <div class="space-y-1">
+                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> <i data-lucide="list-todo" class="size-8"></i>
+                    Recommendations
+                </h3>
+                <div class="prose max-w-full prose-li:my-0 prose-p:mb-1 prose-ul:mt-1">
+                    {{ caseStudy.recommendation | lazify_image_content | raw }}
+                </div>
+            </div>
+            <div class="space-y-1">
+                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> <i data-lucide="chart-no-axes-combined" class="size-8"></i>
+                    Engagement ROI
+                </h3>
+                <div class="prose max-w-full prose-li:my-0 prose-p:mb-1 prose-ul:mt-1">
+                    {{ caseStudy.engagementRoi | lazify_image_content | raw }}
+                </div>
+            </div>
+        </div> 
+    </section>
+{% endblock %}

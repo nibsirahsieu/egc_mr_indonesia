@@ -1,0 +1,65 @@
+{% extends 'admin.html.twig' %}
+
+{% block javascripts %}
+    {% block importmap %}{{ importmap(['admin', 'wp_request_list']) }}{% endblock %}
+{% endblock %}
+
+{% block pagetitle %}
+    Download Whitepaper Requests List
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-body">
+            <table class="table" id="wp_request_table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Whitepaper</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Job Title</th>
+                        <th>Company Name</th>
+                        <th>Country</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="wp_request_modal" tabindex="-1" role="dialog" aria-labelledby="modal_wp_request_title" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content tx-14">
+          <div class="modal-header">
+            <h6 class="modal-title" id="modal_wp_request_title">Request Detail</h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Whitepaper</label>
+            <p class="mg-b-0 wp_request_title"></p>
+            <hr class="mg-y-10">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Name</label>
+            <p class="mg-b-0 wp_request_name"></p>
+            <hr class="mg-y-10">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Email</label>
+            <p class="mg-b-0 wp_request_email"></p>
+            <hr class="mg-y-10">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Job Title</label>
+            <p class="mg-b-0 wp_request_job_title"></p>
+            <hr class="mg-y-10">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Company Name</label>
+            <p class="mg-b-0 wp_request_company_name"></p>
+            <hr class="mg-y-10">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Country</label>
+            <p class="mg-b-0 wp_request_country"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary tx-13" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

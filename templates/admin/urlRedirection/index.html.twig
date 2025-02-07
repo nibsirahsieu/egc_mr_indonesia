@@ -1,0 +1,78 @@
+{% extends 'admin.html.twig' %}
+
+{% block stylesheets %}
+  <style>.dt-search { display: none } </style>
+{% endblock %}
+
+{% block javascripts %}
+    {% block importmap %}{{ importmap(['admin', 'url_redirection_list']) }}{% endblock %}
+{% endblock %}
+
+{% block pagetitle %}
+    URL Redirections List
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header pd-t-20 d-sm-flex align-items-start justify-content-between">
+            <h6 class="mg-b-0">&nbsp;</h6>
+            <div class="d-flex mg-t-20 mg-sm-t-0">
+                <a class="btn btn-primary btn-xs btn-new" href="javascript:;">Add New Url Redirection</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table" id="url_redirection_table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Old URL</th>
+                        <th>New URL</th>
+                        <th class="wd-150"></th>
+                    </tr>
+                    <tr>
+                        <th>
+                          <div class="search-form">
+                            <input id="search_old_url" type="search" class="form-control txt-search" placeholder="Search by Old URL" data-index="0">
+                            <button class="btn btn-search" type="button"><i data-feather="search"></i></button>
+                          </div>
+                        </th>
+                        <th>
+                          <div class="search-form">
+                            <input id="search_new_url" type="search" class="form-control txt-search" placeholder="Search by New URL" data-index="1">
+                            <button class="btn btn-search" type="button"><i data-feather="search"></i></button>
+                          </div>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalRedirectUrl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel5" aria-hidden="true">
+      <form id="formRedirectUrl" class="modal-dialog modal-dialog-centered modal-xl" role="document" action="">
+        <div class="modal-content tx-14">
+          <div class="modal-header">
+            <h6 class="modal-title" id="exampleModalLabel5">URL Redirection Form</h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+                <label for="name" class="d-block">Old URL</label>
+                <input id="old_url" type="text" class="form-control" placeholder="" name="oldUrl" required>
+            </div>
+            <div class="form-group">
+                <label for="name" class="d-block">New URL</label>
+                <input id="new_url" type="text" class="form-control" placeholder="" name="newUrl" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="reset" class="btn btn-secondary tx-13" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary tx-13">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+{% endblock %}

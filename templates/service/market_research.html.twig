@@ -1,0 +1,169 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+   {% if metaPage.metaTitle %}
+      <title>{{ metaPage.metaTitle }}</title>
+   {% else %}
+      {{ parent() }}
+   {% endif %}
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_services_show', {'slug': slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_services_show', {'slug': slug}) }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="relative overflow-hidden">
+        <img src="/_astro/1-market-research-getty-images-MCX9B7Hnqi0-unsplash.DOTsZ6Ax_Z1AQmw7.webp" alt="Market Research in Indonesia" inferSize="true" loading="lazy" decoding="async" fetchpriority="auto" width="3293" height="1852" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+        <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+        <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+        <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/services" class="text-sm text-white hover:underline">Services</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Market Research</span></div>
+        <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">Market Research in Indonesia</h1>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <section id="overview">
+        <div class="bg-white">
+            <div class="container py-8 lg:py-14">
+                <div class="space-y-4">
+                    <p class="text-lg lg:text-xl">
+                    Navigating the complex and competitive landscape of the Indonesian
+                    market is crucial for businesses aiming to succeed in today’s
+                    fast-paced environment. Indonesia, with its vast archipelago,
+                    diverse demographics, and ambitious development plans, offers
+                    significant opportunities for growth. However, the market also
+                    presents its unique challenges, from cultural diversity to
+                    regulatory intricacies. To excel in this vibrant setting,
+                    companies require more than mere data; they need strategic
+                    insights.
+                    </p>
+                    <p class="text-lg lg:text-xl">
+                    At Eurogroup Consulting, we are experts in Market Research in
+                    Indonesia, providing you with the insights necessary to navigate
+                    the market’s complexities and maximize its opportunities. Our
+                    experienced professionals and dedicated team are committed to
+                    equipping your business with the knowledge and insights required
+                    for making informed decisions, identifying growth prospects, and
+                    maintaining a competitive edge.
+                    </p>
+                </div>
+                <div class="py-8 lg:py-14 space-y-4">
+                    <h3 class="text-2xl lg:text-3xl heading-3">
+                    The Importance of Market Research
+                    </h3>
+                    <p>
+                    Market research is a critical strategic tool for businesses
+                    operating in Indonesia for several reasons:
+                    </p>
+                    <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                    <li> <strong>Understanding Consumer Behavior:</strong> Indonesia’s market
+                        is characterized by diverse consumer groups with distinct preferences
+                        and behaviors. Our comprehensive market research dives deep into
+                        these consumer insights, enabling you to tailor your offerings to
+                        the specific tastes and needs of Indonesian consumers.
+                    </li>
+                    <li> <strong>Spotting Growth Opportunities:</strong> Through market research,
+                        we can identify new market segments, emerging trends, and opportunities
+                        for growth. This serves as a guide for business expansion and diversification
+                        strategies within the Indonesian context.
+                    </li>
+                    <li> <strong>Competitive Analysis:</strong> Keeping ahead of the competition
+                        is vital in a crowded market. Our detailed market research provides
+                        the intelligence you need to benchmark against competitors, pinpointing
+                        strengths and areas for improvement, thus enhancing your competitive
+                        strategy.
+                    </li>
+                    <li> <strong>Risk Reduction:</strong> Navigating Indonesia’s complex regulatory
+                        framework can be daunting. Market research helps in understanding
+                        and adhering to local laws, minimizing legal and operational risks.
+                    </li>
+                    </ul>
+                </div>
+                <div class="pb-8 lg:pb-16 space-y-4">
+                    <h3 class="text-2xl lg:text-3xl heading-3">
+                    Our Market Research Methodology
+                    </h3>
+                    <p>
+                    Our approach to Market Research in Indonesia involves a systematic
+                    process:
+                    </p>
+                    <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                    <li> <strong>Objective Setting:</strong> Collaborating with you, we aim
+                        to clearly define the research goals, whether for launching new products,
+                        exploring new market segments, or evaluating customer satisfaction.
+                    </li>
+                    <li> <strong>Data Gathering:</strong> Utilizing various methods like surveys,
+                        interviews, focus groups, and analytics tools, we collect data. This
+                        encompasses both primary data (directly obtained) and secondary data
+                        (pre-existing sources).
+                    </li>
+                    <li> <strong>Analysis:</strong> Our expert team meticulously analyzes
+                        the data to uncover significant insights, employing advanced analytics
+                        and statistical tools for a comprehensive understanding of consumer
+                        behaviors and preferences.
+                    </li>
+                    <li> <strong>Strategic Recommendations:</strong> We translate our findings
+                        into actionable strategies, guiding your business decisions for growth.
+                    </li>
+                    <li> <strong>Continuous Monitoring:</strong> Given the dynamic nature
+                        of markets and shifting consumer preferences, we provide ongoing
+                        market monitoring to keep your business strategies up-to-date.
+                    </li>
+                    </ul>
+                </div>
+                <div class="pb-8 lg:pb-16 space-y-4">
+                    <h3 class="text-2xl lg:text-3xl heading-3">
+                    Advantages of Partnering with Eurogroup Consulting
+                    </h3>
+                    <p>
+                    Choosing Eurogroup Consulting for your Market Research in
+                    Indonesia offers numerous benefits:
+                    </p>
+                    <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                    <li> <strong>Expert Knowledge:</strong> Our market research experts possess
+                        the specialized knowledge and experience required for effective research
+                        and accurate insights.
+                    </li>
+                    <li> <strong>Objective Perspectives:</strong> As an independent entity,
+                        we deliver unbiased insights, essential for objective strategic planning.
+                    </li>
+                    <li> <strong>Resource Efficiency:</strong> With access to extensive resources,
+                        databases, and technology, we streamline the research process, offering
+                        time and cost savings.
+                    </li>
+                    <li> <strong>Global Standards:</strong> Adhering to global best practices,
+                        we ensure our research methodologies and analyses meet the highest
+                        international criteria.
+                    </li>
+                    </ul>
+                </div>
+                <div class="pb-8 lg:pb-16 space-y-4">
+                    <p>
+                    Market research in Indonesia is more than a service—it’s a
+                    strategic necessity for your business’s growth and success in this
+                    dynamic market. Leveraging market research allows you to unlock
+                    Indonesia’s full potential, positioning your business for
+                    sustainable development and informed decision-making. At Eurogroup
+                    Consulting, we are your dedicated partner in this journey,
+                    committed to providing strategic insights that drive excellence.
+                    Contact us today to discover how our Market Research services can
+                    enhance your business in Indonesia.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'service/_services.html.twig' %}
+{% endblock %}

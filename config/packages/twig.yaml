@@ -1,0 +1,12 @@
+twig:
+    file_name_pattern: '*.twig'
+    paths:
+        '%kernel.project_dir%/public/images': images
+        '%kernel.project_dir%/assets/styles': styles
+    globals:
+        google_recaptcha_site_key: '%google_recaptcha_site_key%'
+        app_name: '%app.name%'
+        app_base_url: '%env(APP_BASE_URL)%'
+when@test:
+    twig:
+        strict_variables: true

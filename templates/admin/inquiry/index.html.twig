@@ -1,0 +1,73 @@
+{% extends 'admin.html.twig' %}
+
+{% block javascripts %}
+    {% block importmap %}{{ importmap(['admin', 'inquiry_list']) }}{% endblock %}
+{% endblock %}
+
+{% block pagetitle %}
+    Inquiries List
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-body">
+            <table class="table" id="inquiries_table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Job Title</th>
+                        <th>Company Name</th>
+                        <th>Country</th>
+                        <th>Phone Number</th>
+                        {#<th>Message</th>#}
+                        <th>Soure</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="inquiry_modal" tabindex="-1" role="dialog" aria-labelledby="modal_inquiry_title" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content tx-14">
+          <div class="modal-header">
+            <h6 class="modal-title" id="modal_inquiry_title">Inquiry Detail</h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Source</label>
+            <p class="mg-b-0 inquiry_source">Abigail</p>
+            <hr class="mg-y-10">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Name</label>
+            <p class="mg-b-0 inquiry_name">Abigail</p>
+            <hr class="mg-y-10">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Email</label>
+            <p class="mg-b-0 inquiry_email">Abigail</p>
+            <hr class="mg-y-10">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Job Title</label>
+            <p class="mg-b-0 inquiry_job_title">Abigail</p>
+            <hr class="mg-y-10">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Company Name</label>
+            <p class="mg-b-0 inquiry_company_name">Abigail</p>
+            <hr class="mg-y-10">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Country</label>
+            <p class="mg-b-0 inquiry_country">Abigail</p>
+            <hr class="mg-y-10">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Phone Number</label>
+            <p class="mg-b-0 inquiry_phone_number">Abigail</p>
+            <hr class="mg-y-10">
+            <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Message</label>
+            <p class="mg-b-0 inquiry_message text-pre-wrap">Abigail</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary tx-13" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

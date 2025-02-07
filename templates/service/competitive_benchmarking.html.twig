@@ -1,0 +1,146 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+   {% if metaPage.metaTitle %}
+      <title>{{ metaPage.metaTitle }}</title>
+   {% else %}
+      {{ parent() }}
+   {% endif %}
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_services_show', {'slug': slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_services_show', {'slug': slug}) }}" />
+{% endblock %}
+
+{% block header %}
+   <header class="relative overflow-hidden">
+      <img src="/_astro/6-competitive-modern-asian-businessman-with-high-confidence-comm-2023-11-27-04-57-04-utc.ByQIRGNN_Zlvq7C.webp" alt="Competitive Benchmarking in Indonesia" inferSize="true" loading="lazy" decoding="async" fetchpriority="auto" width="9504" height="6336" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+      <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+      <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+         <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/services" class="text-sm text-white hover:underline">Services</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Competitive Benchmarking</span></div>
+         <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">Competitive Benchmarking in Indonesia</h1>
+      </div>
+   </header>
+{% endblock %}
+
+{% block content %}
+   <section id="overview">
+      <div class="bg-white">
+         <div class="container py-8 lg:py-14">
+            <div class="space-y-4">
+               <p class="text-lg lg:text-xl">
+                  In Indonesia’s dynamic and competitive market environment,
+                  maintaining a leading edge is critical for business sustainability
+                  and growth. Competitive Benchmarking serves as a crucial strategic
+                  tool, enabling companies to measure their performance against that
+                  of their peers and pinpoint opportunities for enhancement.
+                  Eurogroup Consulting is adept at providing Competitive
+                  Benchmarking services, specifically designed to support businesses
+                  in navigating and thriving within Indonesia’s vibrant business
+                  landscape.
+               </p>
+            </div>
+            <div class="py-8 lg:py-14 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  The Importance of Competitive Benchmarking
+               </h3>
+               <p>
+                  Competitive Benchmarking transcends simple comparison to offer
+                  invaluable insights and strategic benefits:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Performance Measurement:</strong> It facilitates an unbiased
+                     evaluation of your organization’s performance relative to its competitors.
+                  </li>
+                  <li> <strong>Identification of Industry Standards:</strong> Benchmarking
+                     illuminates the industry’s best practices and areas ripe for improvement
+                     within your operations.
+                  </li>
+                  <li> <strong>Informed Strategic Planning:</strong> It underpins strategic
+                     planning with data-driven insights, allowing for the effective allocation
+                     of resources.
+                  </li>
+                  <li> <strong>Market Positioning:</strong> Gaining clarity on your market
+                     standing enables you to refine your strategies for enhanced competitiveness.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Our Approach to Competitive Benchmarking
+               </h3>
+               <p>
+                  Our methodology for Competitive Benchmarking in Indonesia is
+                  comprehensive and aimed at delivering actionable results:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Extensive Data Gathering:</strong> We compile detailed data
+                     on your performance as well as that of your competition.
+                  </li>
+                  <li> <strong>In-depth Performance Evaluation:</strong> Our specialists
+                     analyze crucial performance indicators (KPIs) to ascertain your standing
+                     in the competitive landscape.
+                  </li>
+                  <li> <strong>Gap Analysis:</strong> We spotlight areas of underperformance
+                     and potential for significant advancements.
+                  </li>
+                  <li> <strong>Implementation of Industry Best Practices:</strong> We guide
+                     the adoption of successful practices from market leaders and facilitate
+                     their integration.
+                  </li>
+                  <li> <strong>Ongoing Enhancement Support:</strong> Eurogroup Consulting
+                     commits to continuous assistance, ensuring long-term improvements
+                     and competitiveness.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Advantages of Collaborating with Eurogroup Consulting
+               </h3>
+               <p>
+                  Engaging Eurogroup Consulting for Competitive Benchmarking in
+                  Indonesia provides several unique benefits:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Insider Knowledge:</strong> Our team has an extensive understanding
+                     of the Indonesian market, its industry trends, and regulatory conditions.
+                  </li>
+                  <li> <strong>Worldwide Acumen:</strong> We apply international best practices
+                     and a global perspective to ensure your outcomes align with the highest
+                     standards.
+                  </li>
+                  <li> <strong>Personalized Recommendations:</strong> Our strategies are
+                     customized to align with your specific business goals and challenges.
+                  </li>
+                  <li> <strong>Established Success:</strong> Eurogroup Consulting is renowned
+                     for enabling businesses to secure and enhance their competitive positions
+                     effectively.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <p>
+                  In Indonesia’s fiercely competitive marketplace, Competitive
+                  Benchmarking is not just advantageous but essential. Partnering
+                  with Eurogroup Consulting equips you with the insights needed to
+                  elevate your performance and secure a dominant position. Reach out
+                  to us to discover how our Competitive Benchmarking services can
+                  propel your business to the forefront of the Indonesian market.
+               </p>
+            </div>
+         </div>
+      </div>
+   </section>
+   {% include 'service/_services.html.twig' %}
+{% endblock %}

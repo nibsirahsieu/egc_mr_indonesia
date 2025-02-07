@@ -1,0 +1,177 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+    {% if metaPage.metaTitle %}
+        <title>{{ metaPage.metaTitle }}</title>
+    {% else %}
+        {{ parent() }}
+    {% endif %}    
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_sectors_show', {'slug': slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_sectors_show', {'slug': slug}) }}" />
+{% endblock %}
+
+{% block header %}
+   <header class="relative overflow-hidden">
+      <img src="/_astro/containers-in-international-shipping-dock-waiting-2023-11-27-05-15-39-utc.DJWLiroV_Z27gDjS.webp" alt="Supply Chain &#38; Logistics Expertise in Indonesia" inferSize="true" loading="lazy" decoding="async" fetchpriority="auto" width="4620" height="3078" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+      <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+      <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+         <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/sectors" class="text-sm text-white hover:underline">Sectors</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Logistics</span></div>
+         <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">Supply Chain & Logistics Expertise in Indonesia</h1>
+      </div>
+   </header>
+{% endblock %}
+
+{% block content %}
+   <section id="content-1">
+      <div class="bg-white">
+         <div class="container pt-8 lg:pt-14">
+            <p class="text-lg lg:text-xl">
+               The logistics and supply chain sector is essential for promoting
+               international trade and facilitating the smooth operation of global
+               commerce. Eurogroup Consulting recognizes the crucial role of
+               logistics within Indonesia’s dynamic business landscape and provides
+               specialized consulting services tailored to meet the unique
+               challenges and tap into the opportunities faced by logistics firms
+               and organizations in the nation.
+            </p>
+            <div class="py-8 lg:py-14 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Our Services in the Logistics and Supply Chain Sector Include:
+               </h3>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Logistics Strategy and Optimization</strong>:
+                     Collaborating with logistics firms in Indonesia, we create
+                     strategies to boost operational efficiency, cut costs, and
+                     elevate service standards. Our solutions include network
+                     planning, route optimization, and the deployment of cutting-edge
+                     logistics technologies.
+                  </li>
+                  <li> <strong>Supply Chain Management Solutions</strong>: Utilizing
+                     our deep understanding of supply chain management, we assist
+                     organizations in enhancing operations, increasing supply chain
+                     visibility, and fostering collaboration. We improve demand
+                     forecasting, inventory management, and distribution strategies
+                     to meet market demands effectively.
+                  </li>
+                  <li> <strong>Transportation and Fleet Optimization</strong>: We offer
+                     assistance in improving transportation and fleet management,
+                     providing solutions for route planning, maintenance strategies,
+                     and the integration of technology to maximize fleet efficiency
+                     and minimize costs.
+                  </li>
+                  <li> <strong>Warehousing and Inventory Optimization</strong>: Key to
+                     Indonesia’s logistics sector, our approaches focus on refining
+                     warehouse operations, inventory control, and the integration of
+                     technology to ensure efficient and effective logistics
+                     processes.
+                  </li>
+                  <li> <strong>E-Commerce and Last-Mile Delivery Solutions</strong>: As
+                     e-commerce continues to grow in Indonesia, optimizing last-mile
+                     delivery is paramount. We develop strategies and technological
+                     solutions to enhance delivery efficiency and customer
+                     satisfaction, tailored to the unique needs of the e-commerce
+                     logistics landscape.
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <img src="/_astro/getty-images-d0E3p1hL2Y4-unsplash.Hgo4noGe_1XWEbc.webp" alt="image" loading="lazy" decoding="async" fetchpriority="auto" width="4608" height="2688" class="w-full h-full object-cover max-h-[480px]"> <!-- <div
+         class="relative bg-big-stone-950 overflow-hidden flex items-center py-12 lg:py-14 xl:py-32"
+         >
+         <div
+            class="container relative z-10 lg:border-y border-white/20 py-8 lg:py-12"
+         >
+            <div class="flex flex-col lg:flex-row gap-4 lg:gap-8 relative">
+               <svg
+               xmlns="http://www.w3.org/2000/svg"
+               width="24"
+               height="24"
+               class="size-16 min-w-16 fill-picton-blue-500"
+               viewBox="0 0 24 24"
+               ><path
+                  d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"
+               ></path></svg
+               >
+               <p class="font-medium text-lg lg:text-4xl text-white">
+               Supply chain management is key to Thailand's industrial
+               competitiveness, driven by digital readiness, agility, and Big
+               Data analytics. These advancements boost productivity, enhance
+               decision-making, and help Thai industries compete on a global
+               scale.
+               </p>
+            </div>
+         </div>
+         <div class="absolute inset-0 bg-big-stone-950 w-full h-full">
+            <Image
+               src={img_middle}
+               alt="image"
+               class="relative pointer-events-none bg-mask-hero select-none w-full h-full object-cover"
+               widths={[360, 480, 768, 1024, 1440, 1920, img_middle.width]}
+               sizes={`(max-width: 360px) 360px, (max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, (max-width: 1920px) 1920px, ${img_middle.width}px`}
+            />
+         </div>
+         <div
+            class="w-full h-full bg-gradient-to-br from-big-stone-950/60 via-big-stone-950/80 to-picton-blue-500/30 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+         >
+         </div>
+         </div> --> 
+      <div class="container py-8 lg:py-14">
+         <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mb-4">
+            <li> <strong>Technology Implementation and Automation</strong>:
+               Implementing advanced logistics technologies, such as the Internet
+               of Things (IoT), RFID, and warehouse management systems, is crucial
+               for enhancing operational efficiency. We guide organizations through
+               the adoption of these technologies to streamline processes and
+               improve supply chain transparency.
+            </li>
+            <li> <strong>Sustainability in the Supply Chain</strong>: We support the
+               shift towards sustainable logistics practices, providing advice on
+               eco-friendly initiatives, alternative fuels, and carbon footprint
+               reduction, aligning with environmental objectives.
+            </li>
+            <li> <strong>Customs and Trade Compliance Guidance</strong>: With our
+               expertise, organizations can easily navigate customs and trade
+               regulations, ensuring compliance, facilitating seamless trade, and
+               managing risks in international logistics operations.
+            </li>
+            <li> <strong>Logistics Data Analytics</strong>: Leveraging data analytics
+               is vital for logistics success. Our analytics services empower
+               organizations with insights for performance improvement, cost
+               management, and strategic development.
+            </li>
+            <li> <strong>Talent Development in Logistics</strong>: Recognizing the
+               need for skilled personnel, we offer workforce development
+               strategies, training programs, and talent management solutions to
+               build a competent and motivated logistics team.
+            </li>
+         </ul>
+         <p>
+            Our dedication to the logistics and supply chain sector in Indonesia
+            is aimed at improving supply chains, boosting operational efficiency,
+            and promoting the growth of trade and commerce across the nation. For
+            logistics providers, distributors, or industry stakeholders in
+            Indonesia, Eurogroup Consulting is your strategic ally in achieving
+            operational excellence and fostering a more efficient, resilient
+            logistics ecosystem.
+         </p>
+      </div>
+      <!-- <Experts
+         title="Speak to our Southeast Asia supply chain expert"
+         experts={experts}
+         /> --> 
+   </section>   
+   {% include 'sector/_sectors.html.twig' %}
+{% endblock %}

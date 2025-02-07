@@ -1,0 +1,186 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+    {% if metaPage.metaTitle %}
+        <title>{{ metaPage.metaTitle }}</title>
+    {% else %}
+        {{ parent() }}
+    {% endif %}    
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_sectors_show', {'slug': slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_sectors_show', {'slug': slug}) }}" />
+{% endblock %}
+
+{% block header %}
+   <header class="relative overflow-hidden">
+      <img src="/_astro/shopping-cart-full-of-food-products-over-supermark-2023-11-27-05-25-42-utc.BmQ7mxF-_1BzxYD.webp" alt="Consumer Goods Insights for Indonesia" inferSize="true" loading="lazy" decoding="async" fetchpriority="auto" width="6720" height="4480" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+      <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+      <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+         <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/sectors" class="text-sm text-white hover:underline">Sectors</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Consumer Goods</span></div>
+         <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">Consumer Goods Insights for Indonesia</h1>
+      </div>
+   </header>
+{% endblock %}
+
+{% block content %}
+   <section id="content-1">
+      <div class="bg-white">
+         <div class="container pt-8 lg:pt-14">
+            <p class="text-lg lg:text-xl">
+               The Consumer Goods sector in Indonesia is undergoing rapid
+               transformation, influenced by shifting consumer behaviors, market
+               innovations, and technological progress. Eurogroup Consulting is
+               deeply involved in tracking these changes within Indonesia’s
+               consumer goods landscape, providing dedicated consulting services to
+               assist manufacturers, distributors, and retailers in effectively
+               tackling the challenges and capitalizing on the opportunities
+               present in this vibrant sector.
+            </p>
+            <div class="py-8 lg:py-14 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Our Comprehensive Services for the Consumer Goods Sector:
+               </h3>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Market Analysis and Consumer Insights</strong>: We
+                     perform detailed market analyses and collect consumer insights
+                     to empower organizations in Indonesia to predict market trends
+                     and make informed decisions. Our services span comprehensive
+                     market research, competitive intelligence, and demand
+                     forecasting.
+                  </li>
+                  <li> <strong>Strategic Growth Initiatives</strong>: Formulating
+                     growth strategies is essential in the consumer goods industry.
+                     We partner with companies to devise plans that encompass product
+                     innovation, market entry, and distribution strategies to drive
+                     expansion.
+                  </li>
+                  <li> <strong>Supply Chain Enhancement</strong>: Streamlining supply
+                     chain operations is vital for consumer goods firms. Our
+                     consultancy refines supply chain processes, including inventory
+                     management, logistics optimization, and demand planning, to
+                     boost operational efficiency.
+                  </li>
+                  <li> <strong>Digital Transformation Guidance</strong>: Embracing
+                     digital technology is critical in the current marketplace. We
+                     assist consumer goods companies in Indonesia with digital
+                     transitions, from e-commerce strategies and digital marketing to
+                     leveraging data analytics for improved customer engagement and
+                     sales performance.
+                  </li>
+                  <li> <strong>Retail and Distribution Strategies</strong>: Developing
+                     successful retail and distribution approaches is crucial. We
+                     advise on optimizing retail operations and distribution
+                     networks, crafting channel strategies, and innovating store
+                     formats to maximize coverage and profitability.
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <img src="/_astro/woman-making-contactless-payment-2023-11-27-05-28-21-utc.Dk0N-M1p_a2szr.webp" alt="image" loading="lazy" decoding="async" fetchpriority="auto" width="5457" height="3643" class="w-full h-full object-cover max-h-[480px]"> <!-- <div
+         class="relative bg-big-stone-950 overflow-hidden flex items-center py-12 lg:py-14 xl:py-32"
+         >
+         <div
+            class="container relative z-10 lg:border-y border-white/20 py-8 lg:py-12"
+         >
+            <div class="flex flex-col lg:flex-row gap-4 lg:gap-8 relative">
+               <svg
+               xmlns="http://www.w3.org/2000/svg"
+               width="24"
+               height="24"
+               class="size-16 min-w-16 fill-picton-blue-500"
+               viewBox="0 0 24 24"
+               ><path
+                  d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"
+               ></path></svg
+               >
+               <p class="font-medium text-lg lg:text-4xl text-white">
+               Thailand's modern trade industry is set for 5.0% annual growth
+               from 2024 to 2026, driven by rising consumer purchasing power, a
+               tourism rebound, infrastructure projects, and online sales
+               expansion. However, growing competition and the need for
+               sustainability will require retailers to invest in technology and
+               adapt to global trends.
+               </p>
+            </div>
+         </div>
+         <div class="absolute inset-0 bg-big-stone-950 w-full h-full">
+            <Image
+               src={img_middle}
+               alt="image"
+               class="relative pointer-events-none bg-mask-hero select-none w-full h-full object-cover"
+               widths={[360, 480, 768, 1024, 1440, 1920, img_middle.width]}
+               sizes={`(max-width: 360px) 360px, (max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, (max-width: 1920px) 1920px, ${img_middle.width}px`}
+            />
+         </div>
+         <div
+            class="w-full h-full bg-gradient-to-br from-big-stone-950/60 via-big-stone-950/80 to-picton-blue-500/30 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+         >
+         </div>
+         </div> --> 
+      <section id="content-2">
+         <div class="container py-8 lg:py-14">
+            <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mb-4">
+               <li> <strong>Product Innovation and Development</strong>: Maintaining a
+                  competitive edge requires ongoing innovation. We aid in the
+                  development of new products, employing design thinking and
+                  innovation techniques to meet evolving consumer demands.
+               </li>
+               <li> <strong>Brand and Marketing Management</strong>: Strong brand
+                  management is key to achieving market success. Our services
+                  include developing brand strategies, positioning, and executing
+                  marketing campaigns to enhance brand equity and customer loyalty.
+               </li>
+               <li> <strong>Sustainability and Ethical Practices</strong>: Adopting
+                  sustainable and ethical practices is increasingly critical. We
+                  guide companies in implementing eco-friendly packaging, ethical
+                  sourcing, and waste management initiatives to meet sustainability
+                  goals.
+               </li>
+               <li> <strong>Quality Assurance and Regulatory Compliance</strong>:
+                  Ensuring product quality and regulatory compliance is paramount.
+                  We offer quality control programs, compliance reviews, and
+                  regulatory consultation to meet both local and international
+                  standards.
+               </li>
+               <li> <strong>Consumer Behavior Analysis</strong>: Deciphering consumer
+                  preferences is essential for effective marketing. We provide
+                  consumer behavior analysis, enabling businesses to tailor their
+                  strategies to precisely match consumer needs.
+               </li>
+               <li> <strong>Workforce Development</strong>: Building a skilled
+                  workforce is imperative in the consumer goods sector. We deliver
+                  workforce development strategies, training initiatives, and talent
+                  management solutions to create a skilled and enthusiastic team.
+               </li>
+            </ul>
+            <p>
+               Our involvement with the Consumer Goods sector in Indonesia goes
+               beyond consultancy to empower businesses to thrive in a highly
+               competitive and swiftly evolving market. Whether involved in
+               manufacturing, distribution, retailing, or as a stakeholder in the
+               consumer goods industry, Eurogroup Consulting is your strategic ally
+               for securing lasting success in Indonesia’s Consumer Goods sector.
+               Together, we can overcome market challenges and cultivate a
+               prosperous future in this dynamic field.
+            </p>
+         </div>
+      </section>
+      <!-- <Experts
+         title="Speak to our Southeast Asia consumer goods expert"
+         experts={experts}
+         /> --> 
+   </section>
+   {% include 'sector/_sectors.html.twig' %}
+{% endblock %}

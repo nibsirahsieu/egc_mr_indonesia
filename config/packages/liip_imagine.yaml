@@ -1,0 +1,81 @@
+# Documentation on how to configure the bundle can be found at: https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html
+liip_imagine:
+    default_filter_set_settings:
+        format: webp
+
+    messenger: true
+    # valid drivers options include "gd" or "gmagick" or "imagick"
+    driver: "imagick"
+    twig:
+        mode: 'lazy'
+    resolvers:
+        flysystem_resolver:
+            flysystem:
+                filesystem_service: oneup_flysystem.public_uploads_filesystem_filesystem
+                cache_prefix: media/cache
+                root_url: '%app.base-upload-url%'
+    loaders:
+        flysystem_loader:
+            flysystem:
+                filesystem_service: oneup_flysystem.public_uploads_filesystem_filesystem
+
+    cache: format_extension
+    data_loader: flysystem_loader
+    filter_sets:
+        header_xlg:
+            quality: 80
+            format: webp
+            filters:
+                relative_resize:
+                    widen: 1520
+        header_lg:
+            quality: 80
+            format: webp
+            filters:
+                relative_resize:
+                    widen: 1048
+        header_md:
+            quality: 80
+            format: webp
+            filters:
+                relative_resize:
+                    widen: 840
+        header_sm:
+            quality: 80
+            format: webp
+            filters:
+                relative_resize:
+                    widen: 500
+
+        post_lg:
+            quality: 80
+            format: webp
+            filters:
+                relative_resize:
+                    widen: 1024
+        post_md:
+            quality: 80
+            format: webp
+            filters:
+                relative_resize:
+                    widen: 810
+        post_sm:
+            quality: 80
+            format: webp
+            filters:
+                relative_resize:
+                    widen: 420
+        
+        thumb_sm:
+            quality: 80
+            format: webp
+            filters:
+                relative_resize:
+                    heighten: 500
+
+        thumb_md:
+            quality: 80
+            format: webp
+            filters:
+                relative_resize:
+                    heighten: 700

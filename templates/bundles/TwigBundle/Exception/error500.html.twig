@@ -1,0 +1,28 @@
+{% extends 'front.html.twig' %}
+
+{% block inline_stylesheets %}
+    <style>
+        .error-page {background-image: url('{{ asset("images/text-bg-header.webp") }}');}
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="bg-white relative">
+         <img src="/_astro/blob-1.W-ZlDNrE_2dove0.svg" alt="blob" loading="lazy" decoding="async" fetchpriority="auto" width="462" height="468" class="absolute top-0 left-0 opacity-25"> <img src="/_astro/blob-2.CJ7mioKI_Z186L1y.svg" alt="blob" loading="lazy" decoding="async" fetchpriority="auto" width="622" height="762" class="absolute bottom-0 right-0 opacity-25"> 
+         <div class="container pb-8 min-h-[calc(100vh-288px)] flex flex-col items-start justify-center relative">
+            <h1 class="error-page text-left font-heading heading-1 text-4xl lg:text-7xl xl:!leading-tight bg-clip-text text-transparent bg-center">
+               Internal Server Error
+            </h1>
+            <span class="text-base lg:text-xl mb-4 lg:mb-6 text-gray-400">500 error</span> 
+            <p class="text-base lg:text-xl max-w-3xl">
+               We apologize for the inconvenience, but our server encountered an unexpected issue and is unable to complete your request at this time. Our technical team has been notified and is actively working to resolve the issue. Please try refreshing the page or come back later. Thank you for your patience. 
+            </p>
+            <div class="mt-6"> <a href="/" class="uppercase tracking-wider font-bold inline-flex items-center gap-3 group duration-300 ease-out text-picton-blue-500 text-sm lg:text-base">
+               Back to Homepage
+               <i data-lucide="arrow-right" class="size-4 group-hover:translate-x-1 duration-200 ease-out"></i> </a> 
+            </div>
+         </div>
+      </div>
+{% endblock %}
+
+{% block contact_us %}{% endblock %}

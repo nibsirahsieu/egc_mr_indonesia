@@ -1,0 +1,24 @@
+<section id="supports" class="bg-[#fafafa]">
+    <div class="pt-8 lg:pt-14">
+        <div class="container">
+            <h2 class="heading-2 text-4xl lg:text-5xl text-center text-big-stone-950">
+                We specialize in these key sectors of the Indonesian market
+            </h2>
+        </div>
+        <div class="flex flex-wrap mt-8">
+            {% for slug, sector in sectors %}
+            <a href="/sectors/{{ slug }}" class="relative w-1/2 lg:w-auto h-64 lg:h-[480px] duration-300 ease-out lg:flex-grow group hover:lg:flex-grow-[2.5] overflow-hidden">
+                <div class="absolute z-10 bottom-0 p-4 lg:p-6 w-full group/inside">
+                    <h2 class="text-2xl text-white relative z-10">{{ sector.name }}</h2>
+                    <div class="absolute bg-big-stone-950/80 group-hover/inside:bg-picton-blue-500/80 w-full duration-300 ease-out h-full top-0 left-0 translate-y-full group-hover:translate-y-0"></div>
+                    <i data-lucide="arrow-up-right" class="size-6 text-white absolute group-hover:top-1/2 top-full translate-y-full duration-300 ease-out group-hover:-translate-y-1/2 right-16 group-hover:right-4  group-hover:lg:right-6 "></i> 
+                </div>
+                <div class="absolute inset-0">
+                    <div class="bg-gradient-to-b from-[#00B7EF]/0 to-[#022037]/80 to-80% absolute w-full h-full group-hover:opacity-0 duration-300 ease-out"></div>
+                    <img src="{{ asset(sector.image) }}" alt="{{ sector.name }}" loading="lazy" decoding="async" fetchpriority="auto" width="720" height="480" class="w-full h-full object-cover"> 
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>

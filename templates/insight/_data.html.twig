@@ -1,0 +1,13 @@
+{% for post in posts %}
+    {% set thumbnail = post.thumbnail %}
+    <a href="{{ path('app_insights_show', {'slug': post.slug}) }}" class="relative aspect-square flex items-end justify-start bg-black group overflow-hidden p-4 lg:p-6 rounded" aria-label="{{ post.title }}"> 
+        <span class="relative inline-flex items-center gap-4 text-white z-10 leading-none font-medium text-left text-2xl bg-big-stone-950 group-hover:bg-picton-blue-500 -ml-4 lg:-ml-6 group-hover:-mr-4 group-hover:lg:-mr-6 -mt-4 lg:-mt-6 mb-4 group-hover:-mb-4 group-hover:lg:-mb-6 p-4 lg:p-6 duration-300">{{ post.title | raw }} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up-right" class="lucide lucide-arrow-up-right min-w-6 size-6 group-hover:rotate-90 duration-300 ease-out"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg> </span> 
+        <img 
+            {% if thumbnail.hash %}src="{{ path('app_upload_files_from_hash', {'hash': thumbnail.hash}) }}"{% endif %}
+            data-src="{{ thumbnail.image | imagine_filter('thumb_sm') }}" 
+            class="absolute opacity-50 group-hover:opacity-75 inset-0 w-full h-full object-cover group-hover:scale-105 duration-300 ease-out lazy" 
+            alt="{{ post.title }}"
+            data-sizes="auto"
+        > 
+    </a>
+{% endfor %}

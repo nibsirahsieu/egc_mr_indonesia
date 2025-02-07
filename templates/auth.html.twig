@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}{{ app_name }}{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% block importmap %}{{ importmap(['admin', 'login']) }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        <header class="navbar navbar-header navbar-header-fixed">
+            <!--<a href="" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>-->
+            <div class="navbar-brand">
+                <a href="{{ path('app_admin_login') }}" class="df-logo">
+                    <img src="{{ asset('/images/egc_logo.png') }}" class="img-fluid ht-40" />
+                </a>
+            </div>
+            <div id="navbarMenu" class="navbar-menu-wrapper">
+                <div class="navbar-menu-header">
+                    <a href="{{ path('app_admin_login') }}" class="df-logo">
+                        <img src="{{ asset('/images/egc_logo.png') }}" class="img-fluid ht-40" />
+                    </a>
+                    <a id="mainMenuClose" href=""><i data-feather="x"></i></a>
+                </div>
+            </div>
+        </header>
+
+        <div class="content content-fixed content-auth-alt">
+            <div class="container d-flex justify-content-center ht-100p">
+                <div class="mx-wd-300 wd-sm-450 ht-100p d-flex flex-column align-items-center justify-content-center">
+                    <!--<div class="wd-150 wd-sm-250 mg-b-30"><img src="https://placehold.co/500x380" class="img-fluid" alt=""></div>-->
+                    {% block body %}{% endblock %}
+                </div>
+            </div><!-- container -->
+        </div><!-- content -->
+
+        <footer class="footer">
+            <div>
+                <span>&copy; {{ "now"|date('Y') }} Eurogroup Consulting </span>
+            </div>
+        </footer>
+    </body>
+</html>

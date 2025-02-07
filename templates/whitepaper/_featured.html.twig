@@ -1,0 +1,39 @@
+{% if featuredTitle %}
+    <section id="sea-whitepaper-cta">
+        <div class="container py-8 lg:py-14">
+            <div class="relative mt-[50%] lg:mt-0 lg:ml-32 rounded-md">
+                <img 
+                    {% if whitepaper.headerImage.hash %}src="{{ path('app_upload_files_from_hash', {'hash': whitepaper.headerImage.hash}) }}"{% endif %}
+                    data-srcset="{{ whitepaper.headerImage.url | imagine_filter('header_xlg') }} 1520w, {{ whitepaper.headerImage.url | imagine_filter('header_lg') }} 1048w, {{ whitepaper.headerImage.url | imagine_filter('header_md') }} 840w, {{ whitepaper.headerImage.url | imagine_filter('header_sm') }} 500w" 
+                    alt="{{ whitepaper.title }}" 
+                    class="absolute rounded-2xl inset-y-0 right-0 opacity-50 h-full object-top w-full object-cover bg-mask-france lazy"
+                    data-sizes="auto"
+                >
+
+                <div class="absolute rounded-2xl w-full h-full bg-gradient-to-r from-blue-900 via-blue-900 to-red-500 mix-blend-overlay overflow-hidden"></div>
+                <div class="flex flex-col lg:flex-row items-center p-6 lg:p-8 gap-4 lg:gap-8 relative z-10 rounded-md">
+                    <img 
+                        {% if whitepaper.thumbnail.hash %}src="{{ path('app_upload_files_from_hash', {'hash': whitepaper.thumbnail.hash}) }}"{% endif %}
+                        data-src="{{ whitepaper.thumbnail.url | imagine_filter('thumb_sm') }}" 
+                        alt="{{ whitepaper.title }}" 
+                        class="max-w-[75%] -mt-[50%] lg:-mt-0 lg:w-1/5 lg:-ml-32 lg:my-4 h-full rounded lazy"
+                        data-sizes="auto"
+                    >
+                    <div class="flex flex-col lg:w-4/5">
+                        <span class="text-white text-2xl lg:text-3xl font-heading font-medium tracking-tighter">Stay Ahead of the Curve!</span> 
+                        <h2 class="text-white heading-2 text-4xl lg:text-6xl text-left">
+                            {{ featuredTitle }}
+                        </h2>
+                        <p class="text-white text-lg lg:text-xl mt-4">
+                            {{ featuredDescription }}
+                        </p>
+                        <div class="mt-8"> <a href="{{ path('app_whitepapers_show', {'slug': whitepaper.slug}) }}" class="uppercase tracking-wider font-bold inline-flex items-center gap-3 group duration-300 ease-out text-big-stone-950 bg-white hover:bg-big-stone-950 hover:text-white text-sm lg:text-base px-4 py-3 rounded"> <i data-lucide="download" class="size-4 group-hover:animate-pulse duration-200 ease-out"></i>
+                            Download Now
+                            </a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}

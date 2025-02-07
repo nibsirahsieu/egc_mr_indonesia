@@ -1,0 +1,136 @@
+{% extends 'admin.html.twig' %}
+
+{% block javascripts %}
+    {% block importmap %}{{ importmap(['admin', 'post_form']) }}{% endblock %}
+{% endblock %}
+
+{% block pagetitle %}
+    Edit Insight
+{% endblock %}
+
+{% block body %}
+    <form data-post-id="{{ post.id }}" method="POST" action="{{ path('app_admin_insights_update', {'id': post.id }) }}" class="parsley-style-1" data-parsley-validate novalidate>
+        <div class="row row-xs">
+            <div class="col-lg-8 col-xl-7">
+                <fieldset class="form-fieldset">
+                    <legend>Insight</legend>
+                    <div class="form-group">
+                        <label for="category" class="d-block required">Category</label>
+                        <div class="parsley-radio" id="rd_category_wrapper">
+                            {% for c in categories %}
+                                <div class="form-check form-check-inline">
+                                    <input {{ c.id == post.category.id ? 'checked' : '' }} data-label="{{ c.name }}" class="form-check-input" type="radio" name="typeId" id="category_{{ c.id }}" value="{{ c.id }}" {{ loop.first ? 'required data-parsley-class-handler="#rd_category_wrapper" data-parsley-errors-container="#rd_category_error_container"' : ''}}>
+                                    <label class="form-check-label" for="category_{{ c.id }}">{{ c.name }}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div id="rd_category_error_container"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="author" class="d-block required">Author</label>
+                        <input type="text" class="form-control" id="author" name="author" maxlength=255 value="{{ post.author }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="title" class="d-block required">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" maxlength=255 value="{{ post.title }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="summary" class="d-block required">Summary</label>
+                        <textarea class="form-control" rows="2" id="summary" name="summary" maxlength=700 required>{{ post.summary }}</textarea>
+                    </div>
+                    <div class="form-group d-none" id="whitepaper_container">
+                        <label for="whitepaper_file" class="control-label d-block">Whitepaper File</label>
+                        <div class="input-group custom-file-button">
+                            <label class="input-group-text" for="whitepaper_file" role="button">Browse...</label>
+                            <label for="whitepaper_file" class="form-control original_name" role="button">{{ post.file ? post.file.originalName : '' }}</label>
+                            <input class="d-none" type="file" id="whitepaper_file" accept=".pdf">
+                        </div>
+                        <input type="text" id="file_id" name="fileId" class="d-none" value="{{ post.file ? post.file.id : '' }}" />
+                        <input type="hidden" id="thumbnail_id" name="thumbnailId" value="{{ post.thumbnail ? post.thumbnail.id : '' }}" />
+                        <div class="progress mg-b-10">
+                            <div id="file_pb" class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between mg-b-5">
+                            <label for="content" class="d-block required">Content</label>
+                            <a id="content_spinner" href="javascript:;" class="btn btn-xs btn-link cursor-default d-none">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Uploading images...
+                            </a>
+                        </div>
+                        <textarea class="form-control" rows="5" id="content" name="content" required>{{ post.content }}</textarea>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-lg-4 col-xl-5">
+                <fieldset class="form-fieldset mg-b-20">
+                    <legend>SEO Data</legend>
+                    <div class="form-group">
+                        <label for="slug" class="d-block required">Slug</label>
+                        <input type="text" class="form-control" id="slug" name="slug" maxlength="255" data-parsley-trigger="change" data-parsley-validate-slug="validateSlug" value="{{ post.slug }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="meta_title" class="d-block required">Meta Title</label>
+                        <input type="text" class="form-control" id="meta_title" name="metaTitle" maxlength=255 value="{{ post.metaTitle }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="meta_description" class="d-block required">Meta Description</label>
+                        <input type="text" class="form-control" id="meta_description" name="metaDescription" maxlength=255 value="{{ post.metaDescription }}" required>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <label for="sector" class="d-block">Sector</label>
+                    <div class="parsley-checkbox" id="cb_sector_wrapper">
+                        {% set postSectorIds = post.sectorIds %}
+                        {% for s in sectors %}
+                            <div class="custom-control custom-checkbox">
+                                <input {{ s.id in postSectorIds ? 'checked' : '' }} type="checkbox" class="custom-control-input" id="sector_{{ s.id }}"  name="sectorIds[]" value="{{ s.id }}">
+                                <label class="custom-control-label" for="sector_{{ s.id }}">{{ s.name }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div id="cb_sector_error_container"></div>
+                </div>
+                <div class="form-group">
+                    <img src="{{ post.headerImage.relativePath | imagine_filter('header_sm') }}" class="img-fluid mg-b-10" id="hero_image" style="width: 300px">
+                    <label for="header_file" class="d-block required">Header Image</label>
+                    <div class="input-group custom-file-button">
+                        <label class="input-group-text" for="header_file" role="button">Browse...</label>
+                        <label for="header_file" class="form-control" role="button">{{ post.headerImage.originalName }}</label>
+                        <input type="file" class="d-none" id="header_file" accept="image/*">
+                    </div>
+                    <input type="text" id="header_image_id" name="headerImageId" class="d-none" value="{{ post.headerImage.id }}" required />
+                    <div class="progress mg-b-10">
+                        <div id="header_image_pb" class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="published_at" class="d-block">Published On</label>
+                    <input type="date" class="form-control" id="published_at" name="publishedAt" {% if post.publishedAt %}value="{{ post.publishedAt.format('Y-m-d') }}"{% endif %}>
+                </div>
+                <input type="hidden" id="status" name="status" value="{{ post.status.value }}">
+                <div class="row g-2">
+                    {% if post.isPublished %}
+                        <div class="col-md-12">
+                            <div class="d-grid d-block">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="col-md-6">
+                            <div class="d-grid d-block">
+                                <button type="submit" class="btn btn-primary" id="btn_publish">Publish</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-grid d-block">
+                                <button type="submit" class="btn btn-secondary" id="btn_draft">Save as Draft & Preview</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+   {% if metaPage.metaTitle %}
+      <title>{{ metaPage.metaTitle }}</title>
+   {% else %}
+      {{ parent() }}
+   {% endif %}
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_services_show', {'slug': slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_services_show', {'slug': slug}) }}" />
+{% endblock %}
+
+{% block header %}
+   <header class="relative overflow-hidden">
+      <img src="/_astro/4-mergers-business-partner-shaking-and-smiling-while-meeting-2025-01-16-15-16-14-utc.NKiHBv0V_ZhFFRs.webp" alt="Mergers and Acquisitions (M&#38;A) in Indonesia" inferSize="true" loading="lazy" decoding="async" fetchpriority="auto" width="6000" height="4000" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+      <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+      <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+         <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/services" class="text-sm text-white hover:underline">Services</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Mergers and Acquisitions (M&amp;A)</span></div>
+         <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">Mergers and Acquisitions (M&A) in Indonesia</h1>
+      </div>
+   </header>
+{% endblock %}
+
+{% block content %}
+   <section id="overview">
+      <div class="bg-white">
+         <div class="container py-8 lg:py-14">
+            <div class="space-y-4">
+               <p class="text-lg lg:text-xl">
+                  In the dynamic business environment of Indonesia, Mergers and
+                  Acquisitions (M&A) have become pivotal strategies for companies
+                  looking to broaden their horizons, diversify their offerings, and
+                  secure a competitive stance in the market. Eurogroup Consulting
+                  recognizes the strategic value of M&A within the Indonesian
+                  context and offers specialized guidance to assist businesses in
+                  successfully managing M&A endeavors.
+               </p>
+            </div>
+            <div class="py-8 lg:py-14 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  The Strategic Importance of Mergers and Acquisitions
+               </h3>
+               <p>
+                  M&A activities serve as key catalysts for achieving a range of
+                  business objectives in Indonesia:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Market Penetration:</strong> M&amp;A strategies can streamline
+                     the process of entering new markets or expanding within them, helping
+                     companies to access wider consumer demographics.
+                  </li>
+                  <li> <strong>Diversification:</strong> Through acquisitions, companies
+                     can broaden their operational scope and product lines, enhancing
+                     market resilience.
+                  </li>
+                  <li> <strong>Cost Efficiency:</strong> Mergers and acquisitions can lead
+                     to significant cost savings and economies of scale, thereby elevating
+                     profit margins.
+                  </li>
+                  <li> <strong>Competitive Edge:</strong> Securing businesses that complement
+                     existing operations can fortify a company’s position in the marketplace.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Our Methodology for Mergers and Acquisitions
+               </h3>
+               <p>
+                  Eurogroup Consulting adopts a holistic strategy to steer
+                  businesses towards fruitful M&A transactions in Indonesia:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Strategic Planning:</strong> We collaborate with our clients
+                     to ensure that M&amp;A initiatives are in line with their overarching
+                     business objectives.
+                  </li>
+                  <li> <strong>Identification of Targets:</strong> Our experts undertake
+                     thorough market analysis and due diligence to pinpoint appropriate
+                     M&amp;A targets.
+                  </li>
+                  <li> <strong>Valuation and Negotiation Support:</strong> We provide assistance
+                     in appraising target entities and facilitate the negotiation process.
+                  </li>
+                  <li> <strong>Comprehensive Due Diligence:</strong> Our team carries out
+                     exhaustive due diligence to evaluate the risks and opportunities
+                     tied to the transaction.
+                  </li>
+                  <li> <strong>Integration Strategy:</strong> We guide clients in planning
+                     and implementing post-merger integration, guaranteeing a smooth transition.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Why Partner with Eurogroup Consulting
+               </h3>
+               <p>
+                  Opting for Eurogroup Consulting for your M&A transactions in
+                  Indonesia brings several key benefits:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Local Expertise:</strong> Our team possesses profound knowledge
+                     of the Indonesian market, its business customs, and regulatory frameworks.
+                  </li>
+                  <li> <strong>International Network:</strong> We utilize our global connections
+                     to uncover suitable M&amp;A opportunities and prospects.
+                  </li>
+                  <li> <strong>Tailored Approaches:</strong> Our strategies are customized
+                     to meet the distinct needs and aspirations of our clients.
+                  </li>
+                  <li> <strong>Risk Management:</strong> Through meticulous due diligence,
+                     we help minimize the potential risks associated with M&amp;A activities.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <p>
+                  Mergers and Acquisitions offer invaluable opportunities for
+                  companies in Indonesia to pursue growth, diversification, and a
+                  fortified market position. Eurogroup Consulting stands as your
+                  reliable ally in navigating the complex realm of M&A within the
+                  country. Reach out to us today to discover how our M&A services
+                  can empower your business to fully realize its potential in
+                  Indonesia.
+               </p>
+            </div>
+         </div>
+      </div>
+   </section>
+   {% include 'service/_services.html.twig' %}
+{% endblock %}

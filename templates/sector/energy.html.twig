@@ -1,0 +1,134 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+    {% if metaPage.metaTitle %}
+        <title>{{ metaPage.metaTitle }}</title>
+    {% else %}
+        {{ parent() }}
+    {% endif %}    
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_sectors_show', {'slug': slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_sectors_show', {'slug': slug}) }}" />
+{% endblock %}
+
+{% block header %}
+   <header class="relative overflow-hidden">
+      <img src="/_astro/fre-sonneveld-q6n8nIrDQHE-unsplash.ClWZkGwp_Z8bBtI.webp" alt="Energy Sector Expertise in Indonesia" inferSize="true" loading="lazy" decoding="async" fetchpriority="auto" width="4608" height="3072" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+      <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+      <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+         <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/sectors" class="text-sm text-white hover:underline">Sectors</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Energy</span></div>
+         <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">Energy Sector Expertise in Indonesia</h1>
+      </div>
+   </header>
+{% endblock %}
+
+{% block content %}
+   <section id="content-1">
+      <div class="bg-white">
+         <div class="container pt-8 lg:pt-14">
+            <p class="text-lg lg:text-xl">
+               The energy sector is a crucial driver of economic growth globally,
+               and Eurogroup Consulting is at the forefront of guiding
+               organizations through the complex landscape and opportunities of
+               this essential industry in Indonesia. With deep expertise in
+               Indonesia’s energy landscape, we provide customized consulting
+               services to empower businesses, utility companies, and stakeholders
+               to achieve their strategic goals.
+            </p>
+            <div class="py-8 lg:py-14 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Our Energy Sector Services Include:
+               </h3>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Energy Strategy and Planning</strong>: Collaborating
+                     with energy entities in Indonesia to develop comprehensive
+                     energy strategies that align with current market trends,
+                     regulatory environments, and sustainability goals. Our
+                     strategies include market analysis, diversification plans, and
+                     pathways to adopting sustainable energy practices.
+                  </li>
+                  <li> <strong>Renewable Energy Integration</strong>: With Indonesia’s
+                     increasing focus on renewable energy, we facilitate the
+                     integration of solar, wind, and other renewable sources,
+                     overcoming procurement and integration challenges to seamlessly
+                     blend with existing infrastructures.
+                  </li>
+                  <li> <strong>Energy Efficiency and Sustainability</strong>: We assist
+                     energy companies in improving efficiency, reducing carbon
+                     emissions, and implementing sustainable practices. Our services
+                     range from sustainability assessments and energy audits to the
+                     adoption of green technologies for environmental stewardship.
+                  </li>
+                  <li> <strong>Infrastructure and Grid Modernization</strong>: Focusing
+                     on enhancing energy infrastructure and grid management, we
+                     promote the use of smart grid technologies and energy storage
+                     solutions to ensure a reliable and resilient energy supply
+                     across Indonesia.
+                  </li>
+                  <li> <strong>Oil and Gas Sector Support</strong>: Offering
+                     specialized support for the oil and gas industry, including
+                     exploration, drilling, production optimization, and reservoir
+                     management to maximize resource efficiency and operational
+                     excellence.
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </section>
+   <img src="/_astro/vidar-nordli-mathisen-_qaHb5vTaic-unsplash.Dvo6K07I_ZFW6IP.webp" alt="image" loading="lazy" decoding="async" fetchpriority="auto" width="3269" height="2160" class="w-full h-full object-cover max-h-[480px]">
+   <section id="content-2">
+      <div class="container py-8 lg:py-14">
+         <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mb-4">
+            <li> <strong>Energy Regulatory Compliance</strong>: Addressing the
+               importance of compliance with evolving energy regulations, we
+               provide regulatory analysis, compliance strategy development, and
+               support for adhering to both national and international energy
+               standards.
+            </li>
+            <li> <strong>Energy Transition and Portfolio Diversification</strong>:
+               Assisting organizations in diversifying their energy sources and
+               transitioning towards cleaner alternatives through strategy
+               development, technology feasibility studies, and project
+               implementation support.
+            </li>
+            <li> <strong>Energy Risk Management</strong>: Addressing the volatility
+               of the energy market, our services include risk assessment, hedging
+               strategies, and market intelligence to protect against price
+               fluctuations and financial risks.
+            </li>
+            <li> <strong>Energy Technology Advancements</strong>: Advocating for the
+               integration of advanced technologies, such as IoT, data analytics,
+               and automation, to enhance operations, improve grid reliability, and
+               optimize asset management.
+            </li>
+            <li> <strong>Energy Market Intelligence</strong>: Staying ahead of market
+               trends and innovations is vital. Our intelligence services equip
+               energy companies with insights needed to navigate market shifts and
+               secure a competitive edge.
+            </li>
+         </ul>
+         <p>
+            Our commitment to the energy sector in Indonesia is rooted in a
+            dedication to sustainability, resource optimization, and facilitating
+            Indonesia’s energy transition. For energy providers, utilities, or
+            industry stakeholders in Indonesia, Eurogroup Consulting is your
+            strategic ally in navigating the complexities of the Indonesian energy
+            market. Together, we can light the path to a sustainable and
+            prosperous energy future in the country.
+         </p>
+      </div>
+   </section>
+   {% include 'sector/_sectors.html.twig' %}
+{% endblock %}

@@ -1,0 +1,35 @@
+<aside class="aside aside-fixed">
+      <div class="aside-header">
+        <a href="{{ path('app_admin_homepage') }}" class="aside-logo">
+          <img src="{{ asset('/images/egc_logo.png') }}" class="img-fluid ht-40" />
+        </a>
+        <a href="" class="aside-menu-link">
+          <i data-feather="menu"></i>
+          <i data-feather="x"></i>
+        </a>
+      </div>
+      <div class="aside-body">
+        <div class="aside-loggedin">
+          <div class="d-flex align-items-center justify-content-start">
+            <div class="avatar avatar-online"><span class="avatar-initial rounded-circle">A</span></div>
+            <div class="aside-alert-link">
+              <a href="{{ path('app_admin_logout') }}" data-bs-toggle="tooltip" title="Sign out"><i data-feather="log-out"></i></a>
+            </div>
+          </div>
+          <div class="aside-loggedin-user">
+            <a href="#" class="d-flex align-items-center justify-content-between mg-b-2">
+              <h6 class="tx-semibold mg-b-0">{{ app.user.email }}</h6>
+            </a>
+            <p class="tx-color-03 tx-12 mg-b-0">Administrator</p>
+          </div>
+        </div><!-- aside-loggedin -->
+        <ul class="nav nav-aside">
+          <li class="nav-item"><a href="{{ path('app_admin_insights_index') }}" class="nav-link"><i data-feather="layers"></i> <span>Insights</span></a></li>
+          <li class="nav-item"><a href="{{ path('app_admin_case_studies_index') }}" class="nav-link"><i data-feather="grid"></i> <span>Case Studies</span></a></li>
+          <li class="nav-item"><a href="{{ path('app_admin_inquries_index') }}" class="nav-link"><i data-feather="mail"></i> <span>Inquiries</span></a></li>
+          <li class="nav-item"><a href="{{ path('app_admin_wp_requests_index') }}" class="nav-link"><i data-feather="download"></i> <span>WP Requests</span></a></li>
+          <li class="nav-item"><a href="{{ path('app_admin_meta_sections_index') }}" class="nav-link"><i data-feather="tag"></i> <span>Meta Section</span></a></li>
+          <li class="nav-item"><a href="{{ path('app_admin_url_redirections_index') }}" class="nav-link"><i data-feather="link"></i> <span>Url Redirection</span></a></li>
+        </ul>
+      </div>
+</aside>

@@ -1,0 +1,21 @@
+{% extends 'emails/base.html.twig' %}
+
+{% block body %}
+    <h1>Hi {{ first_name }},</h1>
+    <spacer size="16"></spacer>
+    <row>
+        <columns>
+            <p>
+                Thank you for your interest in our whitepaper, "{{ wp_title }}"!.
+            </p>
+            <p>
+                To access the whitepaper, please click the link below:
+                <button class="large success" href="{{ url('app_download_wp_request_download', {'token': token}) }}">Download Whitepaper</button>
+            </p>
+            <p>
+                If you have any questions or would like to learn more about how our solutions can support your goals, feel free to reach out to us directly at <a href="mailto:{{ contact_email }}">{{ contact_email }}</a> or {{ contact_phone }}.
+            </p>
+            <p>Thank you once again, and happy reading!</p>
+        </columns>
+    </row>
+{% endblock %}

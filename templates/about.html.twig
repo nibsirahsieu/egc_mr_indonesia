@@ -1,0 +1,428 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+    {% if metaPage.metaTitle %}
+        <title>{{ metaPage.metaTitle }}</title>
+    {% else %}
+        {{ parent() }}
+    {% endif %}    
+{% endblock %}
+{% block meta_title %}
+   {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+   <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+   <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+   <meta name="description" content="{{ metaPage.metaDescription }}">
+   <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+   <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+   <meta property="og:url" content="{{ url('app_about') }}" />  
+   <link rel="canonical" href="{{ url('app_about') }}" />
+{% endblock %}
+
+{% block inline_stylesheets %}
+    <style>
+        .about {background-image: url('{{ asset("images/ant-rozetsky-_qWeqqmpBpU-unsplash.webp") }}');}
+    </style>
+{% endblock %}
+
+{% block header %}
+    <header><div class="mt-[72px] lg:mt-[83px] container py-8 lg:py-14"><h1 class="about text-center font-heading heading-1 text-6xl lg:text-9xl xl:text-[12rem] xl:!leading-tight bg-clip-text text-transparent bg-center bg-[url('{{ asset('images/ant-rozetsky-_qWeqqmpBpU-unsplash.webp') }}')]">About Us</h1></div></header>
+{% endblock %}
+
+{% block content %}
+   <section id="overview">
+      <div class="bg-white">
+         <div class="py-8 lg:py-14 relative">
+            <img src="/_astro/blob-1.W-ZlDNrE_2dove0.svg" alt="blob" loading="lazy" decoding="async" fetchpriority="auto" width="462" height="468" class="absolute top-0 left-0 opacity-25"> <img src="/_astro/blob-2.CJ7mioKI_Z186L1y.svg" alt="blob" loading="lazy" decoding="async" fetchpriority="auto" width="622" height="762" class="absolute bottom-0 right-0 opacity-25"> 
+            <div class="container grid lg:grid-cols-12 gap-0 lg:gap-8 lg:items-center relative">
+               <img src="/_astro/overview-about.CZQHVIrB_n6Xpf.webp" alt="Overview" loading="lazy" decoding="async" fetchpriority="auto" width="6000" height="4000" class="object-cover aspect-[2/3] lg:col-span-5 lg:h-full w-auto relative"> 
+               <div class="flex flex-col lg:col-span-7 py-8 lg:py-14 gap-4 lg:gap-6">
+                  <div class="flex flex-col">
+                     <h2 class="heading-2 text-4xl lg:text-5xl">
+                        Fostering Growth and Innovation in the Indonesian Strategic
+                        Consulting Market
+                     </h2>
+                  </div>
+                  <p>
+                     Since its foundation in 1982, Eurogroup Consulting has risen to
+                     prominence in the field of management and strategic advisory,
+                     focusing on propelling businesses forward in Indonesia’s dynamic
+                     market. Our firm’s rich history, spanning more than four decades,
+                     has been instrumental in enabling clients to gain a competitive
+                     advantage and unleash their full business potential. With a global
+                     network of 3,000 consultants across 32 countries, we offer
+                     comprehensive guidance and support to significant organizations
+                     embarking on transformative journeys.
+                  </p>
+                  <p>
+                     As a premier consulting firm, we provide a broad range of services
+                     and solutions designed to guide our clients through the
+                     complexities of the industry and realize their strategic
+                     ambitions. Our profound insight into the Indonesian market,
+                     combined with our unwavering dedication to excellence, positions
+                     us as a vital partner for companies seeking to excel in this
+                     vibrant environment.
+                  </p>
+                  <p>
+                     Our team of seasoned consultants, strategists, and analysts is
+                     equipped with the knowledge and skills necessary to navigate the
+                     sophisticated challenges of the Indonesian Strategic Consulting
+                     sector. Catering to a varied clientele, including corporate
+                     entities, government agencies, and various stakeholders, we are
+                     prepared to refine your strategic planning, enhance your
+                     decision-making process, and promote sustainable growth with our
+                     expert strategic consulting services.
+                  </p>
+               </div>
+            </div>
+            <div class="relative container w-full mt-8 lg:mt-16">
+               <div class="flex flex-col lg:flex-row flex-wrap items-center lg:items-start justify-between gap-4">
+                  <div class="flex flex-col items-center">
+                     <p class="text-4xl lg:text-5xl text-picton-blue-500 font-bold">
+                        1982
+                     </p>
+                     <p class="uppercase text-big-stone-950 font-medium text-center tracking-wider text-xs lg:text-sm inline-flex items-center gap-1">
+                        Founded
+                     </p>
+                  </div>
+                  <div class="flex flex-col items-center">
+                     <p class="text-4xl lg:text-5xl text-picton-blue-500 font-bold">
+                        3,000
+                     </p>
+                     <p class="uppercase text-big-stone-950 font-medium text-center tracking-wider text-xs lg:text-sm inline-flex items-center gap-1">
+                        Consultants Worldwide
+                     </p>
+                  </div>
+                  <div class="flex flex-col items-center">
+                     <p class="text-4xl lg:text-5xl text-picton-blue-500 font-bold">
+                        10+ Years
+                     </p>
+                     <p class="uppercase text-big-stone-950 font-medium text-center tracking-wider text-xs lg:text-sm inline-flex items-center gap-1">
+                        Experience in Vietnam
+                     </p>
+                  </div>
+                  <div class="flex flex-col items-center">
+                     <p class="text-4xl lg:text-5xl text-picton-blue-500 font-bold">
+                        250+
+                     </p>
+                     <p class="uppercase text-big-stone-950 font-medium text-center tracking-wider text-xs lg:text-sm inline-flex items-center gap-1">
+                        Projects Completed in Vietnam
+                     </p>
+                  </div>
+                  <div class="flex flex-col items-center">
+                     <p class="text-4xl lg:text-5xl text-picton-blue-500 font-bold">
+                        98%
+                     </p>
+                     <p class="uppercase text-big-stone-950 font-medium text-center tracking-wider text-xs lg:text-sm inline-flex items-center gap-1">
+                        Client Repeat Rate
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <section id="how-we-work">
+      <div class="bg-gradient-to-b from-[#022037] to-[#043459] py-8 lg:py-14">
+         <div class="container">
+            <div class="flex flex-col">
+               <p class="text-white mb-2 uppercase text-xs tracking-[0.1em]"> <span class="text-picton-blue-500">/</span> How we work</p>
+               <h2 class="heading-2 text-3xl lg:text-5xl text-white">
+                  At Eurogroup Consulting, our methodology emphasizes partnership and
+                  outcome-based strategies to empower our clients to achieve success
+                  in the Indonesian market.
+               </h2>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-6 gap-4 lg:gap-8 mt-8">
+               <div class="bg-white rounded p-4 lg:p-6 lg:col-span-3">
+                  <img src="/_astro/tron-le-wUk2U5Wirxg-unsplash.CnpNzLZJ_1pbH6O.webp" alt="We Have Been Around" loading="lazy" decoding="async" fetchpriority="auto" width="7952" height="5304" class="w-full h-auto object-cover aspect-video"> 
+                  <div class="flex flex-col mt-4 gap-3">
+                     <h3 class="text-2xl lg:text-3xl heading-3 !leading-none">
+                        We Have Been Around
+                     </h3>
+                     <p>
+                        With 40 years experience, we know what to do and how to generate
+                        results for our clients
+                     </p>
+                  </div>
+               </div>
+               <div class="bg-white rounded p-4 lg:p-6 lg:col-span-3">
+                  <img src="/_astro/img1-1.jpg.C4uaWMRN_Zb7yrf.webp" alt="We Are Hands On" loading="lazy" decoding="async" fetchpriority="auto" width="1000" height="600" class="w-full h-auto object-cover aspect-video"> 
+                  <div class="flex flex-col mt-4 gap-3">
+                     <h3 class="text-2xl lg:text-3xl heading-3 !leading-none">
+                        We Are Hands On
+                     </h3>
+                     <p>
+                        We are not afraid to get our hands dirty and work alongside our
+                        clients to develop and implement solutions
+                     </p>
+                  </div>
+               </div>
+               <div class="bg-white rounded p-4 lg:p-6 lg:col-span-2">
+                  <img src="/_astro/img11.DfYUtKEQ_1e9YnL.webp" alt="We Are Your Boots on the Ground" loading="lazy" decoding="async" fetchpriority="auto" width="1000" height="600" class="w-full h-auto object-cover aspect-video"> 
+                  <div class="flex flex-col mt-4 gap-3">
+                     <h3 class="text-2xl lg:text-3xl heading-3 !leading-none">
+                        We Are Your Boots on the Ground
+                     </h3>
+                     <p>
+                        We are in the marketplace building and leveraging our networks
+                        and working to achieve results
+                     </p>
+                  </div>
+               </div>
+               <div class="bg-white rounded p-4 lg:p-6 lg:col-span-2">
+                  <img src="/_astro/img20.B0UbeyXj_VzqRF.webp" alt="We Have Deep Industry Expertise" loading="lazy" decoding="async" fetchpriority="auto" width="1000" height="600" class="w-full h-auto object-cover aspect-video"> 
+                  <div class="flex flex-col mt-4 gap-3">
+                     <h3 class="text-2xl lg:text-3xl heading-3 !leading-none">
+                        We Have Deep Industry Expertise
+                     </h3>
+                     <p>
+                        We have executed hundreds of projects for our clients. We know
+                        how your products and services work
+                     </p>
+                  </div>
+               </div>
+               <div class="bg-white rounded p-4 lg:p-6 lg:col-span-2">
+                  <img src="/_astro/img3.PpWLdNOY_Z1E6IJH.webp" alt="We Are Long-Term Partners" loading="lazy" decoding="async" fetchpriority="auto" width="1000" height="600" class="w-full h-auto object-cover aspect-video"> 
+                  <div class="flex flex-col mt-4 gap-3">
+                     <h3 class="text-2xl lg:text-3xl heading-3 !leading-none">
+                        We Are Long-Term Partners
+                     </h3>
+                     <p>
+                        We want to deliver your project successfully but it is more
+                        important to us to continue to work with you long after the
+                        final presentation
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <section id="management-team">
+      <div class="container py-8 lg:py-14">
+         <div class="flex flex-col">
+            <p class="mb-2 uppercase text-xs tracking-[0.1em]"> <span class="text-picton-blue-500">/</span> Our Management Team</p>
+            <h2 class="heading-2 text-3xl lg:text-5xl">
+               Our experienced management team brings a wealth of knowledge,
+               expertise, and passion for driving growth and innovation to every
+               project we undertake.
+            </h2>
+         </div>
+         <div class="flex flex-col gap-4 my-8 space-y-8">
+            <!-- Damien --> 
+            <div class="space-y-4">
+               <div class="flex flex-col lg:flex-row gap-4 lg:gap-8">
+                  <img src="/_astro/damien.Dg-9hOe4_Zf2gAd.webp" alt="Damien Duhamel" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="800" class="aspect-square size-64"> 
+                  <div class="flex flex-col space-y-4">
+                     <div class="">
+                        <h3 class="text-2xl lg:text-3xl heading-3">Damien Duhamel</h3>
+                        <p class="text-base lg:text-lg">
+                           Market Research & Strategy Consulting Expert in Indonesia
+                        </p>
+                     </div>
+                     <div class="prose prose-h4:text-xl prose-h4:lg:text-2xl prose-ul:list-arrow max-w-full">
+                        <p>
+                           Damien Duhamel is a seasoned market research and strategy
+                           consultant with extensive experience in Indonesia and the
+                           broader Asia region, having operated in these markets since
+                           1993. As a recognized expert in market research, growth
+                           strategies, and business transformation, Damien has helped
+                           numerous multinational and local companies navigate the
+                           complexities of the Indonesian market.
+                        </p>
+                        <p>
+                           Damien possesses a deep understanding of Indonesia’s evolving
+                           economic landscape, consumer behaviors, market trends, and
+                           regulatory challenges. His expertise spans various sectors,
+                           including construction, consumer goods, technology,
+                           healthcare, and manufacturing. With years of consulting
+                           experience in Indonesia, Damien offers clients actionable
+                           insights that enable them to make informed decisions and
+                           secure a competitive edge in Indonesia’s dynamic market.
+                        </p>
+                        <p>
+                           Key to his consulting services for market entry and expansion
+                           in Indonesia, Damien provides customized solutions for
+                           businesses seeking to enter or grow within the country. These
+                           services include market feasibility studies, competitive
+                           analysis, and go-to-market strategies, all aimed at
+                           positioning companies for success in Indonesia’s emerging
+                           economy.
+                        </p>
+                        <p>
+                           Damien earned a Bachelor’s degree in International Trade from
+                           the Royal Melbourne Institute of Technology (RMIT), an MBA
+                           from the University of Chicago Booth School of Business, and a
+                           Master’s in Sustainability from Harvard University. He also
+                           holds a Vietnamese Language Certificate from Hanoi University.
+                        </p>
+                        <h4>
+                           Key Consulting Expertise Offered by Damien in Indonesia:
+                        </h4>
+                        <ul>
+                           <li> <strong>Comprehensive Market Research</strong>: Providing
+                              detailed, data-driven insights into Indonesia’s market
+                              landscape, identifying growth opportunities and competitive
+                              dynamics.
+                           </li>
+                           <li> <strong>Tailored Market Entry Strategies</strong>: Crafting
+                              customized entry plans that align with Indonesia’s
+                              regulatory and business environment, ensuring successful
+                              market penetration.
+                           </li>
+                           <li> <strong>Benchmarking Services</strong>: Delivering in-depth
+                              benchmarking analysis to help businesses evaluate their
+                              performance, processes, and strategies against local
+                              competitors and industry leaders in Indonesia.
+                           </li>
+                           <li> <strong>M&amp;A Scouting and Advisory</strong>: Assisting
+                              companies in identifying potential M&amp;A opportunities in
+                              Indonesia, from scouting acquisition targets to conducting
+                              due diligence and offering strategic advisory for mergers
+                              and acquisitions.
+                           </li>
+                           <li> <strong>Strategic Consulting for Operational Efficiency</strong>: Offering expertise to optimize business operations,
+                              streamline processes, and drive sustainable growth tailored
+                              to the Indonesian market.
+                           </li>
+                        </ul>
+                        <p>
+                           With Damien’s wealth of experience, deep understanding of the
+                           Indonesian market, and commitment to driving business success,
+                           he is a valuable partner for companies seeking to tap into
+                           growth opportunities in Indonesia.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <hr class="border-t border-gray-300 mb-4 lg:mb-8">
+            <!-- Mickael --> 
+            <div class="space-y-4">
+               <div class="flex flex-col lg:flex-row gap-4 lg:gap-8">
+                  <img src="/_astro/mickael.BOg87O1j_2tDqC4.webp" alt="Mickael Feige" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="800" class="aspect-square size-64"> 
+                  <div class="flex flex-col space-y-4">
+                     <div class="">
+                        <h3 class="text-2xl lg:text-3xl heading-3">Mickael Feige</h3>
+                        <p class="text-base lg:text-lg">
+                           Market Research & Strategy Consulting Expert in Indonesia
+                        </p>
+                     </div>
+                     <div class="prose prose-h4:text-xl prose-h4:lg:text-2xl prose-ul:list-arrow max-w-full">
+                        <p>
+                           Mickael Feige is an experienced consultant and partner at
+                           Eurogroup Consulting, specializing in market research and
+                           strategy consulting, with a focus on Indonesia and the
+                           Southeast Asian region. With over 15 years of expertise,
+                           Mickael delivers impactful solutions, providing businesses
+                           with actionable insights to strengthen their presence or
+                           expand into Indonesia.
+                        </p>
+                        <p>
+                           Mickael has a deep understanding of Indonesia’s market
+                           dynamics and economic landscape. His expertise spans key
+                           sectors such as automotive, energy, healthcare, and digital
+                           transformation. He leads projects centered on market entry
+                           strategies, competitive analysis, and consumer behavior
+                           research, offering tailored advice to help companies navigate
+                           the complexities of the Indonesian market.
+                        </p>
+                        <p>
+                           Mickael’s leadership in strategic consulting has helped both
+                           local and global companies optimize operations, identify
+                           growth opportunities, and execute successful market entry and
+                           expansion strategies. His data-driven approach ensures that
+                           businesses make well-informed decisions based on comprehensive
+                           market research. Mickael graduated from IEP Lyon in 2002 in a
+                           program focusing on business administration in Asian Markets.
+                           He obtained his MBA from INSEAD in 2014 (Executive Program).
+                        </p>
+                        <h4>Key services offered by Mickael Feige include:</h4>
+                        <ul>
+                           <li> <strong>In-depth market research</strong> to assess market potential
+                              and competition in Indonesia.
+                           </li>
+                           <li> <strong>Customized market entry strategies</strong> tailored
+                              to Indonesia’s business environment.
+                           </li>
+                           <li> <strong>Consumer behavior analysis</strong> to capitalize on
+                              local demand trends.
+                           </li>
+                           <li> <strong>Strategic consulting</strong> to drive business growth
+                              and enhance operational efficiency.
+                           </li>
+                        </ul>
+                        <p>
+                           Mickael’s commitment to providing top-tier market research and
+                           strategy consulting makes him a trusted expert for companies
+                           aiming to thrive in Indonesia’s fast-evolving market.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <hr class="border-t border-gray-300 mb-4 lg:mb-8">
+            <!-- Dian --> 
+            <div class="space-y-4">
+               <div class="flex flex-col lg:flex-row gap-4 lg:gap-8">
+                  <img src="/_astro/dian.BfQpTukm_Zjk5vQ.webp" alt="Dian Kuncoro" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="800" class="aspect-square size-64"> 
+                  <div class="flex flex-col space-y-4">
+                     <div class="">
+                        <h3 class="text-2xl lg:text-3xl heading-3">Dian Kuncoro</h3>
+                        <p class="text-base lg:text-lg">
+                           Digital Transformation Expert in Indonesia
+                        </p>
+                     </div>
+                     <div class="prose prose-h4:text-xl prose-h4:lg:text-2xl prose-ul:list-arrow max-w-full">
+                        <p>
+                           Dian Kuncoro serves as the Digital Lab Manager at Eurogroup
+                           Consulting, bringing over 12 years of experience in driving
+                           digital transformation initiatives across various industries
+                           in the Indonesian market. With a focus on turning innovative
+                           ideas into concrete solutions, Dian leads key projects such as
+                           web design, motion design, and web development, integrating
+                           them into business areas like talent acquisition, digital
+                           marketing, and enterprise growth strategies.
+                        </p>
+                        <p>
+                           Dian’s expertise spans digital enablement from the ground up,
+                           helping companies in Indonesia build profitable digital
+                           portfolios, manage enterprise infrastructure, and develop
+                           effective growth strategies. His leadership in digital
+                           acquisition and growth has supported businesses in optimizing
+                           their operations and achieving sustainable growth in
+                           Indonesia’s dynamic marketplace. Dian graduated from STIKOM
+                           Surabaya in Computer Multimedia.
+                        </p>
+                        <h4>Key areas of Dian Kuncoro’s expertise include:</h4>
+                        <ul>
+                           <li> <strong>Leading digital transformation</strong> projects from
+                              concept to execution in Indonesia.
+                           </li>
+                           <li> <strong>Managing web design</strong>, motion design, and web
+                              development with a focus on business-driven outcomes.
+                           </li>
+                           <li> <strong>Implementing digital marketing strategies</strong> to
+                              enhance brand visibility and customer engagement.
+                           </li>
+                           <li> <strong>Developing digital acquisition and growth strategies</strong> that align with enterprise goals.</li>
+                           <li> <strong>Overseeing people management and digital infrastructure</strong> to ensure operational excellence and talent retention.</li>
+                        </ul>
+                        <p>
+                           Dian’s ability to combine technical expertise with strategic
+                           insights makes him an essential leader in delivering
+                           successful digital initiatives in Indonesia, helping
+                           businesses navigate the evolving digital landscape.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+{% endblock %}

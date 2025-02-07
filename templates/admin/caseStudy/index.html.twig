@@ -1,0 +1,34 @@
+{% extends 'admin.html.twig' %}
+
+{% block javascripts %}
+    {% block importmap %}{{ importmap(['admin', 'case_study_list']) }}{% endblock %}
+{% endblock %}
+
+{% block pagetitle %}
+    Case Studies List
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header pd-t-20 d-sm-flex align-items-start justify-content-between">
+            <h6 class="mg-b-0">&nbsp;</h6>
+            <div class="d-flex mg-t-20 mg-sm-t-0">
+                <a class="btn btn-primary btn-xs" href="{{ path('app_admin_case_studies_new') }}">Add New Case Study</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table" id="case_studies_table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Title</th>
+                        <th>Client</th>
+                        <th>Status</th>
+                        <th class="text-no-wrap">Published On</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

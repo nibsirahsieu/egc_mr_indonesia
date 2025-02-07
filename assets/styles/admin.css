@@ -1,0 +1,11 @@
+label.required:after {
+  content:" *";
+  color: red;
+}
+.text-pre-wrap {
+  white-space: pre-wrap;
+}
+.text-no-wrap {
+  white-space: nowrap;
+}
+.cursor-default { cursor: default; }

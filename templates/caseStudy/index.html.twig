@@ -1,0 +1,45 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+    {% if metaPage.metaTitle %}
+        <title>{{ metaPage.metaTitle }}</title>
+    {% else %}
+        {{ parent() }}
+    {% endif %}    
+{% endblock %}
+
+{% block meta_title %}
+   {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+   <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+   <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+   <meta name="description" content="{{ metaPage.metaDescription }}">
+   <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+   <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+   <meta property="og:url" content="{{ url('app_case_studies_index') }}" />  
+   <link rel="canonical" href="{{ url('app_case_studies_index') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    {% block importmap %}{{ importmap(['main', 'case_studies']) }}{% endblock %}
+{% endblock %}
+
+{% block inline_stylesheets %}
+    <style>
+        .cs-header {background-image: url('{{ asset("images/ant-rozetsky-_qWeqqmpBpU-unsplash.webp") }}');}
+    </style>
+{% endblock %}
+
+{% block header %}
+    <header><div class="mt-[72px] lg:mt-[83px] container py-8 lg:py-14"><h1 class="cs-header text-center font-heading heading-1 text-6xl lg:text-9xl xl:text-[12rem] xl:!leading-tight bg-clip-text text-transparent bg-center">Case Studies</h1></div></header>
+{% endblock %}
+
+{% block content %}
+    <section id="case-studies" class="bg-white"> 
+        <div class="container py-8 lg:py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mt-8" id="data_container" data-all="{{ nbPost }}" data-current="0" data-last-published="" data-last-id="">
+        </div>
+    </section>
+{% endblock %}

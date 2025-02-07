@@ -1,0 +1,174 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+    {% if metaPage.metaTitle %}
+        <title>{{ metaPage.metaTitle }}</title>
+    {% else %}
+        {{ parent() }}
+    {% endif %}    
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_sectors_show', {'slug': slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_sectors_show', {'slug': slug}) }}" />
+{% endblock %}
+
+{% block header %}
+   <header class="relative overflow-hidden">
+      <img src="/_astro/truck-on-a-highway-through-the-grasslands-area-of-2023-11-27-05-02-05-utc.Dz_9NNmF_1yWAiJ.webp" alt="Transport &#38; Mobility Insights for Indonesia" inferSize="true" loading="lazy" decoding="async" fetchpriority="auto" width="5122" height="3415" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+      <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+      <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+         <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/sectors" class="text-sm text-white hover:underline">Sectors</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Transport &amp; Mobility</span></div>
+         <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">Transport & Mobility Insights for Indonesia</h1>
+      </div>
+   </header>
+{% endblock %}
+
+{% block content %}
+   <section id="content-1">
+      <div class="bg-white">
+         <div class="container pt-8 lg:pt-14">
+            <p class="text-lg lg:text-xl">
+               The Transport & Mobility sector in Indonesia is undergoing profound
+               changes, driven by technological advancements and evolving consumer
+               preferences. Eurogroup Consulting is at the forefront, recognizing
+               the transformative impact of innovation on Indonesia’s mobility
+               landscape. Our consultancy provides customized services to address
+               the unique challenges and harness the opportunities this
+               transformation presents to transport providers, regulators, and
+               stakeholders across the archipelago.
+            </p>
+            <div class="py-8 lg:py-14 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Our Specialized Services in Transport & Mobility Include:
+               </h3>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Strategy Development for Transport &amp; Mobility</strong>: Collaborating with Indonesian transport and mobility
+                     entities, we develop forward-looking strategies that adapt to
+                     market shifts. Our offerings include comprehensive market
+                     assessments, digital transformation plans, and the integration
+                     of eco-friendly mobility solutions.
+                  </li>
+                  <li> <strong>Smart Transportation Solutions</strong>: With
+                     Indonesia’s urban areas expanding, the implementation of
+                     intelligent transportation systems, smart city innovations, and
+                     Mobility-as-a-Service (MaaS) platforms is essential. Our
+                     expertise supports the improvement of transport efficiency and
+                     the reduction of congestion.
+                  </li>
+                  <li> <strong>Public Transportation Enhancement</strong>: We assist
+                     public transit operators in enhancing services across bus and
+                     rail systems, concentrating on route optimization, fleet
+                     management, and passenger experience upgrades to make public
+                     transit more appealing.
+                  </li>
+                  <li> <strong>Digital Mobility Innovations</strong>: In the age of
+                     digitalization, we spearhead the adoption of digital solutions,
+                     including ride-sharing, micro-mobility, and e-ticketing systems,
+                     to improve service accessibility and convenience for users.
+                  </li>
+                  <li> <strong>Sustainable Transport Practices</strong>: Promoting
+                     sustainable transport initiatives, we facilitate the adoption of
+                     electric vehicles, alternative fuel solutions, and emissions
+                     reduction strategies to create an environmentally friendly
+                     mobility ecosystem.
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <img src="/_astro/long-bun-vP-N4_E9GcE-unsplash.DaawhXpT_ZnYttn.webp" alt="image" loading="lazy" decoding="async" fetchpriority="auto" width="6000" height="4000" class="w-full h-full object-cover max-h-[480px]"> <!-- <div
+         class="relative bg-big-stone-950 overflow-hidden flex items-center py-12 lg:py-14 xl:py-32"
+         >
+         <div
+            class="container relative z-10 lg:border-y border-white/20 py-8 lg:py-12"
+         >
+            <div class="flex flex-col lg:flex-row gap-4 lg:gap-8 relative">
+               <svg
+               xmlns="http://www.w3.org/2000/svg"
+               width="24"
+               height="24"
+               class="size-16 min-w-16 fill-picton-blue-500"
+               viewBox="0 0 24 24"
+               ><path
+                  d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"
+               ></path></svg
+               >
+               <p class="font-medium text-lg lg:text-4xl text-white">
+               Thailand's road transport industry is set for 2.0-3.0% annual
+               growth from 2024 to 2026, driven by rising investment, trade,
+               tourism, and the strength of e-commerce, boosting demand for
+               transport of goods and materials.
+               </p>
+            </div>
+         </div>
+         <div class="absolute inset-0 bg-big-stone-950 w-full h-full">
+            <Image
+               src={img_middle}
+               alt="image"
+               class="relative pointer-events-none bg-mask-hero select-none w-full h-full object-cover"
+               widths={[360, 480, 768, 1024, 1440, 1920, img_middle.width]}
+               sizes={`(max-width: 360px) 360px, (max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, (max-width: 1920px) 1920px, ${img_middle.width}px`}
+            />
+         </div>
+         <div
+            class="w-full h-full bg-gradient-to-br from-big-stone-950/60 via-big-stone-950/80 to-picton-blue-500/30 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+         >
+         </div>
+         </div> --> 
+      <section id="content-2">
+         <div class="container py-8 lg:py-14">
+            <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mb-4">
+               <li> <strong>Transport Infrastructure Development</strong>: Our
+                  expertise extends to the planning and implementation of critical
+                  infrastructure projects, such as roads, railways, and airports, to
+                  boost transport connectivity across Indonesia.
+               </li>
+               <li> <strong>Safety and Security in Transportation</strong>: Offering
+                  comprehensive risk assessments, safety audits, and security
+                  planning, we aim to protect passengers and crucial transport
+                  infrastructure from potential hazards.
+               </li>
+               <li> <strong>Mobility Data Analytics</strong>: By leveraging data
+                  analytics, we empower organizations to utilize insights for
+                  optimizing routes, predicting demand, and enhancing operational
+                  efficiency.
+               </li>
+               <li> <strong>Regulatory and Compliance Support</strong>: Helping to
+                  navigate Indonesia’s regulatory environment, we provide
+                  assessments and advice to ensure compliance with both local and
+                  international transport regulations and policies.
+               </li>
+               <li> <strong>Workforce Development in Transport</strong>: Recognizing
+                  the importance of skilled personnel, we deliver workforce
+                  development strategies, training initiatives, and talent
+                  management solutions to build a competent transport and mobility
+                  sector workforce in Indonesia.
+               </li>
+            </ul>
+            <p>
+               Our dedication to the Transport & Mobility sector aims to enhance
+               accessibility, sustainability, and efficiency across Indonesia. For
+               transport providers, regulators, or industry stakeholders, Eurogroup
+               Consulting is your strategic ally in navigating the changing
+               transport landscape. Together, we strive to forge a more connected,
+               sustainable, and accessible future for Indonesia.
+            </p>
+         </div>
+      </section>
+      <!-- <Experts
+         title="Speak to our Southeast Asia transport & mobility expert "
+         experts={experts}
+         /> --> 
+   </section>
+   {% include 'sector/_sectors.html.twig' %}
+{% endblock %}

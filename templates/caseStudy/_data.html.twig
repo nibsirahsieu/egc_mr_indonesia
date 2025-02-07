@@ -1,0 +1,13 @@
+{% for caseStudy in caseStudies %}
+    {% set thumbnail = caseStudy.thumbnail %}
+    <a href="{{ path('app_case_studies_show', {'slug': caseStudy.slug}) }}" class="relative aspect-square flex items-end justify-start bg-black group overflow-hidden p-4 lg:p-6 rounded" aria-label="{{ caseStudy.title }}"> 
+        <span class="relative inline-flex items-center gap-6 lg:gap-8 text-white z-10 leading-none font-medium text-left text-2xl bg-big-stone-950 group-hover:bg-picton-blue-500 -ml-4 lg:-ml-6 group-hover:-mr-4 group-hover:lg:-mr-6 -mt-4 lg:-mt-6 mb-4 group-hover:-mb-4 group-hover:lg:-mb-6 p-4 lg:p-6 duration-300">{{ caseStudy.title }} <i data-lucide="arrow-up-right" class="min-w-6 size-6 group-hover:rotate-90 duration-300 ease-out"></i> </span> 
+        <img 
+            {% if thumbnail.hash %}src="{{ path('app_upload_files_from_hash', {'hash': thumbnail.hash}) }}"{% endif %}
+            data-src="{{ thumbnail.image | imagine_filter('thumb_sm') }}" 
+            class="absolute opacity-50 group-hover:opacity-75 inset-0 w-full h-full object-cover group-hover:scale-105 duration-300 ease-out lazy" 
+            alt="{{ caseStudy.title }}"
+            data-sizes="auto"
+        > 
+    </a>
+{% endfor %}

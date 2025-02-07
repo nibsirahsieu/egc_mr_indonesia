@@ -1,0 +1,72 @@
+<div class="container py-8 lg:py-14">
+    <form class="p-4 lg:p-6 flex flex-col gap-4 lg:gap-6 bg-big-stone-950" x-data="formHandlerWhitepaper({{ post.id }})" @submit.prevent="validateForm" x-ref="form" action="{{ path('app_download_wp_request_submit') }}">
+        <div class="flex flex-col md:flex-row gap-4 lg:gap-6">
+        <div class="md:w-1/3 lg:w-1/4"> 
+            <img 
+                {% if post.thumbnail.hash %}src="{{ path('app_upload_files_from_hash', {'hash': post.thumbnail.hash}) }}"{% endif %}
+                data-src="{{ post.thumbnail.relativePath | imagine_filter('thumb_sm') }}" 
+                alt="{{ post.title }}" 
+                class="object-cover w-full h-auto select-none pointer-events-none lazy"
+                data-sizes="auto"
+            >
+        </div>
+        <div class="md:w-2/3 lg:w-3/4">
+            <h3 class="text-white text-lg lg:text-xl mb-4 pb-4 border-b border-white/30">
+                Download {{ post.title }}
+            </h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 w-full h-max">
+                <div class="input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&_span]:text-picton-blue-500 text-white">First Name<span>*</span></label><input required x-model="formData.firstName" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/30 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter First Name" name="firstName" aria-invalid="false" value=""> </div>
+                <div class="input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&_span]:text-picton-blue-500 text-white">Last Name<span>*</span></label><input required x-model="formData.lastName" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/30 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Last Name" name="lastName" aria-invalid="false" value=""> </div>
+                <div class="input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&_span]:text-picton-blue-500 text-white">Company Name<span>*</span></label><input required x-model="formData.companyName" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/30 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Company Name" name="companyName" aria-invalid="false" value=""> </div>
+                <div class="input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&_span]:text-picton-blue-500 text-white">Job Title<span>*</span></label><input required x-model="formData.jobTitle" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/30 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Job Title" name="jobTitle" aria-invalid="false" value=""> </div>
+                <div class="input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&_span]:text-picton-blue-500 text-white">Country<span>*</span></label><input required x-model="formData.country" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/30 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Your Country" name="country" aria-invalid="false" value=""> </div>
+                <div class=""> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&_span]:text-picton-blue-500 text-white">Corporate Email Address<span>*</span></label><input required x-model="formData.emailAddress" type="email" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/30 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Corporate Email Address" name="emailAddress" aria-invalid="false" value=""> </div>
+                <button class="group inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-white dark:focus-visible:ring-white dark:bg-white dark:text-white dark:hover:bg-white/90 h-10 px-4 py-2 bg-picton-blue-500 text-white text-sm gap-3 hover:bg-picton-blue-500/80 w-max" type="submit"> <i data-lucide="download" class="size-4 group-hover:-translate-x-1 duration-200 ease-out"></i>
+                Download Whitepaper
+                </button> 
+            </div>
+        </div>
+        </div>
+        <div class="flex justify-center w-full"></div>
+    </form>
+    <div x-data="notification" x-on:notify.window="addNotification({variant: $event.detail.variant,sender: $event.detail.sender,title: $event.detail.title,message: $event.detail.message,})">
+        <div x-on:mouseenter="$dispatch('pause-auto-dismiss')" x-on:mouseleave="$dispatch('resume-auto-dismiss')" class="group pointer-events-none fixed inset-x-8 top-0 z-[99] flex max-w-full flex-col gap-2 bg-transparent px-6 py-6 md:bottom-0 md:left-[unset] md:right-0 md:top-[unset] md:max-w-sm">
+        <template x-for="(notification, index) in notifications" x-bind:key="notification.id">
+            <!-- root div holds all of the notifications  --> 
+            <div>
+                <!-- Success Notification  --> 
+                <template x-if="notification.variant === 'success'">
+                    <div x-data="{ isVisible: false, timeout: null }" x-cloak x-show="isVisible" class="pointer-events-auto relative rounded-md border border-green-500 bg-white text-neutral-600 dark:bg-neutral-950 dark:text-neutral-300" role="alert" x-on:pause-auto-dismiss.window="clearTimeout(timeout)" x-on:resume-auto-dismiss.window=" timeout = setTimeout(() => {(isVisible = false), removeNotification(notification.id) }, displayDuration)" x-init="$nextTick(() => { isVisible = true }), (timeout = setTimeout(() => { isVisible = false, removeNotification(notification.id)}, displayDuration))" x-transition:enter="transition duration-300 ease-out" x-transition:enter-end="translate-y-0" x-transition:enter-start="translate-y-8" x-transition:leave="transition duration-300 ease-in" x-transition:leave-end="-translate-x-24 opacity-0 md:translate-x-24" x-transition:leave-start="translate-x-0 opacity-100">
+                    <div class="flex w-full items-center gap-2.5 bg-green-500/10 rounded-md p-4 transition-all duration-300">
+                        <!-- Title & Message --> 
+                        <div class="flex flex-col gap-2">
+                            <h3 x-cloak x-show="notification.title" class="text-sm font-semibold text-green-500" x-text="notification.title"></h3>
+                            <p x-cloak x-show="notification.message" class="text-pretty text-sm" x-text="notification.message"></p>
+                        </div>
+                        <!--Dismiss Button --> <button type="button" class="ml-auto" aria-label="dismiss notification" x-on:click="(isVisible = false), removeNotification(notification.id)"></button> 
+                    </div>
+                    </div>
+                </template>
+                <!-- Danger Notification  --> 
+                <template x-if="notification.variant === 'danger'">
+                    <div x-data="{ isVisible: false, timeout: null }" x-cloak x-show="isVisible" class="pointer-events-auto relative rounded-md border border-red-500 bg-white text-neutral-600 dark:bg-neutral-950 dark:text-neutral-300" role="alert" x-on:pause-auto-dismiss.window="clearTimeout(timeout)" x-on:resume-auto-dismiss.window=" timeout = setTimeout(() => {(isVisible = false), removeNotification(notification.id) }, displayDuration)" x-init="$nextTick(() => { isVisible = true }), (timeout = setTimeout(() => { isVisible = false, removeNotification(notification.id)}, displayDuration))" x-transition:enter="transition duration-300 ease-out" x-transition:enter-end="translate-y-0" x-transition:enter-start="translate-y-8" x-transition:leave="transition duration-300 ease-in" x-transition:leave-end="-translate-x-24 opacity-0 md:translate-x-24" x-transition:leave-start="translate-x-0 opacity-100">
+                    <div class="flex w-full items-center gap-2.5 bg-red-500/10 rounded-md p-4 transition-all duration-300">
+                        <!-- Title & Message --> 
+                        <div class="flex flex-col gap-2">
+                            <h3 x-cloak x-show="notification.title" class="text-sm font-semibold text-red-500" x-text="notification.title"></h3>
+                            <p x-cloak x-show="notification.message" class="text-pretty text-sm" x-text="notification.message"></p>
+                        </div>
+                        <!--Dismiss Button --> 
+                        <button type="button" class="ml-auto" aria-label="dismiss notification" x-on:click="(isVisible = false), removeNotification(notification.id)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox=" 0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" class="size-5 shrink-0" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+        </div>
+    </div>
+</div>

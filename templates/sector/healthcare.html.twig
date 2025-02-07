@@ -1,0 +1,174 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+    {% if metaPage.metaTitle %}
+        <title>{{ metaPage.metaTitle }}</title>
+    {% else %}
+        {{ parent() }}
+    {% endif %}    
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_sectors_show', {'slug': slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_sectors_show', {'slug': slug}) }}" />
+{% endblock %}
+
+{% block header %}
+   <header class="relative overflow-hidden">
+      <img src="/_astro/ave-calvar-r0Oxziv69y4-unsplash.M2nIcqTZ_IRWc5.webp" alt="Healthcare Sector Expertise in Indonesia" inferSize="true" loading="lazy" decoding="async" fetchpriority="auto" width="6720" height="4480" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+      <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+      <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+         <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/sectors" class="text-sm text-white hover:underline">Sectors</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Healthcare</span></div>
+         <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">Healthcare Sector Expertise in Indonesia</h1>
+      </div>
+   </header>
+{% endblock %}
+
+{% block content %}
+   <section id="content-1">
+      <div class="bg-white">
+         <div class="container pt-8 lg:pt-14">
+            <p class="text-lg lg:text-xl">
+               In Indonesia’s vibrant and rapidly evolving healthcare sector,
+               Eurogroup Consulting provides customized consulting services
+               designed to tackle the unique challenges and seize the opportunities
+               faced by healthcare organizations in the nation. With our profound
+               industry knowledge and unwavering commitment to excellence, we guide
+               healthcare providers, insurers, and stakeholders through the
+               intricacies of the Indonesian healthcare landscape.
+            </p>
+            <div class="py-8 lg:py-14 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Our Healthcare Sector Services Include:
+               </h3>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Strategic Planning and Advisory</strong>: We assist
+                     healthcare organizations in Indonesia in crafting and executing
+                     strategic plans aligned with their core objectives. This
+                     includes conducting market analysis, devising growth strategies,
+                     and initiating performance improvement measures tailored to the
+                     Indonesian healthcare context.
+                  </li>
+                  <li> <strong>Healthcare Transformation</strong>: Committed to
+                     healthcare modernization, we facilitate the shift towards
+                     value-based care, digitalization, and operational efficiencies.
+                     Our support enables providers to address the contemporary
+                     demands of healthcare delivery and elevate care quality.
+                  </li>
+                  <li> <strong>Patient-Centric Care Models</strong>: Focusing on
+                     enhancing patient experiences and outcomes, we optimize
+                     operational processes using technology and data analytics to
+                     foster improved patient engagement and care delivery.
+                  </li>
+                  <li> <strong>Health Information System Integration</strong>: We
+                     support the implementation and optimization of Electronic Health
+                     Records (EHRs) and health IT solutions, ensuring these systems
+                     are integrated effectively, with an emphasis on data security
+                     and interoperability for better clinical decision-making.
+                  </li>
+                  <li> <strong>Regulatory Compliance Guidance</strong>: Given the
+                     constant evolution of healthcare regulations, we provide
+                     comprehensive compliance evaluations, regulatory advice, and
+                     implementation support to help organizations comply with both
+                     local and international healthcare standards.
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <img src="/_astro/medical-team-head-leaders-discuss-results-brainst-2024-12-19-19-59-28-utc.lVqd71Su_ZQydh0.webp" alt="image" loading="lazy" decoding="async" fetchpriority="auto" width="7008" height="4672" class="w-full h-full object-cover max-h-[480px]"> <!-- <div
+            class="relative bg-big-stone-950 overflow-hidden flex items-center py-12 lg:py-14 xl:py-32"
+            >
+            <div
+               class="container relative z-10 lg:border-y border-white/20 py-8 lg:py-12"
+            >
+               <div class="flex flex-col lg:flex-row gap-4 lg:gap-8 relative">
+                  <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  class="size-16 min-w-16 fill-picton-blue-500"
+                  viewBox="0 0 24 24"
+                  ><path
+                     d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"
+                  ></path></svg
+                  >
+                  <p class="font-medium text-lg lg:text-4xl text-white">
+                  The healthcare sector is set to become a major economic driver
+                  in Thailand, fueled by government-led incentives and growing
+                  investment from the private sector, working in unison to
+                  accelerate growth.
+                  </p>
+               </div>
+            </div>
+            <div class="absolute inset-0 bg-big-stone-950 w-full h-full">
+               <Image
+                  src={img_middle}
+                  alt="image"
+                  class="relative pointer-events-none bg-mask-hero select-none w-full h-full object-cover"
+                  widths={[360, 480, 768, 1024, 1440, 1920, img_middle.width]}
+                  sizes={`(max-width: 360px) 360px, (max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, (max-width: 1920px) 1920px, ${img_middle.width}px`}
+               />
+            </div>
+            <div
+               class="w-full h-full bg-gradient-to-br from-big-stone-950/60 via-big-stone-950/80 to-picton-blue-500/30 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+            >
+            </div>
+            </div> --> 
+         <div class="container py-8 lg:py-14">
+            <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mb-4">
+               <li> <strong>Clinical Excellence Initiatives</strong>: We offer
+                  services aimed at clinical quality improvement, optimizing
+                  clinical pathways, and adopting evidence-based practices to
+                  enhance clinical outcomes and care quality across Indonesian
+                  healthcare facilities.
+               </li>
+               <li> <strong>Healthcare Analytics</strong>: Equipping organizations
+                  with healthcare analytics, we promote data-driven decision-making
+                  to improve operational performance, reduce costs, and inform
+                  strategic initiatives.
+               </li>
+               <li> <strong>Telehealth and Digital Health Advancements</strong>:
+                  Assisting in the adoption of telehealth and digital health
+                  innovations, we develop and implement telemedicine platforms,
+                  remote patient monitoring systems, and digital tools tailored to
+                  the needs of the Indonesian market.
+               </li>
+               <li> <strong>Healthcare Workforce Development</strong>: Recognizing the
+                  importance of a skilled healthcare workforce, we provide planning,
+                  training, and development initiatives to ensure healthcare
+                  organizations have competent and motivated professionals.
+               </li>
+               <li> <strong>Financial Management in Healthcare</strong>: We specialize
+                  in financial optimization, revenue cycle management, and cost
+                  containment strategies to ensure the financial health and
+                  sustainability of healthcare providers in Indonesia.
+               </li>
+            </ul>
+            <p>
+               Our dedication to the healthcare sector is fueled by the goal of
+               improving healthcare delivery, patient outcomes, and community
+               health across Indonesia. Serving providers, payers, or industry
+               stakeholders, Eurogroup Consulting is your strategic ally in
+               attaining healthcare excellence. Together, we can foster healthcare
+               transformation and significantly impact the health and well-being of
+               communities throughout Indonesia.
+            </p>
+         </div>
+         <!-- <Experts
+            title={"Speak to our Southeast Asia healthcare expert"}
+            experts={experts}
+            /> --> 
+      </div>
+      <!-- <SEAWhitepaperCta /> --> 
+   </section>
+   {% include 'sector/_sectors.html.twig' %}
+{% endblock %}

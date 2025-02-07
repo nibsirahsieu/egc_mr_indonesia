@@ -1,0 +1,151 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+   {% if metaPage.metaTitle %}
+      <title>{{ metaPage.metaTitle }}</title>
+   {% else %}
+      {{ parent() }}
+   {% endif %}
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_services_show', {'slug': slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_services_show', {'slug': slug}) }}" />
+{% endblock %}
+
+{% block header %}
+   <header class="relative overflow-hidden">
+      <img src="/_astro/8-consumer-shop-assistant-giving-order-to-customer-2025-01-29-10-43-49-utc.VX-Vm5a5_Z1iHQ6G.webp" alt="Consumer Behavior Analysis in Indonesia" inferSize="true" loading="lazy" decoding="async" fetchpriority="auto" width="7530" height="5020" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+      <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+      <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+         <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/services" class="text-sm text-white hover:underline">Services</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Consumer Behavior Analysis</span></div>
+         <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">Consumer Behavior Analysis in Indonesia</h1>
+      </div>
+   </header>
+{% endblock %}
+
+{% block content %}
+   <section id="overview">
+      <div class="bg-white">
+         <div class="container py-8 lg:py-14">
+            <div class="space-y-4">
+               <p class="text-lg lg:text-xl">
+                  Grasping the nuances of consumer behavior is crucial for crafting
+                  successful marketing strategies and business operations. In
+                  Indonesia’s vibrant and ever-changing market, where consumer
+                  preferences and trends rapidly evolve, maintaining a competitive
+                  edge necessitates a profound understanding of Consumer Behavior
+                  Analysis. Eurogroup Consulting is dedicated to providing advanced
+                  Consumer Behavior Analysis services, specifically designed for the
+                  Indonesian marketplace, to equip businesses with essential
+                  insights.
+               </p>
+            </div>
+            <div class="py-8 lg:py-14 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  The Importance of Consumer Behavior Analysis
+               </h3>
+               <p>
+                  Consumer behavior analysis stands as a cornerstone for various
+                  strategic initiatives:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Strategic Decision-Making:</strong> It delivers insights
+                     grounded in data, enabling companies to tailor their strategies to
+                     meet the Indonesian consumer’s preferences.
+                  </li>
+                  <li> <strong>Product Innovation:</strong> Insights into consumer desires
+                     inform the development of products and services that align with market
+                     expectations.
+                  </li>
+                  <li> <strong>Targeted Marketing:</strong> Analyzing consumer behavior
+                     aids in crafting marketing initiatives that connect with the Indonesian
+                     demographic effectively.
+                  </li>
+                  <li> <strong>Market Differentiation:</strong> A deep understanding of
+                     consumer behavior can reveal opportunities for distinguishing your
+                     offerings in the competitive landscape.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Our Consumer Behavior Analysis Methodology
+               </h3>
+               <p>
+                  Eurogroup Consulting adopts a detailed and methodical approach to
+                  Consumer Behavior Analysis in Indonesia:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Extensive Data Gathering:</strong> Utilizing surveys, in-depth
+                     market research, and advanced data analytics, we compile a detailed
+                     picture of consumer behavior.
+                  </li>
+                  <li> <strong>Market Segmentation:</strong> We categorize consumers based
+                     on demographics, lifestyle choices, and purchasing habits to tailor
+                     strategies effectively.
+                  </li>
+                  <li> <strong>Trend Identification:</strong> Our experts pinpoint current
+                     and emerging trends influencing consumer behavior in Indonesia.
+                  </li>
+                  <li> <strong>Competitive Analysis:</strong> We benchmark your offerings
+                     and consumer engagement against key competitors in the Indonesian
+                     market.
+                  </li>
+                  <li> <strong>Strategic Recommendations:</strong> Our findings culminate
+                     in practical recommendations designed to synchronize your business
+                     strategies with consumer expectations.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Why Partner with Eurogroup Consulting
+               </h3>
+               <p>
+                  Choosing Eurogroup Consulting for Consumer Behavior Analysis in
+                  Indonesia brings unparalleled benefits:
+               </p>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>In-depth Local Insights:</strong> Our experts possess a nuanced
+                     understanding of Indonesia’s market dynamics and consumer behavior
+                     patterns.
+                  </li>
+                  <li> <strong>Bespoke Strategies:</strong> Our services are customized
+                     to align with your specific industry challenges and business objectives.
+                  </li>
+                  <li> <strong>Evidence-Based Analysis:</strong> We employ rigorous data
+                     collection and analytical techniques to ensure our insights are both
+                     accurate and actionable.
+                  </li>
+                  <li> <strong>Market Leadership:</strong> Gaining an understanding of consumer
+                     behavior places your business at the forefront of Indonesia’s competitive
+                     market.
+                  </li>
+               </ul>
+            </div>
+            <div class="pb-8 lg:pb-16 space-y-4">
+               <p>
+                  Consumer Behavior Analysis is an invaluable asset for businesses
+                  aiming to secure a stronghold in the Indonesian market. With
+                  Eurogroup Consulting’s expertise, you can unlock critical insights
+                  into consumer preferences and trends, empowering you to make
+                  strategic decisions and craft impactful strategies. Reach out to
+                  us to harness the power of Consumer Behavior Analysis in Indonesia
+                  and propel your business to new heights.
+               </p>
+            </div>
+         </div>
+      </div>
+   </section>
+   {% include 'service/_services.html.twig' %}
+{% endblock %}

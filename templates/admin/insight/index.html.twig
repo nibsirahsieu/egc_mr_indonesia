@@ -1,0 +1,35 @@
+{% extends 'admin.html.twig' %}
+
+{% block javascripts %}
+    {% block importmap %}{{ importmap(['admin', 'post_list']) }}{% endblock %}
+{% endblock %}
+
+{% block pagetitle %}
+    Insights List
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header pd-t-20 d-sm-flex align-items-start justify-content-between">
+            <h6 class="mg-b-0">&nbsp;</h6>
+            <div class="d-flex mg-t-20 mg-sm-t-0">
+                <a class="btn btn-primary btn-xs" href="{{ path('app_admin_insights_new') }}">Add New Insight</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table" id="insights_table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Status</th>
+                        <th>Published On</th>
+                        <th style="width: 100px"></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

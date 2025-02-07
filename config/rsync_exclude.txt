@@ -1,0 +1,30 @@
+# IDEs files
+.buildpath
+.project
+.settings
+nbproject
+.idea
+.editorconfig
+
+# VCS files
+.gitignore
+.gitattributes
+.travis.yml
+.DS_Store
+.dot
+.git
+*.md
+.env
+.env.test
+.env.local
+.env.local.php
+.php-version
+/var
+/public/bundles
+/web/.htaccess*
+/public/uploads
+/vendor
+/data
+/assets/vendor
+/docs
+/public/sitemap.xml

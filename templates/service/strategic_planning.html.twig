@@ -1,0 +1,178 @@
+{% extends 'front.html.twig' %}
+
+{% set title = 'Strategic Planning in Vietnam' %}
+
+{% block title %}
+   {% if metaPage.metaTitle %}
+      <title>{{ metaPage.metaTitle }}</title>
+   {% else %}
+      {{ parent() }}
+   {% endif %}
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_services_show', {'slug': slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_services_show', {'slug': slug}) }}" />
+{% endblock %}
+
+{% block header %}
+    <header class="relative overflow-hidden">
+        <img src="/_astro/2-strategic-planning-getty-images-jyDbSsRLchA-unsplash.eMpxOr15_2tdDPy.webp" alt="Strategic Planning in Indonesia" inferSize="true" loading="lazy" decoding="async" fetchpriority="auto" width="3840" height="2160" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+        <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+        <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+        <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/services" class="text-sm text-white hover:underline">Services</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Strategic Planning</span></div>
+        <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">Strategic Planning in Indonesia</h1>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <section id="overview">
+        <div class="bg-white">
+            <div class="container py-8 lg:py-14">
+                <div class="space-y-4">
+                    <p class="text-lg lg:text-xl">
+                    In the dynamic world of business, possessing a well-crafted and
+                    clearly defined strategy is crucial for outpacing competitors and
+                    achieving lasting success. For companies operating within
+                    Indonesia, a market characterized by its unique set of challenges
+                    and opportunities, the importance of strategic planning is even
+                    more pronounced. It involves navigating the complexities of the
+                    Indonesian business environment, embracing the nation’s growth
+                    potential, and mitigating risks effectively.
+                    </p>
+                    <p class="text-lg lg:text-xl">
+                    Eurogroup Consulting is dedicated to offering Strategic Planning
+                    services that are specifically designed for the Indonesian market.
+                    Our team of seasoned experts, with their profound knowledge of the
+                    local business landscape, is here to assist you in developing a
+                    solid strategy. This strategy is not only aimed at addressing the
+                    challenges but also at capitalizing on the vast opportunities
+                    available within the Indonesian market.
+                    </p>
+                </div>
+                <div class="py-8 lg:py-14 space-y-4">
+                    <h3 class="text-2xl lg:text-3xl heading-3">
+                    Why Strategic Planning is Essential
+                    </h3>
+                    <p>
+                    Strategic planning transcends being a mere business activity; it
+                    acts as the guiding beacon for your organization’s journey towards
+                    realizing its vision. Here’s why it is crucial:
+                    </p>
+                    <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                    <li> <strong>Alignment with National Development Goals:</strong> Indonesia’s
+                        ambitious plans for economic growth and development set a framework
+                        within which businesses operate. Strategic planning ensures your
+                        initiatives are in sync with these national goals.
+                    </li>
+                    <li> <strong>Competitive Advantage:</strong> In Indonesia’s competitive
+                        marketplace, having a clearly defined strategy serves as your edge.
+                        It enables you to highlight and utilize your strengths, overcome
+                        weaknesses, and set your business apart.
+                    </li>
+                    <li> <strong>Risk Management:</strong> Every business endeavor comes with
+                        its set of risks. Through strategic planning, potential risks are
+                        identified, and contingency plans are put in place, allowing you
+                        to proceed with confidence.
+                    </li>
+                    <li> <strong>Efficient Use of Resources:</strong> With limited resources
+                        at your disposal, strategic planning ensures that every asset is
+                        optimally allocated, enhancing efficiency and reducing wastage.
+                    </li>
+                    </ul>
+                </div>
+                <div class="pb-8 lg:pb-16 space-y-4">
+                    <h3 class="text-2xl lg:text-3xl heading-3">
+                    Our Approach to Strategic Planning
+                    </h3>
+                    <p>
+                    Our methodology for Strategic Planning in Indonesia is both
+                    structured and collaborative, involving the following steps:
+                    </p>
+                    <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                    <li> <strong>Vision and Mission Understanding:</strong> We begin by delving
+                        into your organization’s vision, mission, and objectives to fully
+                        grasp what you aim to achieve and the values that propel your business
+                        forward.
+                    </li>
+                    <li> <strong>Market Analysis:</strong> A thorough analysis of the Indonesian
+                        market is conducted, focusing on industry trends, consumer behaviors,
+                        and the competitive landscape.
+                    </li>
+                    <li> <strong>SWOT Analysis:</strong> An evaluation of your organization’s
+                        strengths, weaknesses, opportunities, and threats (SWOT) offers a
+                        comprehensive overview of where you stand.
+                    </li>
+                    <li> <strong>Goal Setting:</strong> In collaboration with you, we establish
+                        specific, measurable, and attainable goals that resonate with your
+                        vision and the realities of the Indonesian market.
+                    </li>
+                    <li> <strong>Strategy Formulation:</strong> We craft a bespoke strategic
+                        plan detailing the actions, initiatives, and investments required
+                        to reach your set goals.
+                    </li>
+                    <li> <strong>Implementation Support:</strong> Our team aids in converting
+                        the strategic plan into executable actions, advising on resource
+                        distribution and execution strategies.
+                    </li>
+                    <li> <strong>Continuous Monitoring and Adjustment:</strong> A strategic
+                        plan is an evolving document. We provide ongoing oversight, feedback
+                        mechanisms, and flexibility to ensure your strategy adapts to market
+                        changes.
+                    </li>
+                    </ul>
+                </div>
+                <div class="pb-8 lg:pb-16 space-y-4">
+                    <h3 class="text-2xl lg:text-3xl heading-3">
+                    Why Partner with Eurogroup Consulting
+                    </h3>
+                    <p>
+                    Choosing Eurogroup Consulting for Strategic Planning in Indonesia
+                    offers unparalleled advantages:
+                    </p>
+                    <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                    <li> <strong>Local Expertise:</strong> Our in-depth understanding of the
+                        Indonesian market, its regulatory framework, and cultural intricacies
+                        stand out.
+                    </li>
+                    <li> <strong>Global Insights:</strong> Our consultants draw on international
+                        best practices and global insights, ensuring your strategy is of
+                        world-class caliber.
+                    </li>
+                    <li> <strong>Collaborative Spirit:</strong> We emphasize collaboration
+                        with your team, ensuring a seamless knowledge exchange throughout
+                        the strategic planning phase.
+                    </li>
+                    <li> <strong>Actionable Strategies:</strong> Our strategic plans are pragmatic,
+                        designed for real-world application and measurable outcomes.
+                    </li>
+                    </ul>
+                </div>
+                <div class="pb-8 lg:pb-16 space-y-4">
+                    <p>
+                    Strategic Planning in Indonesia goes beyond mere goal-setting;
+                    it’s about creating a detailed roadmap for your organization’s
+                    long-term success in this vibrant market. With Eurogroup
+                    Consulting as your strategic ally, you can navigate towards
+                    aligning with national development goals, seizing opportunities,
+                    and steering your business towards growth. Reach out to us today
+                    to discover how our Strategic Planning services can transform your
+                    vision into strategic action in Indonesia. Let’s embark on this
+                    journey to strategic excellence together.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'service/_services.html.twig' %}
+{% endblock %}

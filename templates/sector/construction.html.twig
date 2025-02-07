@@ -1,0 +1,130 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}
+    {% if metaPage.metaTitle %}
+        <title>{{ metaPage.metaTitle }}</title>
+    {% else %}
+        {{ parent() }}
+    {% endif %}    
+{% endblock %}
+{% block meta_title %}
+    {#<meta name="title" content="{{ metaPage.metaTitle }}">#}
+    <meta property="og:title" content="{{ metaPage.metaTitle }}" />
+    <meta name="twitter:title" content="{{ metaPage.metaTitle }}" />
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ metaPage.metaDescription }}">
+    <meta property="og:description" content="{{ metaPage.metaDescription }}" />
+    <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
+{% endblock %}
+{% block meta_url %}
+      <meta property="og:url" content="{{ url('app_sectors_show', {'slug': slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_sectors_show', {'slug': slug}) }}" />
+{% endblock %}
+
+{% block header %}
+   <header class="relative overflow-hidden">
+      <img src="/_astro/getty-images-0kdAczYkK6Y-unsplash.BIfi_8eU_2k6L6t.webp" alt="Construction Sector Expertise in Indonesia" inferSize="true" loading="lazy" decoding="async" fetchpriority="auto" width="5616" height="3744" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+      <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
+      <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
+         <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/sectors" class="text-sm text-white hover:underline">Sectors</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Construction</span></div>
+         <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">Construction Sector Expertise in Indonesia</h1>
+      </div>
+   </header>
+{% endblock %}
+
+{% block content %}
+   <section id="content-1">
+      <div class="bg-white">
+         <div class="container pt-8 lg:pt-14">
+            <p class="text-lg lg:text-xl">
+               At Eurogroup Consulting, we acknowledge the pivotal role that the
+               construction sector plays in fueling economic advancement and
+               infrastructure progress throughout Indonesia. Our dedication to
+               excellence and our comprehensive knowledge of the sector allow us to
+               deliver bespoke consulting services, perfectly aligned with the
+               distinctive challenges and opportunities the construction industry
+               faces in this diverse country.
+            </p>
+            <div class="py-8 lg:py-14 space-y-4">
+               <h3 class="text-2xl lg:text-3xl heading-3">
+                  Our Key Services for the Construction Sector include:
+               </h3>
+               <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-8 lg:mt-16 mb-4">
+                  <li> <strong>Market Entry and Growth Strategies</strong>: Aiding
+                     firms looking to enter or expand in the Indonesian construction
+                     market, we provide thorough market entry and growth strategies.
+                     Our analysis covers market trends, regulatory environments, and
+                     competitive landscapes to develop strategies that minimize risks
+                     and capitalize on opportunities.
+                  </li>
+                  <li> <strong>Project Feasibility Analysis</strong>: Critical for
+                     starting construction projects in Indonesia, our expertise in
+                     conducting detailed feasibility studies assesses project
+                     viability, budgeting, and risk management, ensuring informed
+                     decision-making and project success.
+                  </li>
+                  <li> <strong>Comprehensive Project Management</strong>: Overseeing
+                     the entire project lifecycle, we offer specialized planning,
+                     risk management, procurement strategies, and supervision to
+                     ensure projects are completed on time and within budget.
+                  </li>
+                  <li> <strong>Cost Optimization and Efficiency</strong>: In the realm
+                     of construction, effective cost management is essential. Our
+                     services help companies streamline project costs, improve budget
+                     clarity, and identify savings opportunities throughout the
+                     construction phase.
+                  </li>
+                  <li> <strong>Eco-Friendly Construction Approaches</strong>:
+                     Championing sustainable development, we advise companies on
+                     implementing green construction methods, achieving
+                     sustainability certifications, and utilizing eco-friendly
+                     materials and technologies.
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </section>
+   <img src="/_astro/aerial-view-of-busy-industrial-construction-site-w-2024-10-18-17-47-47-utc.X8pW8JCA_Zebzmi.webp" alt="image" loading="lazy" decoding="async" fetchpriority="auto" width="3992" height="2740" class="w-full h-full object-cover max-h-[480px]">
+   <section id="content-2">
+      <div class="container py-8 lg:py-14">
+         <ul class="space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mb-4">
+            <li> <strong>Risk Management and Compliance</strong>: Providing risk
+               assessment, compliance strategy formulation, and crisis management
+               planning, we ensure projects adhere to legal requirements and proceed
+               smoothly.
+            </li>
+            <li> <strong>Incorporating Construction Technologies</strong>: We assist in
+               the adoption of modern technologies like Building Information Modeling
+               (BIM) and construction management software, enhancing project
+               efficiency, teamwork, and quality.
+            </li>
+            <li> <strong>Up-to-Date Market Insights and Trends</strong>: Our market
+               intelligence offerings keep companies informed of the latest sector
+               trends and breakthroughs, maintaining competitiveness and adjusting to
+               market dynamics.
+            </li>
+            <li> <strong>Optimizing Supply Chain and Logistics</strong>: Aiding in
+               refining supply chain operations, from sourcing to logistics and
+               inventory management, to guarantee material availability and reduce
+               project postponements.
+            </li>
+            <li> <strong>Workforce Development</strong>: Recognizing the construction
+               sector’s reliance on skilled labor, we provide strategies for
+               workforce enhancement, training initiatives, and labor planning to
+               develop a skilled, productive, and motivated team.
+            </li>
+         </ul>
+         <p>
+            Eurogroup Consulting’s commitment to Indonesia’s construction sector
+            goes beyond consultancy to establish enduring partnerships and stimulate
+            sector growth. Whether you’re an investor, contractor, developer, or
+            stakeholder in Indonesia’s construction industry, we are your dependable
+            ally for attaining success and fostering a thriving future for the
+            sector in this country.
+         </p>
+      </div>
+   </section>
+   {% include 'sector/_sectors.html.twig' %}
+{% endblock %}
