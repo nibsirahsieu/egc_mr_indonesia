@@ -32,9 +32,10 @@ final class ListController extends BaseController
         $aaData = [];
         $page = $request->query->getInt('page', 1);
         $length = $request->query->getInt('length', 10);
+        $search = $request->query->all('search');
         $pageData = PageData::create($page, $length);
 
-        $caseStudies = $this->caseStudyQueryService->all($pageData);
+        $caseStudies = $this->caseStudyQueryService->all($search['value'], $pageData);
 
         foreach ($caseStudies->data as $caseStudy) {
             /** @var CaseStudyListView $caseStudy*/

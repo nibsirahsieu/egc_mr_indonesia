@@ -7,6 +7,7 @@ use App\Common\PaginateResult;
 use App\Entity\PostStatus;
 use App\Mapper\PostMapper;
 use App\Repository\PostRepository;
+use App\SearchFilter\PostFilter;
 use App\View\FeaturedWhitepaperView;
 use App\View\PostListView;
 use App\View\PostView;
@@ -18,10 +19,10 @@ final class PostQueryService
     {
     }
 
-    public function all(?PageData $pageData = null): PaginateResult
+    public function all(PostFilter $filter, ?PageData $pageData = null): PaginateResult
     {
         $result = [];
-        $rows = $this->postRepository->listForAdmin($pageData);
+        $rows = $this->postRepository->listForAdmin($filter, $pageData);
         foreach ($rows as $row) {
             $result[] = new PostListView(
                 (int) $row['id'],

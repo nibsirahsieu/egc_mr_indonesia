@@ -17,10 +17,10 @@ final class CaseStudyQueryService
     {
     }
 
-    public function all(?PageData $pageData = null): PaginateResult
+    public function all(?string $title, ?PageData $pageData = null): PaginateResult
     {
         $result = [];
-        $rows = $this->caseStudyRepository->listForAdmin($pageData);
+        $rows = $this->caseStudyRepository->listForAdmin($title, $pageData);
         foreach ($rows as $row) {
             $result[] = new CaseStudyListView(
                 (int) $row['id'],

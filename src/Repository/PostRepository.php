@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Common\PageData;
 use App\Entity\Post;
+use App\SearchFilter\PostFilter;
 use App\View\RecentPostView;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -30,22 +31,44 @@ class PostRepository extends ServiceEntityRepository
         }
     }
 
-    public function listForAdmin(?PageData $pageData = null): \Generator
+    public function listForAdmin(PostFilter $filter, ?PageData $pageData = null): \Generator
     {
         $nbData = null;
         $conn = $this->getEntityManager()->getConnection();
 
-        $selectQuery = "SELECT p.id, t.name AS category, p.title, p.slug, p.author, p.published_at, p.status FROM post p JOIN post_type t ON p.type_id = t.id ORDER BY p.published_at DESC, p.id DESC";
+        $wheres = [];
+        $params = [];
+        if ($filter->type) {
+            $params['type'] = $filter->type;
+            $wheres[] = 'p.type_id = :type';
+        }
+        if ($filter->title) {
+            $params['title'] = '%' . $filter->title . '%';
+            $wheres[] = 'p.title ILIKE :title';
+        }
+        if ($filter->status) {
+            $params['status'] = $filter->status;
+            $wheres[] = 'p.status = :status';
+        }
+
+        $where = count($wheres) > 0 ? ' WHERE ' . implode(' AND ', $wheres) : '';
+        $selectQuery = "SELECT p.id, t.name AS category, p.title, p.slug, p.author, p.published_at, p.status FROM post p JOIN post_type t ON p.type_id = t.id {$where} ORDER BY p.published_at DESC, p.id DESC";
         if (null !== $pageData) {
-            $countQuery = "SELECT COUNT(*) FROM post";
+            $countQuery = "SELECT COUNT(*) FROM post p {$where}";
             $offset = $pageData->getOffset();
             $selectQuery .= sprintf(' LIMIT %s OFFSET %s', $pageData->length, $offset);
             $stmt = $conn->prepare($countQuery);
+            foreach ($params as $key => $value) {
+                $stmt->bindValue($key, $value);
+            }
             $result = $stmt->executeQuery();
             $nbData = $result->fetchOne();
         }
 
         $stmt = $conn->prepare($selectQuery);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value);
+        }
         $selectResult = $stmt->executeQuery();
         while (($row = $selectResult->fetchAssociative()) !== false) {
             yield $row;

@@ -6,6 +6,7 @@ use App\Common\BreadcrumbBuilder;
 use App\Common\PageData;
 use App\Controller\BaseController;
 use App\QueryService\PostQueryService;
+use App\SearchFilter\PostFilter;
 use App\View\PostListView;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,9 +32,12 @@ final class ListController extends BaseController
         $aaData = [];
         $page = $request->query->getInt('page', 1);
         $length = $request->query->getInt('length', 10);
+        $search = $request->query->all('search');
+        $postFilter = new PostFilter(null, $search['value'], null);
+
         $pageData = PageData::create($page, $length);
 
-        $insights = $this->postQueryService->all($pageData);
+        $insights = $this->postQueryService->all($postFilter, $pageData);
 
         foreach ($insights->data as $post) {
             /** @var PostListView $post*/

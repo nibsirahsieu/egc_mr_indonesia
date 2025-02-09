@@ -30,22 +30,37 @@ class CaseStudyRepository extends ServiceEntityRepository
         }
     }
 
-    public function listForAdmin(?PageData $pageData = null): \Generator
+    public function listForAdmin(?string $title, ?PageData $pageData = null): \Generator
     {
         $nbData = null;
+        $wheres = [];
+        $params = [];
+        
         $conn = $this->getEntityManager()->getConnection();
+        if ($title) {
+            $params['title'] = '%' . $title . '%';
+            $wheres[] = 'p.title ILIKE :title';
+        }
 
-        $selectQuery = "SELECT p.id, p.title, p.slug, p.client, p.published_at, p.status FROM case_study p ORDER BY p.id DESC";
+        $where = count($wheres) > 0 ? ' WHERE ' . implode(' AND ', $wheres) : '';
+
+        $selectQuery = "SELECT p.id, p.title, p.slug, p.client, p.published_at, p.status FROM case_study p {$where} ORDER BY p.id DESC";
         if (null !== $pageData) {
-            $countQuery = "SELECT COUNT(*) FROM case_study";
+            $countQuery = "SELECT COUNT(*) FROM case_study p {$where}";
             $offset = $pageData->getOffset();
             $selectQuery .= sprintf(' LIMIT %s OFFSET %s', $pageData->length, $offset);
             $stmt = $conn->prepare($countQuery);
+            foreach ($params as $key => $value) {
+                $stmt->bindValue($key, $value);
+            }
             $result = $stmt->executeQuery();
             $nbData = $result->fetchOne();
         }
 
         $stmt = $conn->prepare($selectQuery);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value);
+        }
         $selectResult = $stmt->executeQuery();
         while (($row = $selectResult->fetchAssociative()) !== false) {
             yield $row;

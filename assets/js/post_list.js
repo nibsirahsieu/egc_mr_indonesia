@@ -19,7 +19,7 @@ $(function() {
             "bottomStart": ["pageLength", "info"]
         },
         "language": {
-            "searchPlaceholder": 'Search...',
+            "searchPlaceholder": 'Search by Title...',
             "sSearch": '',
             "lengthMenu": '_MENU_',
         },
