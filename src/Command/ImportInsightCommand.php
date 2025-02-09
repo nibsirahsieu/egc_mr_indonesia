@@ -22,6 +22,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -33,8 +34,6 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 )]
 final class ImportInsightCommand extends Command
 {
-    private const BASE_URL = 'https://marketresearchindonesia.com';
-
     public function __construct(
         private readonly PostTypeRepository $postTypeRepository,
         private readonly HttpClientInterface $httpClient,
@@ -44,7 +43,9 @@ final class ImportInsightCommand extends Command
         private readonly RedirectUrlCommandService $redirectUrlCommandService,
         private readonly MessageBusInterface $messageBus,
         private readonly PostQueryService $postQueryService,
-        private readonly UploadHelper $uploadHelper
+        private readonly UploadHelper $uploadHelper,
+        #[Autowire(env: 'APP_IMPORT_URL')]
+        private string $importUrl,
     ) 
     {
         parent::__construct();
@@ -54,7 +55,7 @@ final class ImportInsightCommand extends Command
     {
         ini_set('memory_limit', '-1');
         
-        $endPoints = self::BASE_URL . '/wp-json/wp/v2/posts?per_page=100&page=1&_fields=id,title,slug,date_gmt,modified_gmt,excerpt,content,_links,_embedded&_links=wp:featuredmedia&_embed=wp:featuredmedia';
+        $endPoints = $this->importUrl . '/wp-json/wp/v2/posts?per_page=100&page=1&_fields=id,title,slug,date_gmt,modified_gmt,excerpt,content,_links,_embedded&_links=wp:featuredmedia&_embed=wp:featuredmedia';
         $response = $this->httpClient->request('GET', $endPoints);
         if (200 !== $response->getStatusCode()) {
             return Command::SUCCESS;
@@ -111,8 +112,8 @@ final class ImportInsightCommand extends Command
             ));
 
             $this->redirectUrlCommandService->create(new RedirectUrlRequest(
-                sprintf('%s/%s/', self::BASE_URL, $slug),
-                sprintf('%s/insights/%s', self::BASE_URL, $slug)
+                sprintf('%s/%s/', $this->importUrl, $slug),
+                sprintf('%s/insights/%s', $this->importUrl, $slug)
             ));
         }
         
@@ -134,8 +135,8 @@ final class ImportInsightCommand extends Command
         /** @var \DOMElement $image */
         foreach ($images as $image) {
             $src = $image->getAttribute('src');
-            if (!str_contains($src, self::BASE_URL)) {
-                $src = sprintf('%s/%s', self::BASE_URL, $src);
+            if (!str_contains($src, $this->importUrl)) {
+                $src = sprintf('%s/%s', $this->importUrl, $src);
             }
 
             $file = $this->saveExternalImage($src, null);

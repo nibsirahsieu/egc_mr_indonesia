@@ -27,14 +27,14 @@ use Symfony\Component\Messenger\MessageBusInterface;
 )]
 final class ImportCaseStudyCommand extends Command
 {
-    private const BASE_URL = 'https://marketresearchindonesia.com';
-
     public function __construct(
         private readonly UploadCommandService $uploadCommandService,
         private readonly CaseStudyCommandService $caseStudyCommandService,
         private readonly RedirectUrlCommandService $redirectUrlCommandService,
         private readonly StorageInterface $publicLocalStorage,
         private readonly MessageBusInterface $messageBus,
+        #[Autowire(env: 'APP_IMPORT_URL')]
+        private string $importUrl,
         #[Autowire('%kernel.project_dir%')]
         private string $projectDir
     )
@@ -48,8 +48,8 @@ final class ImportCaseStudyCommand extends Command
         $data = json_decode(file_get_contents($jsonFile), true);
         
         $this->redirectUrlCommandService->create(new RedirectUrlRequest(
-            sprintf('%s/our-projects/', self::BASE_URL),
-            sprintf('%s/case-studies', self::BASE_URL)
+            sprintf('%s/our-projects/', $this->importUrl),
+            sprintf('%s/case-studies', $this->importUrl)
         ));
         
         foreach ($data as $item) {
@@ -85,8 +85,8 @@ final class ImportCaseStudyCommand extends Command
             ));
 
             $this->redirectUrlCommandService->create(new RedirectUrlRequest(
-                sprintf('%s/projects/%s/', self::BASE_URL, $item['slug']),
-                sprintf('%s/case-studies/%s', self::BASE_URL, $item['slug'])
+                sprintf('%s/projects/%s/', $this->importUrl, $item['slug']),
+                sprintf('%s/case-studies/%s', $this->importUrl, $item['slug'])
             ));
         }
 

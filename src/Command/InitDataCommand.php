@@ -12,6 +12,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 #[AsCommand(
     name: 'app:data:init',
@@ -19,9 +20,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 )]
 final class InitDataCommand extends Command
 {
-    private const BASE_URL = 'https://marketresearchindonesia.com';
-
-    public function __construct(private readonly EntityManagerInterface $em) 
+    public function __construct(
+        private readonly EntityManagerInterface $em,
+        #[Autowire(env: 'APP_IMPORT_URL')]
+        private string $importUrl,
+    ) 
     {
         parent::__construct();
     }
@@ -111,14 +114,14 @@ final class InitDataCommand extends Command
             ['old' => 'transport-mobility', 'new' => 'transport-mobility']
         ];
         $sectorsRedirectUrl = new RedirectUrl();
-        $sectorsRedirectUrl->setOldUrl(sprintf('%s/our-sectors/', self::BASE_URL));
-        $sectorsRedirectUrl->setNewUrl(sprintf('%s/sectors', self::BASE_URL));
+        $sectorsRedirectUrl->setOldUrl(sprintf('%s/our-sectors/', $this->importUrl));
+        $sectorsRedirectUrl->setNewUrl(sprintf('%s/sectors', $this->importUrl));
         $this->em->persist($sectorsRedirectUrl);
 
         foreach ($sectors as $sector) {
             $redirectUrl = new RedirectUrl();
-            $redirectUrl->setOldUrl(sprintf('%s/our-sectors/%s/', self::BASE_URL, $sector['old']));
-            $redirectUrl->setNewUrl(sprintf('%s/sectors/%s', self::BASE_URL, $sector['new']));
+            $redirectUrl->setOldUrl(sprintf('%s/our-sectors/%s/', $this->importUrl, $sector['old']));
+            $redirectUrl->setNewUrl(sprintf('%s/sectors/%s', $this->importUrl, $sector['new']));
             $this->em->persist($redirectUrl);
         }
     }
@@ -136,8 +139,8 @@ final class InitDataCommand extends Command
             ['old' => 'consumer-behavior-analysis', 'new' => 'consumer-behavior-analysis', 'name' => 'Consumer Behavior Analysis']
         ];
         $servicesRedirectUrl = new RedirectUrl();
-        $servicesRedirectUrl->setOldUrl(sprintf('%s/our-services/', self::BASE_URL));
-        $servicesRedirectUrl->setNewUrl(sprintf('%s/services', self::BASE_URL));
+        $servicesRedirectUrl->setOldUrl(sprintf('%s/our-services/', $this->importUrl));
+        $servicesRedirectUrl->setNewUrl(sprintf('%s/services', $this->importUrl));
         $this->em->persist($servicesRedirectUrl);
 
         foreach ($services as $service) {
@@ -147,8 +150,8 @@ final class InitDataCommand extends Command
             $this->em->persist($ourService);
             
             $redirectUrl = new RedirectUrl();
-            $redirectUrl->setOldUrl(sprintf('%s/our-services/%s/', self::BASE_URL, $service['old']));
-            $redirectUrl->setNewUrl(sprintf('%s/services/%s', self::BASE_URL, $service['new']));
+            $redirectUrl->setOldUrl(sprintf('%s/our-services/%s/', $this->importUrl, $service['old']));
+            $redirectUrl->setNewUrl(sprintf('%s/services/%s', $this->importUrl, $service['new']));
             $this->em->persist($redirectUrl);
 
             $metaPage = new MetaPage();
