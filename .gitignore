@@ -37,3 +37,6 @@
 /config/packages/dev
 compose.dev.yaml
 /data
+###> sensiolabs/minify-bundle ###
+/var/minify/
+###< sensiolabs/minify-bundle ###

@@ -117,6 +117,18 @@
             "tests/bootstrap.php"
         ]
     },
+    "sensiolabs/minify-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.9",
+            "ref": "e2583c294ba6615da8bedff18a8dbf55e4562a6d"
+        },
+        "files": [
+            "config/packages/sensiolabs_minify.yaml"
+        ]
+    },
     "slope-it/breadcrumb-bundle": {
         "version": "2.1.1"
     },

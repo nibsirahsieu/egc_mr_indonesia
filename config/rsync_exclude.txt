@@ -28,3 +28,4 @@ nbproject
 /assets/vendor
 /docs
 /public/sitemap.xml
+/var/minify
