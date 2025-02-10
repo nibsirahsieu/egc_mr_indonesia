@@ -49,9 +49,8 @@ readonly class CaseStudyRequest
         #[Assert\NotBlank]
         public int $status,
 
-        #[Assert\Count(min: 1)]
         #[SerializedName('sector_ids')]
-        public array $sectorIds,
+        public ?array $sectorIds,
 
         #[SerializedName('image_id')]
         public string $imageId,

@@ -95,12 +95,13 @@
                         </div>
                     </fieldset>
                     <div class="form-group">
-                        <label for="sector" class="d-block required">Sector</label>
+                        <label for="sector" class="d-block">Sector</label>
                         <div class="parsley-checkbox" id="cb_sector_wrapper">
                             {% set csSectorIds = case_study.sectorIds %}
                             {% for s in sectors %}
                                 <div class="custom-control custom-checkbox">
-                                    <input {{ s.id in csSectorIds ? 'checked' : '' }} type="checkbox" class="custom-control-input" id="sector_{{ s.id }}"  name="sector_ids[]" value="{{ s.id }}" {{ loop.first ? 'required data-parsley-class-handler="#cb_sector_wrapper" data-parsley-errors-container="#cb_sector_error_container"' : ''}}>
+                                    {#<input {{ s.id in csSectorIds ? 'checked' : '' }} type="checkbox" class="custom-control-input" id="sector_{{ s.id }}"  name="sector_ids[]" value="{{ s.id }}" {{ loop.first ? 'required data-parsley-class-handler="#cb_sector_wrapper" data-parsley-errors-container="#cb_sector_error_container"' : ''}}>#}
+                                    <input {{ s.id in csSectorIds ? 'checked' : '' }} type="checkbox" class="custom-control-input" id="sector_{{ s.id }}"  name="sector_ids[]" value="{{ s.id }}">
                                     <label class="custom-control-label" for="sector_{{ s.id }}">{{ s.name }}</label>
                                 </div>
                             {% endfor %}
