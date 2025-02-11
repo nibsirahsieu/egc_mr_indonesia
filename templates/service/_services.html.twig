@@ -15,7 +15,7 @@
             {% for slug, service in services %}
                 <a href="/services/{{ slug }}" class="relative aspect-video lg:aspect-square flex items-center justify-center bg-black group overflow-hidden p-4 lg:p-6 rounded" aria-label="{{ service.name }}">
                     <h3 class="relative text-white z-10 text-center text-2xl font-heading !leading-tight duration-500"> {{ service.name }} </h3>
-                    <img src="{{ asset(service.image) }}" alt="{{ service.name }}" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="1109" class="absolute opacity-50 group-hover:opacity-75 inset-0 w-full h-full object-cover group-hover:scale-105 duration-300 ease-out"> 
+                    <img src="{{ asset(service.image) }}" alt="" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="1109" class="absolute opacity-50 group-hover:opacity-75 inset-0 w-full h-full object-cover group-hover:scale-105 duration-300 ease-out"> 
                 </a>
             {% endfor %}
         </div>

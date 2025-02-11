@@ -6,7 +6,7 @@
             {% if thumbnail.hash %}src="{{ path('app_upload_files_from_hash', {'hash': thumbnail.hash}) }}"{% endif %}
             data-src="{{ thumbnail.image | imagine_filter('thumb_sm') }}" 
             class="absolute opacity-50 group-hover:opacity-75 inset-0 w-full h-full object-cover group-hover:scale-105 duration-300 ease-out lazy" 
-            alt="{{ post.title }}"
+            alt=""
             data-sizes="auto"
         > 
     </a>

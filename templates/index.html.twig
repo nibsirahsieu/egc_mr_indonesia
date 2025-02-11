@@ -223,7 +223,7 @@
                                 data-src="{{ thumbnail.image | imagine_filter('thumb_sm') }}" 
                                 data-sizes="auto" 
                                 class="absolute opacity-50 group-hover:opacity-75 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-full h-full object-cover group-hover:scale-105 duration-300 ease-out lazy" 
-                                alt="{{ cs.title }}"
+                                alt=""
                             > 
                         </a>   
                     {% endfor %}
@@ -255,7 +255,7 @@
                             {% if thumbnail.hash %}src="{{ path('app_upload_files_from_hash', {'hash': thumbnail.hash}) }}"{% endif %}
                             data-src="{{ thumbnail.image | imagine_filter('thumb_sm') }}" 
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 duration-300 ease-out lazy"
-                            alt="{{ p.title }}"
+                            alt=""
                             data-sizes="auto"
                         > 
                         <div class="opacity-60 bg-gradient-to-bl from-[#065B9D]/50 to-[#022037] w-full h-full absolute inset-0"></div>

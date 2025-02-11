@@ -87,7 +87,7 @@
           <nav>
               <div class="block lg:hidden" x-data="{ open: false, openedWithKeyboard: false }">
                 <div class="relative" @keydown.esc.window="subMenuIsOpen = false, openedWithKeyboard = false">
-                    <button type="button" @click="subMenuIsOpen = ! subMenuIsOpen" aria-haspopup="true" @keydown.space.prevent="openedWithKeyboard = true" @keydown.enter.prevent="openedWithKeyboard = true" @keydown.down.prevent="openedWithKeyboard = true" :aria-expanded="subMenuIsOpen || openedWithKeyboard"> <i data-lucide="menu" data-size="30" class="scrollPos || subMenuIsOpen ? ' text-big-stone-950' : 'text-white'"></i> </button> 
+                    <button aria-label="Menu" type="button" @click="subMenuIsOpen = ! subMenuIsOpen" aria-haspopup="true" @keydown.space.prevent="openedWithKeyboard = true" @keydown.enter.prevent="openedWithKeyboard = true" @keydown.down.prevent="openedWithKeyboard = true" :aria-expanded="subMenuIsOpen || openedWithKeyboard"> <i data-lucide="menu" data-size="30" class="scrollPos || subMenuIsOpen ? ' text-big-stone-950' : 'text-white'"></i> </button> 
                     <div x-cloak x-show="subMenuIsOpen || openedWithKeyboard" x-transition x-trap.noscroll="subMenuIsOpen || openedWithKeyboard" x-trap="openedWithKeyboard" @click.outside="subMenuIsOpen = false, openedWithKeyboard = false" @keydown.down.prevent="$focus.wrap().next()" @keydown.up.prevent="$focus.wrap().previous()" class="absolute top-[48px] -right-4 flex w-dvw overflow-y-scroll min-h-[calc(100dvh-72px)] h-full flex-col overflow-hidden border border-big-stone-950/10 bg-white p-4 gap-3" role="menu">  
                     <a href="/" class="text-base font-normal text-black hover:text-picton-blue-500">Home</a>  
                     <a href="/about-us" class="text-base font-normal text-black hover:text-picton-blue-500">About</a>  
@@ -120,7 +120,7 @@
             <ul class="hidden lg:flex items-center justify-center w-full text-center gap-8"> 
               <li> <a href="/" class="font-medium hover:text-picton-blue-500 duration-300 ease-out h-full"> Home </a> </li>
               <li> <a href="/about-us" class="font-medium hover:text-picton-blue-500 duration-300 ease-out h-full"> About </a> </li>
-              <div x-data="{ isOpen: false, openedWithKeyboard: false, leaveTimeout: null }" @mouseleave.prevent="leaveTimeout = setTimeout(() => { isOpen = false }, 0)" @mouseenter="leaveTimeout ? clearTimeout(leaveTimeout) : true" @keydown.esc.prevent="isOpen = false, openedWithKeyboard = false" @click.outside="isOpen = false, openedWithKeyboard = false" class="relative">  
+              <li x-data="{ isOpen: false, openedWithKeyboard: false, leaveTimeout: null }" @mouseleave.prevent="leaveTimeout = setTimeout(() => { isOpen = false }, 0)" @mouseenter="leaveTimeout ? clearTimeout(leaveTimeout) : true" @keydown.esc.prevent="isOpen = false, openedWithKeyboard = false" @click.outside="isOpen = false, openedWithKeyboard = false" class="relative">  
                 <button type="button" @mouseover="isOpen = true" @keydown.space.prevent="openedWithKeyboard = true" @keydown.enter.prevent="openedWithKeyboard = true" @keydown.down.prevent="openedWithKeyboard = true" class="inline-flex gap-2 h-12 items-center font-medium hover:text-picton-blue-500 cursor-pointer" :class="isOpen || openedWithKeyboard ? 'text-picton-blue-500' : ''" :aria-expanded="isOpen || openedWithKeyboard" aria-haspopup="true"> 
                   <a href="/sectors" class="">Sectors</a> <i data-lucide="chevron-down" class="size-4"></i> 
                 </button>  
@@ -134,8 +134,8 @@
                     <a href="/sectors/consumer-goods" class="hover:text-picton-blue-500 duration-300 ease-out">Consumer Goods</a> 
                   </div> 
                 </div>
-              </div>
-              <div x-data="{ isOpen: false, openedWithKeyboard: false, leaveTimeout: null }" @mouseleave.prevent="leaveTimeout = setTimeout(() => { isOpen = false }, 0)" @mouseenter="leaveTimeout ? clearTimeout(leaveTimeout) : true" @keydown.esc.prevent="isOpen = false, openedWithKeyboard = false" @click.outside="isOpen = false, openedWithKeyboard = false" class="relative">  
+              </li>
+              <li x-data="{ isOpen: false, openedWithKeyboard: false, leaveTimeout: null }" @mouseleave.prevent="leaveTimeout = setTimeout(() => { isOpen = false }, 0)" @mouseenter="leaveTimeout ? clearTimeout(leaveTimeout) : true" @keydown.esc.prevent="isOpen = false, openedWithKeyboard = false" @click.outside="isOpen = false, openedWithKeyboard = false" class="relative">  
                 <button type="button" @mouseover="isOpen = true" @keydown.space.prevent="openedWithKeyboard = true" @keydown.enter.prevent="openedWithKeyboard = true" @keydown.down.prevent="openedWithKeyboard = true" class="inline-flex gap-2 h-12 items-center font-medium hover:text-picton-blue-500 cursor-pointer" :class="isOpen || openedWithKeyboard ? 'text-picton-blue-500' : ''" :aria-expanded="isOpen || openedWithKeyboard" aria-haspopup="true"> 
                   <a href="/services" class="">Our Services</a> <i data-lucide="chevron-down" class="size-4"></i> 
                 </button>  
@@ -151,7 +151,7 @@
                     <a href="/services/consumer-behavior-analysis" class="hover:text-picton-blue-500 duration-300 ease-out">Consumer Behavior Analysis</a> 
                   </div> 
                 </div> 
-              </div>
+              </li>
               <li> <a href="/case-studies" class="font-medium hover:text-picton-blue-500 duration-300 ease-out h-full"> Case Studies </a> </li>
               <li> <a href="/insights" class="font-medium hover:text-picton-blue-500 duration-300 ease-out h-full"> Insights </a> </li>
               <li> <a href="/contact-us" class="font-medium hover:text-picton-blue-500 duration-300 ease-out h-full"> Contact Us </a> </li> 
@@ -159,7 +159,7 @@
           </nav> 
           <div class="hidden lg:block"> 
             <a href="/" aria-label="Eurogroup Consulting"> 
-              <img src="/_astro/eurogroup-consulting-logo.BjwudJP1_Zy7RMQ.svg" alt="Eurogroup Consulting" decoding="async" fetchpriority="auto" width="49" height="48" class="w-auto h-[50px]"> 
+              <img src="/_astro/eurogroup-consulting-logo.BjwudJP1_Zy7RMQ.svg" alt="Eurogroup Consulting" loading="lazy" decoding="async" fetchpriority="auto" width="49" height="48" class="w-auto h-[50px]"> 
             </a> 
           </div>
         </div> 
