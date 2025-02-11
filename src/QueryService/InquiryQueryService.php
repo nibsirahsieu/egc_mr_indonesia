@@ -28,7 +28,8 @@ final class InquiryQueryService
                 $row['country'],
                 $row['phone_number'],
                 $row['message'],
-                $row['from_page']
+                $row['from_page'],
+                new \DateTimeImmutable($row['created_at'])
             );
         }
 

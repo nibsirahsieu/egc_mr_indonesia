@@ -22,7 +22,7 @@ class InquiryRepository extends ServiceEntityRepository
         $nbData = null;
         $conn = $this->getEntityManager()->getConnection();
 
-        $selectQuery = "SELECT i.id, i.first_name, i.last_name, i.company_name, i.job_title, i.email, i.country, i.phone_number, i.message, i.from_page FROM inquiry i ORDER BY i.id DESC";
+        $selectQuery = "SELECT i.id, i.first_name, i.last_name, i.company_name, i.job_title, i.email, i.country, i.phone_number, i.message, i.from_page, i.created_at FROM inquiry i ORDER BY i.id DESC";
         if (null !== $pageData) {
             $countQuery = "SELECT COUNT(*) FROM inquiry";
             $offset = $pageData->getOffset();

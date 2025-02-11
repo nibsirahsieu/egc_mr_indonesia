@@ -29,14 +29,15 @@ $(function() {
             "url": Router.generate('app_admin_inquries_ajax_list')
         },
         "columns": [
-            {"data": "Name", "orderable": false},
-            {"data": "Email", "orderable": false},
-            {"data": "JobTitle", "orderable": false},
-            {"data": "CompanyName", "orderable": false},
+            {"data": "NameWithTitle", "orderable": false},
+            //{"data": "Email", "orderable": false},
+            //{"data": "JobTitle", "orderable": false},
+            {"data": "CompanyWithEmail", "orderable": false},
             {"data": "Country", "orderable": false},
             {"data": "PhoneNumber", "orderable": false},
-            {"data": "FromPage", "orderable": false, 'class': 'text-pre-wrap'},
-            {"data": "Actions", "orderable": false}
+            {"data": "FromPage", "orderable": false},
+            {"data": "CreatedAt", "orderable": false},
+            {"data": "Actions", "orderable": false, 'class': 'text-end'}
         ]
     });
     dt.on('draw', function() {

@@ -41,17 +41,18 @@ final class ListController extends BaseController
             /** @var InquiryView $inquiry*/
             $aaData[] = [
                 'DT_RowId' => $inquiry->id,
-                'FirstName' => $inquiry->firstName,
-                'LastName' => $inquiry->lastName,
                 'Name' => sprintf('%s %s', $inquiry->firstName, $inquiry->lastName),
+                'NameWithTitle' => sprintf('<p class="tx-medium mg-b-0">%s %s</p><p class="tx-12 mg-b-0 tx-color-03">%s</p>', $inquiry->firstName, $inquiry->lastName, $inquiry->jobTitle),
                 'CompanyName' => $inquiry->companyName,
+                'CompanyWithEmail' => sprintf('<p class="tx-medium mg-b-0">%s</p><p class="tx-12 mg-b-0 tx-color-03">%s</p>', $inquiry->companyName, $inquiry->email),
                 'JobTitle' => $inquiry->jobTitle,
                 'Email' => $inquiry->email,
                 'Country' => $inquiry->country,
                 'PhoneNumber' => $inquiry->phoneNumber,
-                'Message' => (new UnicodeString($inquiry->message))->truncate(500, '...', false),
+                //'Message' => (new UnicodeString($inquiry->message))->truncate(500, '...', false),
                 'FromPage' => $inquiry->fromPage ?: 'N/A',
                 'FullMessage' => $inquiry->message,
+                'CreatedAt' => $inquiry->createdAt->format('M d, Y'),
                 'Actions' => '<a href="javascript:;" class="btn btn-xs btn-secondary btn-detail">Detail</a>'
             ];
         }
