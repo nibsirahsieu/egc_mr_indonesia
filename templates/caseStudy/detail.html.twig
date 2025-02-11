@@ -33,11 +33,14 @@
 {% block header %}
     <header class="relative overflow-hidden">
         <img 
-            {% if caseStudy.image.hash %}src="{{ path('app_upload_files_from_hash', {'hash': caseStudy.image.hash}) }}"{% endif %}
-            data-srcset="{{ caseStudy.image.relativePath | imagine_filter('header_xlg') }} 1520w, {{ caseStudy.image.relativePath | imagine_filter('header_lg') }} 1048w, {{ caseStudy.image.relativePath | imagine_filter('header_md') }} 840w, {{ caseStudy.image.relativePath | imagine_filter('header_sm') }} 500w" 
+            {% if caseStudy.image.hash %}
+                src="{{ path('app_upload_files_from_hash', {'hash': caseStudy.image.hash}) }}"
+            {% else %}
+                src="{{ caseStudy.image.relativePath | imagine_filter('header_md') }}"
+            {% endif %}
+            srcset="{{ caseStudy.image.relativePath | imagine_filter('header_xlg') }} 1520w, {{ caseStudy.image.relativePath | imagine_filter('header_lg') }} 1048w, {{ caseStudy.image.relativePath | imagine_filter('header_md') }} 840w, {{ caseStudy.image.relativePath | imagine_filter('header_sm') }} 500w" 
             alt="{{ caseStudy.title }}" 
-            class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none lazy"
-            data-sizes="auto"
+            class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none"
         >
         <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
         <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">

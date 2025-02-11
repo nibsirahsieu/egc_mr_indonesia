@@ -3,7 +3,7 @@
   <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="{{ app_name }}" />
   <meta name="google-site-verification" content="XqbGLM4QUC0qtNom6xXQN3IHOi2jHoHLCH9AjJW5K50" /> 
@@ -36,7 +36,7 @@
     <meta name="twitter:image" content="{{ absolute_url(asset('/_astro/market-research-indonesia-logo-black.BHyusSTD_gPJAU.svg')) }}" />
   {% endblock %}
   {% block others_meta %}{% endblock %}
-  <script async src="//www.google.com/recaptcha/api.js?render={{ google_recaptcha_site_key }}"></script>
+  {#<script async src="//www.google.com/recaptcha/api.js?render={{ google_recaptcha_site_key }}"></script>#}
   {% if app.environment == 'prod' %}
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WPZVR4FSS4"></script>
@@ -81,7 +81,7 @@
         <div class="container py-4 flex justify-between items-center gap-4">
           <div> 
               <a href="/" aria-label="Eurogroup Consulting"> 
-              <img src="{{ asset('/_astro/market-research-indonesia-logo-black.BHyusSTD_gPJAU.svg') }}" alt="Market Research" loading="lazy" decoding="async" fetchpriority="auto" width="145" height="50" class="w-auto h-10 lg:h-[50px]">
+              <img src="{{ asset('/_astro/market-research-indonesia-logo-black.BHyusSTD_gPJAU.svg') }}" alt="Market Research" decoding="async" fetchpriority="auto" width="145" height="50" class="w-auto h-10 lg:h-[50px]">
               </a> 
           </div>
           <nav>
@@ -159,7 +159,7 @@
           </nav> 
           <div class="hidden lg:block"> 
             <a href="/" aria-label="Eurogroup Consulting"> 
-              <img src="/_astro/eurogroup-consulting-logo.BjwudJP1_Zy7RMQ.svg" alt="Eurogroup Consulting" loading="lazy" decoding="async" fetchpriority="auto" width="49" height="48" class="w-auto h-[50px]"> 
+              <img src="/_astro/eurogroup-consulting-logo.BjwudJP1_Zy7RMQ.svg" alt="Eurogroup Consulting" decoding="async" fetchpriority="auto" width="49" height="48" class="w-auto h-[50px]"> 
             </a> 
           </div>
         </div> 

@@ -39,15 +39,18 @@
 {% block header %}
     <header class="relative overflow-hidden">
         <img 
-            {% if post.headerImage.hash %}src="{{ path('app_upload_files_from_hash', {'hash': post.headerImage.hash}) }}"{% endif %}
-            data-srcset="{{ post.headerImage.relativePath | imagine_filter('header_xlg') }} 1520w, {{ post.headerImage.relativePath | imagine_filter('header_lg') }} 1048w, {{ post.headerImage.relativePath | imagine_filter('header_md') }} 840w, {{ post.headerImage.relativePath | imagine_filter('header_sm') }} 500w" 
+            {% if post.headerImage.hash %}
+                src="{{ path('app_upload_files_from_hash', {'hash': post.headerImage.hash}) }}"
+            {% else %}
+                src="{{ post.headerImage.relativePath | imagine_filter('header_md') }}"
+            {% endif %}
+            srcset="{{ post.headerImage.relativePath | imagine_filter('header_xlg') }} 1520w, {{ post.headerImage.relativePath | imagine_filter('header_lg') }} 1048w, {{ post.headerImage.relativePath | imagine_filter('header_md') }} 840w, {{ post.headerImage.relativePath | imagine_filter('header_sm') }} 500w" 
             alt="{{ post.title }}" 
-            class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none lazy"
-            data-sizes="auto"
+            class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none"
         >
         <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
         <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
-            <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="{{ path('app_insights_index') }}" class="text-sm text-white hover:underline">Insights</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">{{ post.title | raw }}</span></div>
+            <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center" aria-label="Home"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="{{ path('app_insights_index') }}" class="text-sm text-white hover:underline">Insights</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">{{ post.title | raw }}</span></div>
             <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">{{ post.title | raw }}</h1>
             <p class="text-center text-base text-white mt-8">
                 {% if post.publishedAt %}
@@ -85,6 +88,7 @@
                                 data-src="{{ thumbnail.image | imagine_filter('thumb_sm') }}" 
                                 class="lazy absolute opacity-50 group-hover:opacity-75 inset-0 w-full h-full object-cover group-hover:scale-105 duration-300 ease-out" 
                                 data-sizes="auto"
+                                alt="{{ p.title }}"
                             > 
                         </a>
                     {% endfor %}
