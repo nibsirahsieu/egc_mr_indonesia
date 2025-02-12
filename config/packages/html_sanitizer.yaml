@@ -9,7 +9,8 @@ framework:
 
                 allow_elements:
                     img: ['src', 'class', 'data-file-id', 'data-file-synced', 'data-lazy-load', 'style', 'alt', 'loading', 'decoding', 'fetchpriority', 'width', 'height']
-
+                    figure: ['class']
+                    
                 # remove elements, but process the children
                 block_elements: ['section']
                 allow_relative_links: true

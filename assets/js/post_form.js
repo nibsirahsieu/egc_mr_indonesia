@@ -91,7 +91,8 @@ $(function() {
                       'src': response.relative_url,
                       'data-file-id': response.id,
                       'data-file-synced': false,
-                      'data-lazy-load': true
+                      'data-lazy-load': true,
+                      'style': 'width: 100%'
                     });
                     $('#content').summernote("insertNode", image[0]);
                     $('#content_spinner').addClass('d-none');
