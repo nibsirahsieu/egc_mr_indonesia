@@ -33,6 +33,7 @@ final class InitDataCommand extends Command
     {
         $this->initMetaPages();
         $this->initPostTypes();
+        $this->initUrlRedirection();
         $this->initSectors();
         $this->initServices();
 
@@ -57,8 +58,11 @@ final class InitDataCommand extends Command
             $metaPage->setName($page['name']);
             $metaPage->setSlug($page['slug']);
             $this->em->persist($metaPage);
-        }
+        }        
+    }
 
+    private function initUrlRedirection(): void
+    {
         //homepage
         $homeRedirectUrl = new RedirectUrl();
         $homeRedirectUrl->setOldUrl(sprintf('%s/', $this->importUrl));
