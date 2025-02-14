@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin
 Disallow: /admin/*
  
-Sitemap: https://marketresearchvietnam.com/sitemap.xml
+Sitemap: https://marketresearchindonesia.com/sitemap.xml
