@@ -47,11 +47,6 @@ final class ImportCaseStudyCommand extends Command
         $jsonFile = "{$this->projectDir}/case_studies.json";
         $data = json_decode(file_get_contents($jsonFile), true);
         
-        $this->redirectUrlCommandService->create(new RedirectUrlRequest(
-            sprintf('%s/our-projects/', $this->importUrl),
-            sprintf('%s/case-studies', $this->importUrl)
-        ));
-        
         foreach ($data as $item) {
             $originalName = basename($item['image']);
             $file = $this->saveExternalImage($item['image'], null);

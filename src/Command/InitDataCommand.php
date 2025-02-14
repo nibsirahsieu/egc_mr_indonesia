@@ -58,6 +58,36 @@ final class InitDataCommand extends Command
             $metaPage->setSlug($page['slug']);
             $this->em->persist($metaPage);
         }
+
+        //homepage
+        $homeRedirectUrl = new RedirectUrl();
+        $homeRedirectUrl->setOldUrl(sprintf('%s/', $this->importUrl));
+        $homeRedirectUrl->setNewUrl(sprintf('%s', $this->importUrl));
+        $this->em->persist($homeRedirectUrl);
+
+        //about
+        $aboutRedirectUrl = new RedirectUrl();
+        $aboutRedirectUrl->setOldUrl(sprintf('%s/about-us/', $this->importUrl));
+        $aboutRedirectUrl->setNewUrl(sprintf('%s/about-us', $this->importUrl));
+        $this->em->persist($aboutRedirectUrl);
+
+        //case studies
+        $caseStudiesRedirectUrl = new RedirectUrl();
+        $caseStudiesRedirectUrl->setOldUrl(sprintf('%s/our-projects/', $this->importUrl));
+        $caseStudiesRedirectUrl->setNewUrl(sprintf('%s/case-studies', $this->importUrl));
+        $this->em->persist($caseStudiesRedirectUrl);
+
+        //insights
+        $insightsRedirectUrl = new RedirectUrl();
+        $insightsRedirectUrl->setOldUrl(sprintf('%s/insights/', $this->importUrl));
+        $insightsRedirectUrl->setNewUrl(sprintf('%s/insights', $this->importUrl));
+        $this->em->persist($insightsRedirectUrl);
+
+        //contact us
+        $insightsRedirectUrl = new RedirectUrl();
+        $insightsRedirectUrl->setOldUrl(sprintf('%s/contact-us/', $this->importUrl));
+        $insightsRedirectUrl->setNewUrl(sprintf('%s/contact-us', $this->importUrl));
+        $this->em->persist($insightsRedirectUrl);
     }
 
     private function initPostTypes(): void
