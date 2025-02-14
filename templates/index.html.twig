@@ -1,5 +1,12 @@
 {% extends 'front.html.twig' %}
 
+{% block title %}
+    {% if metaPage.metaTitle %}
+        <title>{{ metaPage.metaTitle }}</title>
+    {% else %}
+        {{ parent() }}
+    {% endif %}    
+{% endblock %}
 {% block meta_title %}
     <meta name="title" content="{{ metaPage.metaTitle }}">
     <meta property="og:title" content="{{ metaPage.metaTitle }}" />

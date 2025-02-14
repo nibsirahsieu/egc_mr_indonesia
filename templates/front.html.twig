@@ -10,8 +10,8 @@
   {% if app.environment == 'dev' %}
     <meta name="robots" content="noindex">
   {% else %}
-    <meta name="robots" content="noindex"> {# this is for testing purpose. Once its fixed, replace with the meta below #}
-    {#<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />#}
+    {# <meta name="robots" content="noindex"> this is for testing purpose. Once its fixed, replace with the meta below #}
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
   {% endif %}
   {% block title %}<title>{{ app_name }}</title>{% endblock %}
   {% block meta_title %}
