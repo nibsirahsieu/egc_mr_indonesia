@@ -44,7 +44,7 @@ final class SectorController extends AbstractController
         $sectors['healthcare'] = ['name' => 'Healthcare', 'image' => '/_astro/2-sector-close-up-with-stethoscope-in-the-background-you-se-2023-11-27-05-25-55-utc.BqleVDf7_ZdRKru.webp'];
         $sectors['energy'] = ['name' => 'Energy', 'image' => '/_astro/3-sector-solar-energy-panels-wind-power-and-electricity-py-2023-11-27-05-22-47-utc.wVTUL3Wh_Z2geDtD.webp'];
         $sectors['logistics'] = ['name' => 'Supply Chain & Logistics', 'image' => '/_astro/4-sector-containers-in-international-shipping-dock-waiting-2023-11-27-05-15-39-utc.DJWLiroV_ZOEbvQ.webp'];
-        $sectors['transport-mobility'] = ['name' => 'Transport & Mobility', 'image' => '/_astro/5-sector-truck-on-a-highway-through-the-grasslands-area-of-2023-11-27-05-02-05-utc.Dz_9NNmF_Z27TpEJ.webp'];
+        $sectors['transport-mobility'] = ['name' => 'Transport & Mobility', 'image' => '/_astro/5-sector-mobility.ZRj8Kl2b_ZIr2rv.webp'];
         $sectors['consumer-goods'] = ['name' => 'Consumer Goods', 'image' => '/_astro/6-sector-shopping-cart-full-of-food-products-over-supermark-2023-11-27-05-25-42-utc.BmQ7mxF-_ZgQsn6.webp'];
 
         return $sectors;
