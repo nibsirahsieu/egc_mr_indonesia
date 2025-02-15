@@ -43,7 +43,7 @@ $(function() {
             }
         },
         "columns": [
-            {"data": "OldUrl", "orderable": false},
+            {"data": "FormattedOldUrl", "orderable": false},
             {"data": "NewUrl", "orderable": false},
             {"data": "Actions", "orderable": false, 'className': 'text-end'}
         ]

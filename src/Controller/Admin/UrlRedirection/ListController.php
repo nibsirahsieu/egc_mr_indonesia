@@ -43,7 +43,8 @@ final class ListController extends BaseController
             /** @var RedirectUrlView $redirectUrl*/
             $aaData[] = [
                 'DT_RowId' => $redirectUrl->id,
-                'OldUrl' => sprintf('<a href="%s" target="_blank">%s</a>', $redirectUrl->oldUrl, $redirectUrl->oldUrl),
+                'FormattedOldUrl' => sprintf('<a href="%s" target="_blank">%s</a>', $redirectUrl->oldUrl, $redirectUrl->oldUrl),
+                'OldUrl' => $redirectUrl->oldUrl,
                 'NewUrl' => $redirectUrl->newUrl,
                 'Actions' => $this->buildActions($redirectUrl)
             ];
