@@ -5,8 +5,8 @@ namespace App\Controller;
 use App\CommandService\DownloadWpCommandService;
 use App\Common\JwtHelper;
 use App\Common\StreamDownload;
-use App\Entity\DownloadWhitepaperRequest;
 use App\QueryService\PostQueryService;
+use App\QueryService\WpRequestQueryService;
 use App\Request\DownloadWpRequest;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,6 +19,7 @@ final class WpRequestController extends AbstractController
 {
     public function __construct(
         private EntityManagerInterface $em,
+        private WpRequestQueryService $wpRequestQueryService,
         private DownloadWpCommandService $commandService,
         private PostQueryService $postQueryService, 
         private JwtHelper $jwtHelper,
@@ -43,12 +44,12 @@ final class WpRequestController extends AbstractController
         $downloadRequest = null;
 
         try {
-            $payload = (array) $this->jwtHelper->parse($token);
-            $email = $payload['email'] ?? null;
-            $wpId = $payload['wp_id'] ?? null;
+            $payload = $this->jwtHelper->parse($token);
+            $email = $payload->claims()->get('email');
+            $wpId = $payload->claims()->get('wp_id');
 
             if ($email && $wpId) {
-                $downloadRequest = $this->em->getRepository(DownloadWhitepaperRequest::class)->findByEmailAndWhitepaperId($email, (int) $wpId);
+                $downloadRequest = $this->wpRequestQueryService->findByEmailAndWhitepaperId($email, (int) $wpId);
             }
         } catch (\Exception $e) {}
         

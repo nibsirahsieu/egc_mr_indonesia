@@ -2,8 +2,16 @@
 
 namespace App\Common;
 
-use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
+use Lcobucci\JWT\Encoding\CannotDecodeContent;
+use Lcobucci\JWT\Encoding\ChainedFormatter;
+use Lcobucci\JWT\Encoding\JoseEncoder;
+use Lcobucci\JWT\Signer\Hmac\Sha256;
+use Lcobucci\JWT\Signer\Key\InMemory;
+use Lcobucci\JWT\Token\Builder;
+use Lcobucci\JWT\Token\InvalidTokenStructure;
+use Lcobucci\JWT\Token\Parser;
+use Lcobucci\JWT\Token\UnsupportedHeaderFound;
+use Lcobucci\JWT\UnencryptedToken;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 final class JwtHelper
@@ -26,30 +34,34 @@ final class JwtHelper
      */
     public function generate(array $claims, string $expiresAt = '+1 month'): string
     {
-        $iat = new \DateTimeImmutable(); 
-        $exp = $iat->modify($expiresAt);
+        $tokenBuilder = (new Builder(new JoseEncoder(), ChainedFormatter::default()));
+        $algorithm = new Sha256();
+        $signingKey = InMemory::plainText($this->secret);
 
-        $payload = [
-            'iss' => $this->baseUrl,
-            'iat' => $iat->getTimestamp(),
-            'exp' => $exp->getTimestamp()
-        ];
+        $now  = new \DateTimeImmutable();
+        $tokenBuilder
+            // Configures the issuer (iss claim)
+            ->issuedBy($this->baseUrl)
+            ->issuedAt($now)
+            ->expiresAt($now->modify($expiresAt));
+
         foreach ($claims as $key => $claim) {
-            $payload[$key] = $claim;
+            $tokenBuilder = $tokenBuilder->withClaim($key, $claim);
         }
 
-        return JWT::encode($payload, $this->secret, 'HS256');
+        $token = $tokenBuilder->getToken($algorithm, $signingKey);
+
+        return $token->toString();
     }
 
-    /**
-     * parse JWT
-     *
-     * @param string $jwt
-     * @return stdClass The JWT's payload as a PHP object
-     */
-    public function parse(string $jwt): object
+    public function parse(string $jwt): UnencryptedToken
     {
-        //JWT::$leeway = 60;
-        return JWT::decode($jwt, new Key($this->secret, 'HS256'));
+        $parser = new Parser(new JoseEncoder());
+        
+        try {
+            return $parser->parse($jwt);
+        } catch (CannotDecodeContent | InvalidTokenStructure | UnsupportedHeaderFound $e) {
+            throw $e;
+        }
     }
 }

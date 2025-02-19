@@ -49,7 +49,9 @@ final class LazifyImageContent
             //add class lazy to image
             $image->setAttribute('class', 'lazy img-fluid');
             $image->setAttribute('data-sizes', 'auto');
-
+            $image->setAttribute('width', '1024');
+            $image->setAttribute('height', '575');
+            
             foreach ($this->getFilters() as $filter => $width) {
                 $srcSets[] = sprintf('%s %s', $this->cacheManager->getBrowserPath($src, $filter), $width);
             }

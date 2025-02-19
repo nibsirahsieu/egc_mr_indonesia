@@ -4,6 +4,7 @@ namespace App\QueryService;
 
 use App\Common\PageData;
 use App\Common\PaginateResult;
+use App\Entity\DownloadWhitepaperRequest;
 use App\Repository\DownloadWhitepaperRequestRepository;
 use App\View\WpRequestView;
 
@@ -36,5 +37,10 @@ final class WpRequestQueryService
         $nbData = $rows->getReturn();
 
         return PaginateResult::create($result, $nbData ? (int) $nbData : null);
+    }
+
+    public function findByEmailAndWhitepaperId(string $email, int $whitepaperId): ?DownloadWhitepaperRequest
+    {
+        return $this->reqpository->findByEmailAndWhitepaperId($email, $whitepaperId);
     }
 }
