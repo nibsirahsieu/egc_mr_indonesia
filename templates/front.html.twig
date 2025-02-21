@@ -1,3 +1,7 @@
+{% set allSectors = sectors() %}
+{% set allServices = services() %}
+{% set headerFooterScript = header_footer_scripts() %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="{{ app_name }}" />
-  <meta name="google-site-verification" content="CekjdhRONtzhJyea5Pf7KwEnm12op9hoaWS4Xv4T9Ks" /> 
+  {#<meta name="google-site-verification" content="CekjdhRONtzhJyea5Pf7KwEnm12op9hoaWS4Xv4T9Ks" /> #}
   {% if app.environment == 'dev' %}
     <meta name="robots" content="noindex">
   {% else %}
@@ -36,37 +40,14 @@
     <meta name="twitter:image" content="{{ absolute_url(asset('/_astro/market-research-indonesia-logo-black.BHyusSTD_gPJAU.svg')) }}" />
   {% endblock %}
   {% block others_meta %}{% endblock %}
-  {#<script async src="//www.google.com/recaptcha/api.js?render={{ google_recaptcha_site_key }}"></script>#}
   {% if app.environment == 'prod' %}
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTSS00LLMV"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-HTSS00LLMV');
-    </script>
+    {{ headerFooterScript ? headerFooterScript.headerScript | raw : '' }}
   {% endif %}
-	{% block javascripts %} 
+  {% block javascripts %} 
     {% block importmap %}{{ importmap('main') }}{% endblock %} 
   {% endblock %} 
 	<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}</style>
-	<script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Market Research Indonesia Consulting Firm",
-        "url": "https://marketresearchindonesia.com/",
-        "logo": "{{ absolute_url(asset('/_astro/market-research-indonesia-logo-black.BHyusSTD_gPJAU.svg')) }}",
-        "contactPoint": {
-            "@type": "PostalAddress",
-            "telephone": "+62895616833031",
-            "contactType": "Technical Support"
-        }
-    }
-  </script>
-  {% block inline_stylesheets %}{% endblock %}
+	{% block inline_stylesheets %}{% endblock %}
   </head>
   <body>
 	<header x-data="{
@@ -94,23 +75,15 @@
                     <a href="/about-us" class="text-base font-normal text-black hover:text-picton-blue-500">About</a>  
                     <a href="/sectors" class="text-base font-normal text-black hover:text-picton-blue-500">Sectors</a> 
                     <div class="ml-3 flex flex-col gap-2"> 
-                      <a href="/sectors/construction" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Construction </a>
-                      <a href="/sectors/healthcare" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Healthcare </a>
-                      <a href="/sectors/energy" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Energy </a>
-                      <a href="/sectors/logistics" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Supply Chain &amp; Logistics </a>
-                      <a href="/sectors/transport-mobility" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Transport &amp; Mobility </a>
-                      <a href="/sectors/consumer-goods" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Consumer Goods </a> 
+                      {% for s in allSectors %}
+                        <a href="{{ path('app_sectors_show', {'slug': s.slug}) }}" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">{{ s.name }} </a>  
+                      {% endfor %}
                     </div>
                     <a href="/services" class="text-base font-normal text-black hover:text-picton-blue-500">Our Services</a> 
                     <div class="ml-3 flex flex-col gap-2"> 
-                      <a href="/services/market-research" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Market Research </a>
-                      <a href="/services/strategic-planning" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Strategic Planning </a>
-                      <a href="/services/market-entry-strategy" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Market Entry Strategy </a>
-                      <a href="/services/mergers-and-acquisitions" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Mergers and Acquisitions </a>
-                      <a href="/services/value-chain-analysis" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Value Chain Analysis </a>
-                      <a href="/services/competitive-benchmarking" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Competitive Benchmarking </a>
-                      <a href="/services/distribution-strategic-partnership" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Distribution &amp; Strategic Partnership </a>
-                      <a href="/services/consumer-behavior-analysis" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">Consumer Behavior Analysis </a> 
+                      {% for s in allServices %}
+                        <a href="{{ path('app_services_show', {'slug': s.slug}) }}" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">{{ s.name }} </a>  
+                      {% endfor %}
                     </div>
                     <a href="/case-studies" class="text-base font-normal text-black hover:text-picton-blue-500">Case Studies</a> 
                     <a href="/insights" class="text-base font-normal text-black hover:text-picton-blue-500">Insights</a> 
@@ -127,12 +100,9 @@
                 </button>  
                 <div x-cloak x-show="isOpen || openedWithKeyboard" x-transition x-trap="openedWithKeyboard" @click.outside="isOpen = false, openedWithKeyboard = false" @keydown.down.prevent="$focus.wrap().next()" @keydown.up.prevent="$focus.wrap().previous()" class="absolute top-7 left-0 pt-[36px]" role="menu"> 
                   <div class="flex items-start text-left gap-2 w-full min-w-80 flex-col overflow-hidden border border-big-stone-950/10 bg-white p-4"> 
-                    <a href="/sectors/construction" class="hover:text-picton-blue-500 duration-300 ease-out">Construction</a>
-                    <a href="/sectors/healthcare" class="hover:text-picton-blue-500 duration-300 ease-out">Healthcare</a>
-                    <a href="/sectors/energy" class="hover:text-picton-blue-500 duration-300 ease-out">Energy</a>
-                    <a href="/sectors/logistics" class="hover:text-picton-blue-500 duration-300 ease-out">Supply Chain &amp; Logistics</a>
-                    <a href="/sectors/transport-mobility" class="hover:text-picton-blue-500 duration-300 ease-out">Transport &amp; Mobility</a>
-                    <a href="/sectors/consumer-goods" class="hover:text-picton-blue-500 duration-300 ease-out">Consumer Goods</a> 
+                    {% for s in allSectors %}
+                      <a href="{{ path('app_sectors_show', {'slug': s.slug}) }}" class="hover:text-picton-blue-500 duration-300 ease-out">{{ s.name }}</a>
+                    {% endfor %}
                   </div> 
                 </div>
               </li>
@@ -142,14 +112,9 @@
                 </button>  
                 <div x-cloak x-show="isOpen || openedWithKeyboard" x-transition x-trap="openedWithKeyboard" @click.outside="isOpen = false, openedWithKeyboard = false" @keydown.down.prevent="$focus.wrap().next()" @keydown.up.prevent="$focus.wrap().previous()" class="absolute top-7 left-0 pt-[36px]" role="menu"> 
                   <div class="flex items-start text-left gap-2 w-full min-w-80 flex-col overflow-hidden border border-big-stone-950/10 bg-white p-4"> 
-                    <a href="/services/market-research" class="hover:text-picton-blue-500 duration-300 ease-out">Market Research</a>
-                    <a href="/services/strategic-planning" class="hover:text-picton-blue-500 duration-300 ease-out">Strategic Planning</a>
-                    <a href="/services/market-entry-strategy" class="hover:text-picton-blue-500 duration-300 ease-out">Market Entry Strategy</a>
-                    <a href="/services/mergers-and-acquisitions" class="hover:text-picton-blue-500 duration-300 ease-out">Mergers and Acquisitions</a>
-                    <a href="/services/value-chain-analysis" class="hover:text-picton-blue-500 duration-300 ease-out">Value Chain Analysis</a>
-                    <a href="/services/competitive-benchmarking" class="hover:text-picton-blue-500 duration-300 ease-out">Competitive Benchmarking</a>
-                    <a href="/services/distribution-strategic-partnership" class="hover:text-picton-blue-500 duration-300 ease-out">Distribution &amp; Strategic Partnership</a>
-                    <a href="/services/consumer-behavior-analysis" class="hover:text-picton-blue-500 duration-300 ease-out">Consumer Behavior Analysis</a> 
+                    {% for s in allServices %}
+                      <a href="{{ path('app_services_show', {'slug': s.slug}) }}" class="hover:text-picton-blue-500 duration-300 ease-out">{{ s.name }}</a>
+                    {% endfor %}
                   </div> 
                 </div> 
               </li>
@@ -291,24 +256,9 @@
                   <a href="/sectors" class="">Sectors</a>
                 </h2>
                 <ul class="text-white text-sm lg:text-xs lg:columns-2 space-y-3">
-                  <li>
-                    <a href="/sectors/construction" class="hover:underline"> Construction </a>
-                  </li>
-                  <li>
-                    <a href="/sectors/healthcare" class="hover:underline"> Healthcare </a>
-                  </li>
-                  <li>
-                    <a href="/sectors/energy" class="hover:underline"> Energy </a>
-                  </li>
-                  <li>
-                    <a href="/sectors/logistics" class="hover:underline"> Supply Chain &amp; Logistics </a>
-                  </li>
-                  <li>
-                    <a href="/sectors/transport-mobility" class="hover:underline"> Transport &amp; Mobility </a>
-                  </li>
-                  <li>
-                    <a href="/sectors/consumer-goods" class="hover:underline"> Consumer Goods </a>
-                  </li>
+                  {% for s in allSectors %}
+                    <li><a href="{{ path('app_sectors_show', {'slug': s.slug}) }}" class="hover:underline"> {{ s.name }} </a></li>  
+                  {% endfor %}
                 </ul>
               </div>
               <div class="flex flex-col gap-1">
@@ -316,30 +266,9 @@
                   <a href="/services" class="">Services</a>
                 </h2>
                 <ul class="text-white text-sm lg:text-xs lg:columns-2 space-y-3">
-                  <li>
-                    <a href="/services/market-research" class="hover:underline"> Market Research </a>
-                  </li>
-                  <li>
-                    <a href="/services/strategic-planning" class="hover:underline"> Strategic Planning </a>
-                  </li>
-                  <li>
-                    <a href="/services/market-entry-strategy" class="hover:underline"> Market Entry Strategy </a>
-                  </li>
-                  <li>
-                    <a href="/services/mergers-and-acquisitions" class="hover:underline"> Mergers and Acquisitions </a>
-                  </li>
-                  <li>
-                    <a href="/services/value-chain-analysis" class="hover:underline"> Value Chain Analysis </a>
-                  </li>
-                  <li>
-                    <a href="/services/competitive-benchmarking" class="hover:underline"> Competitive Benchmarking </a>
-                  </li>
-                  <li>
-                    <a href="/services/distribution-strategic-partnership" class="hover:underline"> Distribution &amp; Strategic Partnership </a>
-                  </li>
-                  <li>
-                    <a href="/services/consumer-behavior-analysis" class="hover:underline"> Consumer Behavior Analysis </a>
-                  </li>
+                  {% for s in allServices %}
+                    <li><a href="{{ path('app_services_show', {'slug': s.slug}) }}" class="hover:underline"> {{ s.name }} </a></li>  
+                  {% endfor %}
                 </ul>
               </div>
             </div>
@@ -354,5 +283,8 @@
         </div>
       </div>
     </footer>
+    {% if app.environment == 'prod' %}
+      {{ headerFooterScript ? headerFooterScript.footerScript | raw : '' }}
+    {% endif %}
   </body>
 </html>

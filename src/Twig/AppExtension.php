@@ -37,6 +37,9 @@ final class AppExtension extends AbstractExtension implements EventSubscriberInt
     {
         return [
             new TwigFunction('uploaded_asset', [$this, 'uploadedAsset']),
+            new TwigFunction('header_footer_scripts', [AppRuntimeExtension::class, 'getHeaderFooterScript']),
+            new TwigFunction('sectors', [AppRuntimeExtension::class, 'getSectors']),
+            new TwigFunction('services', [AppRuntimeExtension::class, 'getServices']),
         ];
     }
 

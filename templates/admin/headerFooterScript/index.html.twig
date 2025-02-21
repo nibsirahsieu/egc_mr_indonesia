@@ -1,0 +1,33 @@
+{% extends 'admin.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        .code-wrapper{border:1px solid red;position:relative;height:300px;width:100%;margin:15px auto}
+        .code-wrapper::before {content:"";text-transform: uppercase;left:0px;position:absolute;top:-18px;font-size:16px;color:red; }
+    </style>
+{% endblock %}
+{% block javascripts %}
+    {% block importmap %}{{ importmap(['admin', 'header_footer_script']) }}{% endblock %}
+{% endblock %}
+
+{% block pagetitle %}
+    Header & Footer Script
+{% endblock %}
+
+{% block body %}
+    <form method="POST" action="{{ path('app_admin_header_footer_scripts_update') }}" id="formHeaderFooterScript">
+        <div class="form-group">
+            <label for="header_script" class="d-block">Header</label>
+            <div class="code-wrapper">
+                <textarea class="form-control rich-text banana-cake" rows="2" id="header_script" name="header_script">{{ headerFooterScript ? headerFooterScript.headerScript : '' }}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="footer_script" class="d-block">Footer</label>
+            <div class="code-wrapper">
+                <textarea class="form-control rich-text banana-cake" rows="2" id="footer_script" name="footer_script">{{ headerFooterScript ? headerFooterScript.footerScript : '' }}</textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="btn_submit">Submit</button>
+    </form>
+{% endblock %}

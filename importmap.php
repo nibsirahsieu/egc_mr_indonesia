@@ -68,6 +68,10 @@ return [
         'path' => './assets/js/meta_section_list.js',
         'entrypoint' => true,
     ],
+    'header_footer_script' => [
+        'path' => './assets/js/header_footer_script.js',
+        'entrypoint' => true,
+    ],
     'jquery' => [
         'version' => '3.7.1',
     ],
@@ -149,5 +153,8 @@ return [
     ],
     'deepmerge' => [
         'version' => '4.3.1',
+    ],
+    '@erwinstone/bs-toast' => [
+        'version' => '1.0.1',
     ],
 ];
