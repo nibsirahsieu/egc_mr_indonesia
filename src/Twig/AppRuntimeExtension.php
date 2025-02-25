@@ -5,12 +5,14 @@ namespace App\Twig;
 use App\Entity\HeaderFooterScript;
 use App\Repository\HeaderFooterScriptRepository;
 use App\Repository\OurServiceRepository;
+use App\Repository\PostRepository;
 use App\Repository\SectorRepository;
 use Twig\Extension\RuntimeExtensionInterface;
 
 final class AppRuntimeExtension implements RuntimeExtensionInterface
 {
     public function __construct(
+        private readonly PostRepository $postRepository,
         private readonly SectorRepository $sectorRepository,
         private readonly HeaderFooterScriptRepository $repository,
         private readonly OurServiceRepository $ourServiceRepository,
@@ -31,5 +33,10 @@ final class AppRuntimeExtension implements RuntimeExtensionInterface
     public function getServices(): iterable
     {
         return $this->ourServiceRepository->orderedById();
+    }
+
+    public function getPostTypes(): iterable
+    {
+        return $this->postRepository->postTypes();
     }
 }

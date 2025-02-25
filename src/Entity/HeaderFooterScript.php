@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\HeaderFooterScriptRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: HeaderFooterScriptRepository::class)]
@@ -13,10 +14,10 @@ class HeaderFooterScript
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 1000, nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $headerScript = null;
 
-    #[ORM\Column(length: 1000, nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $footerScript = null;
 
     public function getId(): ?int

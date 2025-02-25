@@ -32,8 +32,8 @@ final class InitDataCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->initMetaPages();
-        $this->initPostTypes();
         $this->initUrlRedirection();
+        $this->initPostTypes();
         $this->initSectors();
         $this->initServices();
 
@@ -58,7 +58,7 @@ final class InitDataCommand extends Command
             $metaPage->setName($page['name']);
             $metaPage->setSlug($page['slug']);
             $this->em->persist($metaPage);
-        }        
+        }
     }
 
     private function initUrlRedirection(): void
@@ -96,18 +96,25 @@ final class InitDataCommand extends Command
 
     private function initPostTypes(): void
     {
-        $articleType = $this->em->getRepository(PostType::class)->findOneBy(['name' => 'Article']);
-        if (!$articleType) {
-            $articleType = new PostType();
-            $articleType->setName('Article');
-            $this->em->persist($articleType);
-        }
+        $postTypes = [
+            ['name' => 'Article', 'slug' => 'articles'],
+            ['name' => 'Whitepaper', 'slug' => 'whitepapers'],
+            ['name' => 'Infographic', 'slug' => 'infographics']
+        ];
+        foreach ($postTypes as $type) {
+            $postType = $this->em->getRepository(PostType::class)->findOneBy(['slug' => $type['slug']]);
+            if (!$postType) {
+                $postType = new PostType();
+            }
 
-        $wpType = $this->em->getRepository(PostType::class)->findOneBy(['name' => 'Whitepaper']);
-        if (!$wpType) {
-            $wpType = new PostType();
-            $wpType->setName('Whitepaper');
-            $this->em->persist($wpType);
+            $postType->setName($type['name']);
+            $postType->setSlug($type['slug']);
+            $this->em->persist($postType);
+
+            $metaPage = new MetaPage();
+            $metaPage->setName('Insight --> ' . $postType->getName());
+            $metaPage->setSlug($postType->getSlug());
+            $this->em->persist($metaPage);
         }
     }
 

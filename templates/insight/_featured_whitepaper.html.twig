@@ -1,4 +1,4 @@
-{% if featuredTitle %}
+{% if whitepaper %}
     <section id="sea-whitepaper-cta">
         <div class="container py-8 lg:py-14">
             <div class="relative mt-[50%] lg:mt-0 lg:ml-32 rounded-md">
@@ -27,7 +27,7 @@
                         <p class="text-white text-lg lg:text-xl mt-4">
                             {{ featuredDescription }}
                         </p>
-                        <div class="mt-8"> <a href="{{ path('app_whitepapers_show', {'slug': whitepaper.slug}) }}" class="uppercase tracking-wider font-bold inline-flex items-center gap-3 group duration-300 ease-out text-big-stone-950 bg-white hover:bg-big-stone-950 hover:text-white text-sm lg:text-base px-4 py-3 rounded"> <i data-lucide="download" class="size-4 group-hover:animate-pulse duration-200 ease-out"></i>
+                        <div class="mt-8"> <a href="{{ path('app_insights_show', {'category': 'whitepapers', 'slug': whitepaper.slug}) }}" class="uppercase tracking-wider font-bold inline-flex items-center gap-3 group duration-300 ease-out text-big-stone-950 bg-white hover:bg-big-stone-950 hover:text-white text-sm lg:text-base px-4 py-3 rounded"> <i data-lucide="download" class="size-4 group-hover:animate-pulse duration-200 ease-out"></i>
                             Download Now
                             </a> 
                         </div>

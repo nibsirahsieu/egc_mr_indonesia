@@ -45,7 +45,7 @@ final class ListController extends BaseController
                 'DT_RowId' => $post->getId(),
                 'Title' => $post->getTitle(),
                 'Slug' => $post->getSlug(),
-                'Category' => $post->getCategory(),
+                'Category' => $post->getCategory()->name,
                 'Author' => $post->getAuthor(),
                 'Status' => $post->isDraft() ? '<span class="badge text-bg-secondary">Draft</span>' : '<span class="badge text-bg-success">Published</span>',
                 'PublishedAt' => $post->getPublishedAt() ? $post->getPublishedAt()->format('M d, Y') : null,
@@ -64,6 +64,7 @@ final class ListController extends BaseController
     {
         $actions = sprintf('<a href="%s" class="btn btn-primary btn-xs">Edit</a>', $this->generateUrl('app_admin_insights_edit', ['id' => $post->getId()]));
         $actions .= sprintf('<a href="%s" class="btn btn-danger btn-xs btn-delete">Delete</a>', $this->generateUrl('app_admin_insights_delete', ['id' => $post->getId()]));
+        $actions .= sprintf('<a target="_blank" href="%s" class="btn btn-secondary btn-xs btn-preview">Preview</a>', $this->generateUrl('app_insights_show', ['category' => $post->getCategory()->id, 'slug' => $post->getSlug()]));
         if ($post->isDraft()) {
             if ($post->getPublishedAt()) {
                 $actions .= sprintf('<a href="%s" class="btn btn-warning btn-xs btn-publish-unpublish">Publish</a>', $this->generateUrl('app_admin_insights_republish', ['id' => $post->getId()]));

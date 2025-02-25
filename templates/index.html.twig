@@ -203,7 +203,7 @@
         </div>
     </section>
 
-    {{ render(controller('App\\Controller\\Whitepaper\\FeaturedController::featured')) }}
+    {{ render(controller('App\\Controller\\Insight\\FeaturedWhitepaperController::featured')) }}
 
     {% include 'service/_services.html.twig' %}
     {% include 'sector/_sectors.html.twig' %}
@@ -256,7 +256,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-8">
                 {% for p in posts %}
                     {% set thumbnail = p.thumbnail %}
-                    <a href="{{ path('app_insights_show', {'slug': p.slug}) }}" class="relative aspect-video lg:aspect-[3/4] flex items-end justify-start bg-black group overflow-hidden p-4 lg:p-6 rounded" aria-label="{{ p.title }}">
+                    <a href="{{ path('app_insights_show', {'category': p.category.name, 'slug': p.slug}) }}" class="relative aspect-video lg:aspect-[3/4] flex items-end justify-start bg-black group overflow-hidden p-4 lg:p-6 rounded" aria-label="{{ p.title }}">
                         <h3 class="relative text-white z-10 text-left text-xl font-heading font-medium !leading-tight"> {{ p.title | raw }} </h3>
                         <img 
                             {% if thumbnail.hash %}src="{{ path('app_upload_files_from_hash', {'hash': thumbnail.hash}) }}"{% endif %}

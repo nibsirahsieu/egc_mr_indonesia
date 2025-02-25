@@ -26,8 +26,8 @@
     <meta name="twitter:description" content="{{ post.metaDescription }}" />
 {% endblock %}
 {% block meta_url %}
-    <meta property="og:url" content="{{ url('app_insights_show', {'category': category, 'slug': post.slug}) }}" />  
-    <link rel="canonical" href="{{ url('app_insights_show', {'category': category, 'slug': post.slug}) }}" />
+      <meta property="og:url" content="{{ url('app_insights_show', {'category': category, 'slug': post.slug}) }}" />  
+      <link rel="canonical" href="{{ url('app_insights_show', {'category': category, 'slug': post.slug}) }}" />
 {% endblock %}
 {% block meta_image %}
     <meta property="og:image" content="{{ post.headerImage.relativePath | imagine_filter('header_xlg') }}" />
@@ -46,15 +46,11 @@
 {% block header %}
     <header class="relative overflow-hidden">
         <img 
-            {% if post.headerImage.hash %}
-                src="{{ path('app_upload_files_from_hash', {'hash': post.headerImage.hash}) }}"
-            {% else %}
-                src="{{ post.headerImage.relativePath | imagine_filter('header_md') }}"
-            {% endif %}
+            {% if post.headerImage.hash %}src="{{ path('app_upload_files_from_hash', {'hash': post.headerImage.hash}) }}"{% endif %}
             srcset="{{ post.headerImage.relativePath | imagine_filter('header_xlg') }} 1520w, {{ post.headerImage.relativePath | imagine_filter('header_lg') }} 1048w, {{ post.headerImage.relativePath | imagine_filter('header_md') }} 840w, {{ post.headerImage.relativePath | imagine_filter('header_sm') }} 500w" 
             alt="{{ post.title }}" 
             class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none"
-            width="1512" height="1000"
+            data-sizes="auto"
         >
         <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
         <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
@@ -70,24 +66,42 @@
             <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">{{ post.title | raw }}</h1>
         </div>
     </header>
-{% endblock %}
 
-{% block content %}
-    <section id="content">
-        <div class="container py-8 lg:py-14 space-y-8">
-            {#<p id="excerpt" class="text-base mx-auto max-w-5xl">
-                {{ post.summary | raw }}
-            </p>
-            <hr class="border-t border-gray-100 mx-auto max-w-5xl">#}
-            <article class="prose mx-auto max-w-5xl">
-                {{ post.content | lazify_image_content | raw }}
-            </article>
-        </div>
+    <section id="download-whitepaper">
+        {% include 'insight/_download_wp_form.html.twig' %}
     </section>
+
+    <main class="relative container flex gap-4 lg:gap-8">
+        <nav class="hidden md:block sticky md:w-1/4 top-[calc(72px+16px)] lg:top-[calc(83px+32px)] lg:w-1/5 h-[100dvh] pb-8 lg:pb-24 overflow-y-auto" x-data="tocComponent()">
+            <ul class="space-y-2">
+                {% for heading in headings %}
+                    {% set fontSize = 'font-medium' %}
+                    {% if heading.level == 3 %}
+                        {% set fontSize = 'text-sm ml-4 text-black/60' %}
+                    {% elseif heading.level == 4 %}
+                        {% set fontSize = 'text-sm ml-8 text-black/60 hidden' %}
+                    {% endif %}
+                    <li>
+                        <a href="#{{ heading.id }}" class="block py-1 transition-colors duration-200 text-black/80 hover:text-picton-blue-500 {{ fontSize }}">{{ heading.value }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+        <article id="content" class="relative md:w-3/4 lg:4/5">
+            <div class="relative">
+                {{ post.content | raw }}
+            </div>
+        </article>
+    </main>
+
+    <section id="download-whitepaper-2">
+        {% include 'insight/_download_wp_form.html.twig' %}
+    </section>
+
     {% if other_posts|length > 0 %}
         <section id="related">
             <div class="container py-8 lg:py-14">
-                <h2 class="heading-2 text-4xl lg:text-6xl"> Related Insights </h2>
+                <h2 class="heading-2 text-4xl lg:text-6xl"> Recent Insights </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mt-8">
                     {% for p in other_posts %}
                         {% set thumbnail = p.thumbnail %}

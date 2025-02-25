@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\String\Inflector\EnglishInflector;
 
 final class IndexController extends AbstractController
 {
@@ -17,37 +18,62 @@ final class IndexController extends AbstractController
     {
     }
     
-    #[Route('/insights', name: 'app_insights_index', methods: ['GET'])]
-    public function index(): Response
+    #[Route('/insights/{category}', name: 'app_insights_index', methods: ['GET'])]
+    public function index(string $category = ""): Response
     {
-        $nbPost = $this->queryService->nbPosts();
-        $metaPage = $this->metaPageQueryService->metaForPage('insights');
+        $defaultTypeId = null; 
+        $pageTitle = 'Insights';
+        $postTypes = $this->queryService->postTypes();
+
+        if ($category && count($postTypes) > 0) {
+            $filteredPostType = array_filter($postTypes, fn ($postType) => $postType['slug'] === $category);
+            if (0 === count($filteredPostType)) {
+                //throw not found exception, so that, it can be handle by PageNotFoundListener.
+                throw $this->createNotFoundException();
+            }
+
+            $postCategory = current($filteredPostType);
+            $defaultTypeId = $postCategory['id'];
+            $pageTitle = (new EnglishInflector)->pluralize($postCategory['name'])[0];
+        }
+        
+        $metaPage = $this->metaPageQueryService->metaForPage($category ?: 'insights');
         
         return $this->render('insight/index.html.twig', [
-            'nbPost' => $nbPost,
-            'metaPage' => $metaPage
+            'metaPage' => $metaPage,
+            'defaultTypeId' => $defaultTypeId,
+            'postTypes' => $postTypes,
+            'category' => $category,
+            'pageTitle' => $pageTitle
         ]);
     }
 
     #[Route('/insights/load-more', name: 'app_insights_load_more', priority: 10, methods: ['GET'])]
     public function loadMore(Request $request): Response
     {
-        $lastPublishedAt = null;
         $lastId = null;
+        $lastPublishedAt = null;
+        $typeId = $request->query->get('type_id', null);
 
         if ($request->query->get('last_published_at')) {
             $lastPublishedAt = new \DateTimeImmutable($request->query->get('last_published_at'));
             $lastId = $request->query->getInt('last_id');
         }
 
-        $posts = iterator_to_array($this->queryService->recentPosts(self::MAX_POST, $lastPublishedAt, $lastId));
+        $posts = iterator_to_array($this->queryService->recentPosts(self::MAX_POST, $typeId ? (int) $typeId : null, $lastPublishedAt, $lastId));
         $nbPost = count($posts);
-        $lastPost = $nbPost > 0 ? $posts[array_key_last($posts)] : null;
 
+        if (0 === $nbPost) {
+            //return 204, so that infinite-scroll able to determine if it is the last page
+            return new Response('', Response::HTTP_NO_CONTENT);
+        }
+
+        $lastPost = $posts[array_key_last($posts)];
+        
         return $this->json([
             'html' => $this->renderView('insight/_data.html.twig', ['posts' => $posts]),
-            'lastPublishedAt' => $lastPost?->publishedAt?->format('Y-m-d') ?: '',
-            'lastId' => $lastPost?->id ?: '',
+            'lastPublishedAt' => $lastPost->publishedAt->format('Y-m-d'),
+            'lastId' => $lastPost->id,
             'nbData' => $nbPost
         ]);
     }

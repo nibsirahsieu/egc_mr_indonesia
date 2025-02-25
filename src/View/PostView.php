@@ -163,6 +163,11 @@ final class PostView
         return $ids;
     }
 
+    public function isDraft(): bool
+    {
+        return $this->status === PostStatus::DRAFT;
+    }
+
     public function isPublished(): bool
     {
         return $this->status === PostStatus::PUBLISHED;

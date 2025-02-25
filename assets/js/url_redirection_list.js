@@ -94,6 +94,11 @@ $(function() {
         dt.ajax.reload(null, false);
     });
 
+    $('.txt-search').on('keypress', function(e) {
+        if (e.which === 13) {
+            dt.draw();    
+        } 
+    });
     $('.btn-search').on('click', function(e) {
         e.preventDefault();
         dt.draw();

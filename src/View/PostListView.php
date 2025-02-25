@@ -2,11 +2,12 @@
 
 namespace App\View;
 
+use App\Common\IdName;
 use App\Entity\PostStatus;
 
 final class PostListView
 {
-    public function __construct(private int $id, private string $category, private string $title, private string $slug, private ?string $author, private ?\DateTimeImmutable $publishedAt, private PostStatus $status)
+    public function __construct(private int $id, private IdName $category, private string $title, private string $slug, private ?string $author, private ?\DateTimeImmutable $publishedAt, private PostStatus $status)
     {
         
     }
@@ -22,7 +23,7 @@ final class PostListView
     /**
      * Get the value of type
      */ 
-    public function getCategory(): string
+    public function getCategory(): IdName
     {
         return $this->category;
     }

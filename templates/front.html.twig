@@ -1,6 +1,7 @@
 {% set allSectors = sectors() %}
 {% set allServices = services() %}
 {% set headerFooterScript = header_footer_scripts() %}
+{% set postTypes = post_types() %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,13 +11,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="{{ app_name }}" />
-  {#<meta name="google-site-verification" content="CekjdhRONtzhJyea5Pf7KwEnm12op9hoaWS4Xv4T9Ks" /> #}
-  {% if app.environment == 'dev' %}
-    <meta name="robots" content="noindex">
-  {% else %}
-    {# <meta name="robots" content="noindex"> this is for testing purpose. Once its fixed, replace with the meta below #}
-    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
-  {% endif %}
+  {% block robots_index %}
+    {% if app.environment == 'dev' %}
+      <meta name="robots" content="noindex">
+    {% else %}
+      {#<meta name="robots" content="noindex">#}
+      <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+    {% endif %}
+  {% endblock %}
   {% block title %}<title>{{ app_name }}</title>{% endblock %}
   {% block meta_title %}
     <meta name="title" content="{{ app_name }}">
@@ -43,7 +45,7 @@
   {% if app.environment == 'prod' %}
     {{ headerFooterScript ? headerFooterScript.headerScript | raw : '' }}
   {% endif %}
-  {% block javascripts %} 
+	{% block javascripts %} 
     {% block importmap %}{{ importmap('main') }}{% endblock %} 
   {% endblock %} 
 	<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}</style>
@@ -86,7 +88,14 @@
                       {% endfor %}
                     </div>
                     <a href="/case-studies" class="text-base font-normal text-black hover:text-picton-blue-500">Case Studies</a> 
-                    <a href="/insights" class="text-base font-normal text-black hover:text-picton-blue-500">Insights</a> 
+                    <a href="/insights" class="text-base font-normal text-black hover:text-picton-blue-500">Insights</a>
+                    {% if postTypes|length > 1 %}
+                      <div class="ml-3 flex flex-col gap-2"> 
+                        {% for t in postTypes %}
+                          <a href="{{ path('app_insights_index', {'category': t.slug}) }}" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">{{ t.name | plural() }} </a>  
+                        {% endfor %}
+                      </div>
+                    {% endif %} 
                     <a href="/contact-us" class="text-base font-normal text-black hover:text-picton-blue-500">Contact Us</a>  
                 </div>
               </div>
@@ -119,7 +128,22 @@
                 </div> 
               </li>
               <li> <a href="/case-studies" class="font-medium hover:text-picton-blue-500 duration-300 ease-out h-full"> Case Studies </a> </li>
-              <li> <a href="/insights" class="font-medium hover:text-picton-blue-500 duration-300 ease-out h-full"> Insights </a> </li>
+              {% if postTypes|length > 1 %}
+                <li x-data="{ isOpen: false, openedWithKeyboard: false, leaveTimeout: null }" @mouseleave.prevent="leaveTimeout = setTimeout(() => { isOpen = false }, 0)" @mouseenter="leaveTimeout ? clearTimeout(leaveTimeout) : true" @keydown.esc.prevent="isOpen = false, openedWithKeyboard = false" @click.outside="isOpen = false, openedWithKeyboard = false" class="relative">  
+                  <button type="button" @mouseover="isOpen = true" @keydown.space.prevent="openedWithKeyboard = true" @keydown.enter.prevent="openedWithKeyboard = true" @keydown.down.prevent="openedWithKeyboard = true" class="inline-flex gap-2 h-12 items-center font-medium hover:text-picton-blue-500 cursor-pointer" :class="isOpen || openedWithKeyboard ? 'text-picton-blue-500' : ''" :aria-expanded="isOpen || openedWithKeyboard" aria-haspopup="true"> 
+                    <a href="/insights" class="">Insights</a> <i data-lucide="chevron-down" class="size-4"></i> 
+                  </button>  
+                  <div x-cloak x-show="isOpen || openedWithKeyboard" x-transition x-trap="openedWithKeyboard" @click.outside="isOpen = false, openedWithKeyboard = false" @keydown.down.prevent="$focus.wrap().next()" @keydown.up.prevent="$focus.wrap().previous()" class="absolute top-7 left-0 pt-[36px]" role="menu"> 
+                    <div class="flex items-start text-left gap-2 w-full min-w-80 flex-col overflow-hidden border border-big-stone-950/10 bg-white p-4"> 
+                      {% for t in postTypes %}
+                        <a href="{{ path('app_insights_index', {'category': t.slug}) }}" class="hover:text-picton-blue-500 duration-300 ease-out">{{ t.name | plural() }}</a>
+                      {% endfor %}
+                    </div> 
+                  </div> 
+                </li>
+              {% else %}
+                <li> <a href="/insights" class="font-medium hover:text-picton-blue-500 duration-300 ease-out h-full"> Insights </a> </li>
+              {% endif %}
               <li> <a href="/contact-us" class="font-medium hover:text-picton-blue-500 duration-300 ease-out h-full"> Contact Us </a> </li> 
             </ul> 
           </nav> 
@@ -283,6 +307,11 @@
         </div>
       </div>
     </footer>
+    <a href="https://wa.me/{{ app_contact_no }}" class="rounded-full bg-[#25D366] hover:bg-[#075E54] duration-300 ease-out p-2 lg:p-3 fixed z-50 bottom-24 right-4 group" target="_blank" aria-label="Chat on Whatsapp">
+      <svg xmlns="http://www.w3.org/2000/svg" class="fill-white group-hover:animate-pulse size-8 lg:size-10" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path>
+      </svg>
+    </a>
     {% if app.environment == 'prod' %}
       {{ headerFooterScript ? headerFooterScript.footerScript | raw : '' }}
     {% endif %}

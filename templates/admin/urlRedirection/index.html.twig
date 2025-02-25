@@ -16,8 +16,9 @@
     <div class="card">
         <div class="card-header pd-t-20 d-sm-flex align-items-start justify-content-between">
             <h6 class="mg-b-0">&nbsp;</h6>
-            <div class="d-flex mg-t-20 mg-sm-t-0">
+            <div class="d-flex mg-t-20 mg-sm-t-0 gap-2">
                 <a class="btn btn-primary btn-xs btn-new" href="javascript:;">Add New Url Redirection</a>
+                <button class="btn btn-secondary btn-xs btn-import" data-bs-toggle="modal" data-bs-target="#modalImportCsv">Import from CSV</button>
             </div>
         </div>
         <div class="card-body">
@@ -66,6 +67,29 @@
             <div class="form-group">
                 <label for="name" class="d-block">New URL</label>
                 <input id="new_url" type="text" class="form-control" placeholder="" name="newUrl" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="reset" class="btn btn-secondary tx-13" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary tx-13">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal fade" id="modalImportCsv" tabindex="-1" role="dialog" aria-labelledby="modalImportCsvLabel" aria-hidden="true">
+      <form id="formImportCsv" class="modal-dialog modal-dialog-centered" role="document" method="POST" action="{{ path('app_admin_url_redirections_import') }}" enctype="multipart/form-data">
+        <div class="modal-content tx-14">
+          <div class="modal-header">
+            <h6 class="modal-title" id="modalImportCsvLabel">Upload CSV Form</h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+                <label for="formFile" class="d-block">CSF File</label>
+                <input class="form-control" type="file" id="formFile" name="file" accept=".csv">
             </div>
           </div>
           <div class="modal-footer">

@@ -2,6 +2,7 @@
 
 namespace App\QueryService;
 
+use App\Common\IdName;
 use App\Common\PageData;
 use App\Common\PaginateResult;
 use App\Entity\PostStatus;
@@ -26,7 +27,7 @@ final class PostQueryService
         foreach ($rows as $row) {
             $result[] = new PostListView(
                 (int) $row['id'],
-                $row['category'],
+                IdName::create($row['category_slug'], $row['category_name']),
                 $row['title'],
                 $row['slug'],
                 $row['author'],
@@ -55,35 +56,33 @@ final class PostQueryService
         return $this->postRepository->slugExists($slug, $excludeId);
     }
 
-    public function recentPosts(int $limit = 10, ?\DateTimeImmutable $latestPublishedAt = null, ?int $latestId = null): iterable
+    public function recentPosts(int $limit = 10, ?int $typeId = null, ?\DateTimeImmutable $latestPublishedAt = null, ?int $latestId = null): iterable
     {
-        return $this->postRepository->recentPosts($limit, $latestPublishedAt, $latestId);
+        return $this->postRepository->recentPosts($limit, $typeId, $latestPublishedAt, $latestId);
     }
 
-    public function recentWhitepapers(int $limit = 10, ?\DateTimeImmutable $latestPublishedAt = null, ?int $latestId = null): iterable
+    public function otherPosts(int $limit, int $excludeId, ?int $typeId = null): iterable
     {
-        return $this->postRepository->recentWhitepapers($limit, $latestPublishedAt, $latestId);
+        return $this->postRepository->otherPosts($limit, $excludeId, $typeId);
     }
 
-    public function otherPosts(int $limit, int $excludeId): iterable
+    public function nbPosts(?int $typeId = null): int
     {
-        return $this->postRepository->otherPosts($limit, $excludeId);
+        return $this->postRepository->nbPosts($typeId);
     }
 
-    public function nbPosts(): int
+    public function postTypes(): array
     {
-        return $this->postRepository->nbPosts();
+        return $this->postRepository->postTypes();
     }
 
-    public function nbWhitepapers(): int
-    {
-        return $this->postRepository->nbWhitepapers();
-    }
-
-    public function featuredWhitepaper(string $slug): FeaturedWhitepaperView
+    public function featuredWhitepaper(string $slug): ?FeaturedWhitepaperView
     {
         $array = $this->postRepository->featuredWhitepaper($slug);
-
+        if (empty($array)) {
+            return null;
+        }
+        
         return new FeaturedWhitepaperView(
             (int) $array['id'],
             $array['slug'],

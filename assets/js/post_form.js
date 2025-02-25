@@ -195,15 +195,13 @@ $(function() {
     $('#btn_draft').on('click', function(e) {
       e.preventDefault();
       var $form = $(this).closest('form');
-      $form.attr('target', '_blank');
-
+      
       $('#status').val(0);
       $form.trigger('submit');
     });
     $('#btn_publish').on('click', function(e) {
       e.preventDefault();
       var $form = $(this).closest('form');
-      $form.removeAttr('target');
 
       $('#status').val(1);
       $form.trigger('submit');

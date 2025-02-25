@@ -40,6 +40,7 @@ final class AppExtension extends AbstractExtension implements EventSubscriberInt
             new TwigFunction('header_footer_scripts', [AppRuntimeExtension::class, 'getHeaderFooterScript']),
             new TwigFunction('sectors', [AppRuntimeExtension::class, 'getSectors']),
             new TwigFunction('services', [AppRuntimeExtension::class, 'getServices']),
+            new TwigFunction('post_types', [AppRuntimeExtension::class, 'getPostTypes']),
         ];
     }
 

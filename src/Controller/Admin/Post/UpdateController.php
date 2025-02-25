@@ -36,11 +36,7 @@ final class UpdateController extends BaseController
             (int) $data['status']
         ));
 
-        if (0 === (int) $data['status']) {
-            //redirect to preview page
-        }
-        
-        $this->addFlash('success', 'Post has been updated.');
+        $this->addFlash('success', sprintf('Post "%s" has been updated.', $data['title']));
         
         return $this->redirectToRoute('app_admin_insights_index');
     }
