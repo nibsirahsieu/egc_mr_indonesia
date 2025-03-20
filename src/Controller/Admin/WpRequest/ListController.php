@@ -10,7 +10,6 @@ use App\View\WpRequestView;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\String\UnicodeString;
 
 #[Route('/wp-requests', name: 'app_admin_wp_requests_')]
 final class ListController extends BaseController
@@ -49,10 +48,9 @@ final class ListController extends BaseController
                 'Email' => $wpRequest->email,
                 'Country' => $wpRequest->country,
                 'PhoneNumber' => $wpRequest->phoneNumber,
-                'Message' => (new UnicodeString($wpRequest->message))->truncate(500, '...', false),
-                'FullMessage' => $wpRequest->message,
                 'Downloaded' => $wpRequest->downloaded,
                 'Whitepaper' => $wpRequest->whitepaper,
+                'CreatedAt' => $wpRequest->createdAt->format('M d, Y'),
                 'Actions' => '<a href="javascript:;" class="btn btn-xs btn-secondary btn-detail">Detail</a>'
             ];
         }

@@ -23,7 +23,7 @@ class DownloadWhitepaperRequestRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $selectQuery = "
-            SELECT i.id, i.first_name, i.last_name, i.company_name, i.job_title, i.email, i.country, i.phone_number, i.message, i.downloaded, p.title 
+            SELECT i.id, i.first_name, i.last_name, i.company_name, i.job_title, i.email, i.country, i.phone_number, i.message, i.downloaded, i.created_at, p.title 
             FROM download_whitepaper_request i 
             JOIN post p ON i.whitepaper_id = p.id
             ORDER BY i.id DESC

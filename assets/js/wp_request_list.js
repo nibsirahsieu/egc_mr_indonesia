@@ -35,6 +35,7 @@ $(function() {
             {"data": "JobTitle", "orderable": false},
             {"data": "CompanyName", "orderable": false},
             {"data": "Country", "orderable": false},
+            {"data": "CreatedAt", "orderable": false},
             {"data": "Actions", "orderable": false}
         ]
     });

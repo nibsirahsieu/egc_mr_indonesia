@@ -30,7 +30,8 @@ final class WpRequestQueryService
                 $row['phone_number'],
                 $row['message'],
                 (bool) $row['downloaded'],
-                $row['title']
+                $row['title'],
+                new \DateTimeImmutable($row['created_at'])
             );
         }
 
