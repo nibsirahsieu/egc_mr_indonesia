@@ -23,7 +23,7 @@ class PostRepository extends ServiceEntityRepository
     public function listForSitemap(): \Generator
     {
         $conn = $this->getEntityManager()->getConnection();
-        $sql = "SELECT p.slug, p.updated_at FROM post p WHERE p.status = 1";
+        $sql = "SELECT p.slug, pt.slug AS category_slug, p.updated_at FROM post p JOIN post_type pt ON p.type_id = pt.id WHERE p.status = 1";
         $stmt = $conn->prepare($sql);
         $result = $stmt->executeQuery();
         

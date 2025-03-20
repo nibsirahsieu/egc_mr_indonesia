@@ -68,6 +68,12 @@
                 <span class="text-sm text-white">{{ post.title | raw }}</span>
             </div>
             <h1 class="text-center font-heading heading-1 text-4xl lg:text-7xl text-white">{{ post.title | raw }}</h1>
+            <p class="text-center text-base text-white mt-8">
+                {% if post.publishedAt %}
+                    Published on: {{ post.publishedAt|date('M d, Y') }} <span class="text-picton-blue-500 text-xl">|</span>     
+                {% endif %}
+                Author: {{ post.author }}
+            </p>
         </div>
     </header>
 {% endblock %}

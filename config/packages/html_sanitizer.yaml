@@ -15,3 +15,6 @@ framework:
                 block_elements: ['section']
                 allow_relative_links: true
                 allow_relative_medias: true
+                
+                drop_attributes:
+                    style: '*'

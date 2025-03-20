@@ -52,7 +52,7 @@ final class SitemapController extends AbstractController
         $posts = $this->postRepository->listForSitemap();
         foreach ($posts as $post) {
             $urls[] = [
-                'loc' => $this->generateUrl('app_insights_show', ['slug' => $post['slug']], UrlGeneratorInterface::ABSOLUTE_URL), 
+                'loc' => $this->generateUrl('app_insights_show', ['slug' => $post['slug'], 'category' => $post['category_slug']], UrlGeneratorInterface::ABSOLUTE_URL), 
                 'priority' => '1.00',
                 'lastmod' => (new \DateTimeImmutable($post['updated_at']))->format('c'),
                 'changefreq' => 'daily',

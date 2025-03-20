@@ -113,7 +113,7 @@ final class ImportInsightCommand extends Command
 
             $this->redirectUrlCommandService->create(new RedirectUrlRequest(
                 sprintf('%s/%s/', $this->importUrl, $slug),
-                sprintf('%s/insights/%s', $this->importUrl, $slug)
+                sprintf('%s/insights/%s/%s', $this->importUrl, $articleType->getSlug(), $slug)
             ));
         }
         
