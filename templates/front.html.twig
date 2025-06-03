@@ -43,6 +43,7 @@
     <meta name="twitter:image" content="{{ absolute_url(asset('/_astro/market-research-indonesia-logo-black.BHyusSTD_gPJAU.svg')) }}" />
   {% endblock %}
   {% block others_meta %}{% endblock %}
+  {% block link_preload %}{% endblock %}
   {% if app.environment == 'prod' %}
     {{ headerFooterScript ? headerFooterScript.headerScript | raw : '' }}
   {% endif %}
@@ -171,7 +172,16 @@
                                   <h2 class="heading-2 text-4xl lg:text-6xl text-white"> Speak to advisors with experience in the Indonesia market </h2>
                                   <a href="mailto:{{ app_contact_email }}" class="text-white text-base lg:text-xl max-w-3xl mt-6 relative">info@marketresearchindonesia.com</a>
                               </div>
-                              {#<p class="mt-4 text-white text-base lg:text-xl"> Arrange a session with our experts to explore how Eurogroup Consulting can assist you in addressing your business challenges. </p>#}
+                              <p class="mt-4 text-white text-base lg:text-xl">&nbsp;</p>
+                              <div class="flex flex-col items-start gap-2 mb-4 lg:mb-6">
+                                <a
+                                  href="mailto:{{ app_contact_email }}"
+                                  class="text-white inline-flex items-center gap-2 hover:underline"
+                                >
+                                  <i data-lucide="mail" class="size-6">
+                                  </i>{{ app_contact_email }}</a
+                                >
+                              </div>
                           </div>
                           <div class="lg:w-1/2 w-full">
                               <div class="w-full" x-data="formHandler('{{ app.request.uri }}')">

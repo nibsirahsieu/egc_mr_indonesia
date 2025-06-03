@@ -21,7 +21,13 @@
    <meta property="og:url" content="{{ url('app_about') }}" />  
    <link rel="canonical" href="{{ url('app_about') }}" />
 {% endblock %}
-
+{% block link_preload %}
+    <link
+        rel="preload"
+        as="image"
+        href="{{ preload('/_astro/overview-about.CZQHVIrB_n6Xpf.webp', {as: 'image'}) }}"
+    >
+{% endblock %}
 {% block inline_stylesheets %}
     <style>
         .about {background-image: url('{{ asset("images/ant-rozetsky-_qWeqqmpBpU-unsplash.webp") }}');}
@@ -38,7 +44,7 @@
          <div class="py-8 lg:py-14 relative">
             <img src="/_astro/blob-1.W-ZlDNrE_2dove0.svg" alt="blob" loading="lazy" decoding="async" fetchpriority="auto" width="462" height="468" class="absolute top-0 left-0 opacity-25"> <img src="/_astro/blob-2.CJ7mioKI_Z186L1y.svg" alt="blob" loading="lazy" decoding="async" fetchpriority="auto" width="622" height="762" class="absolute bottom-0 right-0 opacity-25"> 
             <div class="container grid lg:grid-cols-12 gap-0 lg:gap-8 lg:items-center relative">
-               <img src="/_astro/overview-about.CZQHVIrB_n6Xpf.webp" alt="Overview" loading="lazy" decoding="async" fetchpriority="auto" width="6000" height="4000" class="object-cover aspect-[2/3] lg:col-span-5 lg:h-full w-auto relative"> 
+               <img src="/_astro/overview-about.CZQHVIrB_n6Xpf.webp" alt="Overview" decoding="async" fetchpriority="high" width="6000" height="4000" class="object-cover aspect-[2/3] lg:col-span-5 lg:h-full w-auto relative"> 
                <div class="flex flex-col lg:col-span-7 py-8 lg:py-14 gap-4 lg:gap-6">
                   <div class="flex flex-col">
                      <h2 class="heading-2 text-4xl lg:text-5xl">

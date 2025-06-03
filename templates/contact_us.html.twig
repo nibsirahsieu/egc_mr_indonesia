@@ -21,7 +21,13 @@
    <meta property="og:url" content="{{ url('app_contact_us') }}" />  
    <link rel="canonical" href="{{ url('app_contact_us') }}" />
 {% endblock %}
-
+{% block link_preload %}
+    <link
+        rel="preload"
+        as="image"
+        href="{{ preload('/_astro/getty-images-Oe7MfGGO_h0-unsplash.D-At4Vgx_1qlAmb.webp', {as: 'image'}) }}"
+    >
+{% endblock %}
 {% block inline_stylesheets %}
     <style>
         .contact-us {background-image: url('{{ asset("images/ant-rozetsky-_qWeqqmpBpU-unsplash.webp") }}');}
@@ -35,7 +41,7 @@
 {% block content %}
    <div class="bg-white">
       <div class="container grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8 xl:gap-12 py-8 lg:py-14">
-         <div class="flex flex-col"> <img src="/_astro/getty-images-Oe7MfGGO_h0-unsplash.D-At4Vgx_1qlAmb.webp" alt="Overview Image" loading="lazy" decoding="async" fetchpriority="auto" width="5472" height="3078" class="h-full object-cover w-auto aspect-video lg:aspect-none"> </div>
+         <div class="flex flex-col"> <img src="/_astro/getty-images-Oe7MfGGO_h0-unsplash.D-At4Vgx_1qlAmb.webp" alt="Overview Image" decoding="async" fetchpriority="high" width="5472" height="3078" class="h-full object-cover w-auto aspect-video lg:aspect-none"> </div>
          <div>
             <p class="mb-2 uppercase text-xs tracking-[0.1em]"> <span class="text-picton-blue-500">/</span> Contact Us</p>
             <h2 class="heading-2 text-4xl lg:text-6xl mb-4">

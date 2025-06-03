@@ -50,7 +50,7 @@
             srcset="{{ post.headerImage.relativePath | imagine_filter('header_xlg') }} 1520w, {{ post.headerImage.relativePath | imagine_filter('header_lg') }} 1048w, {{ post.headerImage.relativePath | imagine_filter('header_md') }} 840w, {{ post.headerImage.relativePath | imagine_filter('header_sm') }} 500w" 
             alt="{{ post.title }}" 
             class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none"
-            data-sizes="auto"
+            data-sizes="auto" decoding="async" fetchpriority="high"
         >
         <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
         <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">

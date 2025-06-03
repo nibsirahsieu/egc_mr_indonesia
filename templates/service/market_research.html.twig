@@ -21,10 +21,16 @@
       <meta property="og:url" content="{{ url('app_services_show', {'slug': slug}) }}" />  
       <link rel="canonical" href="{{ url('app_services_show', {'slug': slug}) }}" />
 {% endblock %}
-
+{% block link_preload %}
+    <link
+        rel="preload"
+        as="image"
+        href="{{ preload('/_astro/1-market-research-getty-images-MCX9B7Hnqi0-unsplash.DOTsZ6Ax_Z1AQmw7.webp', {as: 'image'}) }}"
+    >
+{% endblock %}
 {% block header %}
     <header class="relative overflow-hidden">
-        <img src="/_astro/1-market-research-getty-images-MCX9B7Hnqi0-unsplash.DOTsZ6Ax_Z1AQmw7.webp" alt="Market Research in Indonesia" inferSize="true"  decoding="async" fetchpriority="auto" width="3293" height="1852" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
+        <img src="/_astro/1-market-research-getty-images-MCX9B7Hnqi0-unsplash.DOTsZ6Ax_Z1AQmw7.webp" alt="Market Research in Indonesia" inferSize="true"  decoding="async" fetchpriority="high" width="3293" height="1852" class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 w-full h-full object-cover select-none pointer-events-none">
         <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
         <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
         <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4"><a href="/" class="flex items-center" aria-label="Home"><i data-lucide="home" class="size-3.5 text-white"></i></a><span class="text-picton-blue-500">/</span><a href="/services" class="text-sm text-white hover:underline">Services</a><span class="text-picton-blue-500">/</span><span class="text-sm text-white">Market Research</span></div>
