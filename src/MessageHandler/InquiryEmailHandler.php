@@ -48,7 +48,7 @@ final class InquiryEmailHandler
                 'job_title' => $inquiry->getJobTitle(),
                 'country' => $inquiry->getCountry(),
                 'phone_number' => $inquiry->getPhoneNumber(),
-                'message' => $inquiry->getMessage(),
+                'message' => nl2br($inquiry->getMessage()),
                 'contact_email' => $inquiry->getEmail()
             ]);
 
@@ -69,7 +69,7 @@ final class InquiryEmailHandler
                 'job_title' => $inquiry->getJobTitle(),
                 'country' => $inquiry->getCountry(),
                 'phone_number' => $inquiry->getPhoneNumber(),
-                'message' => $inquiry->getMessage(),
+                'message' => nl2br($inquiry->getMessage()),
                 'contact_email' => $inquiry->getEmail()
             ]);
 

@@ -2,6 +2,7 @@
 {% set allServices = services() %}
 {% set headerFooterScript = header_footer_scripts() %}
 {% set postTypes = post_types() %}
+{% set contact_email = app_contact_email | obfuscate_email %} 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,7 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="{{ app_name }}" />
   {% block robots_index %}
-    {% if app.environment == 'dev' %}
+    {% if not app.request.isSecure or app.environment == 'dev' %}
       <meta name="robots" content="noindex">
     {% else %}
       {#<meta name="robots" content="noindex">#}
@@ -168,6 +169,7 @@
                               <div class="flex flex-col">
                                   <p class="text-white mb-2 uppercase text-xs tracking-[0.1em]"> <span class="text-picton-blue-500">/</span> Contact Us</p>
                                   <h2 class="heading-2 text-4xl lg:text-6xl text-white"> Speak to advisors with experience in the Indonesia market </h2>
+                                  <a href="mailto:{{ app_contact_email }}" class="text-white text-base lg:text-xl max-w-3xl mt-6 relative">info@marketresearchindonesia.com</a>
                               </div>
                               {#<p class="mt-4 text-white text-base lg:text-xl"> Arrange a session with our experts to explore how Eurogroup Consulting can assist you in addressing your business challenges. </p>#}
                           </div>
@@ -301,8 +303,17 @@
       </div>
       <div class="bg-picton-blue-950">
         <div class="container py-4 flex gap-4 items-center justify-center lg:justify-start">
-          <div class="flex items-center gap-4 text-xs text-white">
-            <p>Copyright © Eurogroup Consulting {{ "now"|date('Y') }}</p>
+          <div class="flex justify-between w-full items-center gap-4 text-xs text-white">
+            <div class="hidden md:block">
+              <p> <a href="mailto:{{ contact_email }}" class="hover:underline">{{ contact_email | raw }}</a> </p> 
+            </div>
+            {#hidden backlink #}
+            {#<a href="https://marketresearchsingapore.com/" class="color-backlink">Market Research Singapore</a>
+            <a href="https://marketresearchcambodia.com/" class="color-backlink">Market Research Cambodia</a>
+            <a href="https://marketresearchphilippines.com/" class="color-backlink">Market Research Philippines</a>#}
+            <p>
+              Copyright © Eurogroup Consulting {{ "now"|date('Y') }}
+            </p>
           </div>
         </div>
       </div>

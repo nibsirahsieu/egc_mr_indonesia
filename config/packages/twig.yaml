@@ -8,6 +8,7 @@ twig:
         app_name: '%app.name%'
         app_base_url: '%env(APP_BASE_URL)%'
         app_contact_no: '%env(APP_CONTACT_PHONE_NO)%'
+        app_contact_email: '%env(APP_CONTACT_EMAIL)%'
 when@test:
     twig:
         strict_variables: true
