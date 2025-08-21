@@ -91,7 +91,7 @@
                     </div>
                     <a href="/case-studies" class="text-base font-normal text-black hover:text-picton-blue-500">Case Studies</a> 
                     <a href="/insights" class="text-base font-normal text-black hover:text-picton-blue-500">Insights</a>
-                    {% if postTypes|length > 1 %}
+                    {% if postTypes|length > 0 %}
                       <div class="ml-3 flex flex-col gap-2"> 
                         {% for t in postTypes %}
                           <a href="{{ path('app_insights_index', {'category': t.slug}) }}" class="text-sm font-normal text-gray-600 hover:text-picton-blue-500">{{ t.name | plural() }} </a>  
@@ -130,7 +130,7 @@
                 </div> 
               </li>
               <li> <a href="/case-studies" class="font-medium hover:text-picton-blue-500 duration-300 ease-out h-full"> Case Studies </a> </li>
-              {% if postTypes|length > 1 %}
+              {% if postTypes|length > 0 %}
                 <li x-data="{ isOpen: false, openedWithKeyboard: false, leaveTimeout: null }" @mouseleave.prevent="leaveTimeout = setTimeout(() => { isOpen = false }, 0)" @mouseenter="leaveTimeout ? clearTimeout(leaveTimeout) : true" @keydown.esc.prevent="isOpen = false, openedWithKeyboard = false" @click.outside="isOpen = false, openedWithKeyboard = false" class="relative">  
                   <button type="button" @mouseover="isOpen = true" @keydown.space.prevent="openedWithKeyboard = true" @keydown.enter.prevent="openedWithKeyboard = true" @keydown.down.prevent="openedWithKeyboard = true" class="inline-flex gap-2 h-12 items-center font-medium hover:text-picton-blue-500 cursor-pointer" :class="isOpen || openedWithKeyboard ? 'text-picton-blue-500' : ''" :aria-expanded="isOpen || openedWithKeyboard" aria-haspopup="true"> 
                     <a href="/insights" class="">Insights</a> <i data-lucide="chevron-down" class="size-4"></i> 
@@ -169,8 +169,7 @@
                           <div class="lg:w-1/2 flex flex-col">
                               <div class="flex flex-col">
                                   <p class="text-white mb-2 uppercase text-xs tracking-[0.1em]"> <span class="text-picton-blue-500">/</span> Contact Us</p>
-                                  <h2 class="heading-2 text-4xl lg:text-6xl text-white"> Speak to advisors with experience in the Indonesia market </h2>
-                                  <a href="mailto:{{ app_contact_email }}" class="text-white text-base lg:text-xl max-w-3xl mt-6 relative">info@marketresearchindonesia.com</a>
+                                  <h2 class="heading-2 text-4xl lg:text-6xl text-white"> Speak to advisors with experience in the Indonesia market </h2>                                  
                               </div>
                               <p class="mt-4 text-white text-base lg:text-xl">&nbsp;</p>
                               <div class="flex flex-col items-start gap-2 mb-4 lg:mb-6">

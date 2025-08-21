@@ -31,28 +31,28 @@ final class SitemapController extends AbstractController
         $today = new \DateTimeImmutable();
 
         // Static URLs
-        $urls[] = ['loc' => $this->generateUrl('app_frontpage', [], UrlGeneratorInterface::ABSOLUTE_URL), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
-        $urls[] = ['loc' => $this->generateUrl('app_about', [], UrlGeneratorInterface::ABSOLUTE_URL), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
-        $urls[] = ['loc' => $this->generateUrl('app_sectors_index', [], UrlGeneratorInterface::ABSOLUTE_URL), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
-        $urls[] = ['loc' => $this->generateUrl('app_services_index', [], UrlGeneratorInterface::ABSOLUTE_URL), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
-        $urls[] = ['loc' => $this->generateUrl('app_case_studies_index', [], UrlGeneratorInterface::ABSOLUTE_URL), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
-        $urls[] = ['loc' => $this->generateUrl('app_insights_index', [], UrlGeneratorInterface::ABSOLUTE_URL), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
-        $urls[] = ['loc' => $this->generateUrl('app_contact_us', [], UrlGeneratorInterface::ABSOLUTE_URL), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
+        $urls[] = ['loc' => $this->generateUrl('app_frontpage', [], UrlGeneratorInterface::ABSOLUTE_PATH), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
+        $urls[] = ['loc' => $this->generateUrl('app_about', [], UrlGeneratorInterface::ABSOLUTE_PATH), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
+        $urls[] = ['loc' => $this->generateUrl('app_sectors_index', [], UrlGeneratorInterface::ABSOLUTE_PATH), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
+        $urls[] = ['loc' => $this->generateUrl('app_services_index', [], UrlGeneratorInterface::ABSOLUTE_PATH), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
+        $urls[] = ['loc' => $this->generateUrl('app_case_studies_index', [], UrlGeneratorInterface::ABSOLUTE_PATH), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
+        $urls[] = ['loc' => $this->generateUrl('app_insights_index', [], UrlGeneratorInterface::ABSOLUTE_PATH), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
+        $urls[] = ['loc' => $this->generateUrl('app_contact_us', [], UrlGeneratorInterface::ABSOLUTE_PATH), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
 
         $sectors = $this->sectorRepository->orderedById();
         foreach ($sectors as $sector) {
-            $urls[] = ['loc' => $this->generateUrl('app_sectors_show', ['slug' => $sector->getSlug()], UrlGeneratorInterface::ABSOLUTE_URL), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
+            $urls[] = ['loc' => $this->generateUrl('app_sectors_show', ['slug' => $sector->getSlug()], UrlGeneratorInterface::ABSOLUTE_PATH), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
         }
 
         $services = $this->ourServiceRepository->orderedById();
         foreach ($services as $service) {
-            $urls[] = ['loc' => $this->generateUrl('app_services_show', ['slug' => $service->getSlug()], UrlGeneratorInterface::ABSOLUTE_URL), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
+            $urls[] = ['loc' => $this->generateUrl('app_services_show', ['slug' => $service->getSlug()], UrlGeneratorInterface::ABSOLUTE_PATH), 'priority' => '1.00', 'lastmod' => $today->format('c'), 'changefreq' => 'daily'];
         }
 
         $posts = $this->postRepository->listForSitemap();
         foreach ($posts as $post) {
             $urls[] = [
-                'loc' => $this->generateUrl('app_insights_show', ['slug' => $post['slug'], 'category' => $post['category_slug']], UrlGeneratorInterface::ABSOLUTE_URL), 
+                'loc' => $this->generateUrl('app_insights_show', ['slug' => $post['slug'], 'category' => $post['category_slug']], UrlGeneratorInterface::ABSOLUTE_PATH), 
                 'priority' => '1.00',
                 'lastmod' => (new \DateTimeImmutable($post['updated_at']))->format('c'),
                 'changefreq' => 'daily',
@@ -62,7 +62,7 @@ final class SitemapController extends AbstractController
         $caseStudies = $this->caseStudyRepository->listForSitemap();
         foreach ($caseStudies as $caseStudy) {
             $urls[] = [
-                'loc' => $this->generateUrl('app_case_studies_show', ['slug' => $caseStudy['slug']], UrlGeneratorInterface::ABSOLUTE_URL), 
+                'loc' => $this->generateUrl('app_case_studies_show', ['slug' => $caseStudy['slug']], UrlGeneratorInterface::ABSOLUTE_PATH), 
                 'priority' => '1.00',
                 'lastmod' => (new \DateTimeImmutable($caseStudy['updated_at']))->format('c'),
                 'changefreq' => 'daily',
