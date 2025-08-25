@@ -12,6 +12,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="{{ app_name }}" />
+  
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://www.clarity.ms">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
   {% block robots_index %}
     {% if not app.request.isSecure or app.environment == 'dev' %}
       <meta name="robots" content="noindex">
@@ -43,14 +49,13 @@
     <meta name="twitter:image" content="{{ absolute_url(asset('/_astro/market-research-indonesia-logo-black.BHyusSTD_gPJAU.svg')) }}" />
   {% endblock %}
   {% block others_meta %}{% endblock %}
-  {% block link_preload %}{% endblock %}
   {% if app.environment == 'prod' %}
     {{ headerFooterScript ? headerFooterScript.headerScript | raw : '' }}
   {% endif %}
 	{% block javascripts %} 
     {% block importmap %}{{ importmap('main') }}{% endblock %} 
   {% endblock %} 
-	<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}</style>
+  {% block link_preload %}{% endblock %}
 	{% block inline_stylesheets %}{% endblock %}
   </head>
   <body>
@@ -67,7 +72,7 @@
         <div class="container py-4 flex justify-between items-center gap-4">
           <div> 
               <a href="/" aria-label="Eurogroup Consulting"> 
-              <img src="{{ asset('/_astro/market-research-indonesia-logo-black.BHyusSTD_gPJAU.svg') }}" alt="Market Research" decoding="async" fetchpriority="auto" width="145" height="50" class="w-auto h-10 lg:h-[50px]">
+              <img src="{{ asset('/_astro/market-research-indonesia-logo-black.BHyusSTD_gPJAU.svg') }}" alt="Market Research" decoding="async" fetchpriority="high" width="145" height="50" class="w-auto h-10 lg:h-[50px]">
               </a> 
           </div>
           <nav>
@@ -151,7 +156,7 @@
           </nav> 
           <div class="hidden lg:block"> 
             <a href="/" aria-label="Eurogroup Consulting"> 
-              <img src="/_astro/eurogroup-consulting-logo.BjwudJP1_Zy7RMQ.svg" alt="Eurogroup Consulting" loading="lazy" decoding="async" fetchpriority="auto" width="49" height="48" class="w-auto h-[50px]"> 
+              <img src="/_astro/eurogroup-consulting-logo.BjwudJP1_Zy7RMQ.svg" alt="Eurogroup Consulting" loading="lazy" decoding="async" fetchpriority="low" width="49" height="48" class="w-auto h-[50px]"> 
             </a> 
           </div>
         </div> 
