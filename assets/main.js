@@ -1,5 +1,6 @@
 import lazySizes from 'lazysizes';
 lazySizes.cfg.lazyClass = 'lazy';
+lazySizes.cfg.loadMode = 1;
 
 import './js/ls.respimg.js';
 import './js/frontend.min.js';

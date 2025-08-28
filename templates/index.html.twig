@@ -17,11 +17,39 @@
     <meta property="og:description" content="{{ metaPage.metaDescription }}" />
     <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
 {% endblock %}
+{% block inline_stylesheets %}
+    <style>
+        #case-studies img.lazy {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            content-visibility: auto;
+            contain-intrinsic-size: 400px 400px; /* Placeholder size for lazy images */
+        }
+        #insights img.lazy {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            content-visibility: auto;
+            contain-intrinsic-size: 380px 214px;
+        }
 
+        @media (min-width: 1024px) {
+            #insights img.lazy {
+                aspect-ratio: 3 / 4;
+                contain-intrinsic-size: 294px 392px;
+            }
+        }
+    </style>
+{% endblock %}
 {% block link_preload %}
+    <link rel="preload" href="/_astro/gothambold-webfont.C8ocyIP7.woff2" as="font" type="font/woff2" crossorigin>
     <link 
         rel="preload" 
         as="image"
+        fetchpriority="high"
         href="/_astro/hero.ByVFTj-u_Z6ooGw.webp"
         imagesrcset="/_astro/hero.ByVFTj-u_Z6ooGw.webp 360w, /_astro/hero.ByVFTj-u_LE9Or.webp 480w, /_astro/hero.ByVFTj-u_1U77VS.webp 768w, /_astro/hero.ByVFTj-u_1qIHz8.webp 1024w, /_astro/hero.ByVFTj-u_ZXIFv5.webp 1440w, /_astro/hero.ByVFTj-u_1pAgy9.webp 1920w"
         imagesizes="100vw"
@@ -29,6 +57,7 @@
     <link 
         rel="preload" 
         as="image" 
+        fetchpriority="high"
         href="/_astro/overview.DpD2tHch_Z29x6lk.webp" 
         imagesrcset="/_astro/overview.DpD2tHch_Z29x6lk.webp 360w, /_astro/overview.DpD2tHch_oFvb2.webp 480w, /_astro/overview.DpD2tHch_ZXzU06.webp 768w"
         imagesizes="100vw"

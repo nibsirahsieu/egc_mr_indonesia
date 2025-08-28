@@ -12,12 +12,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="{{ app_name }}" />
-  
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://www.clarity.ms">
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-
   {% block robots_index %}
     {% if not app.request.isSecure or app.environment == 'dev' %}
       <meta name="robots" content="noindex">
@@ -49,13 +43,18 @@
     <meta name="twitter:image" content="{{ absolute_url(asset('/_astro/market-research-indonesia-logo-black.BHyusSTD_gPJAU.svg')) }}" />
   {% endblock %}
   {% block others_meta %}{% endblock %}
+  {% block link_preconnect %}
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preconnect" href="https://www.clarity.ms" crossorigin>  
+  {% endblock %}
+  {% block link_preload %}{% endblock %}
   {% if app.environment == 'prod' %}
     {{ headerFooterScript ? headerFooterScript.headerScript | raw : '' }}
   {% endif %}
 	{% block javascripts %} 
     {% block importmap %}{{ importmap('main') }}{% endblock %} 
-  {% endblock %} 
-  {% block link_preload %}{% endblock %}
+  {% endblock %}
+  <style>.lazyloading {opacity: 0;}.lazyloaded {opacity: 1;transition: opacity 0.3s ease;}</style> 
 	{% block inline_stylesheets %}{% endblock %}
   </head>
   <body>
