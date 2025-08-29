@@ -29,3 +29,4 @@ nbproject
 /docs
 /public/sitemap.xml
 /var/minify
+/node_modules/

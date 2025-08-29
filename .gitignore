@@ -40,3 +40,5 @@ compose.dev.yaml
 ###> sensiolabs/minify-bundle ###
 /var/minify/
 ###< sensiolabs/minify-bundle ###
+
+node_modules
