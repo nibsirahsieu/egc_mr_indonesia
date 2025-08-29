@@ -51,7 +51,7 @@
   {% if app.environment == 'prod' %}
     {{ headerFooterScript ? headerFooterScript.headerScript | raw : '' }}
   {% endif %}
-	{% block javascripts %} 
+  {% block javascripts %} 
     {% block importmap %}{{ importmap('main') }}{% endblock %} 
   {% endblock %}
   <style>.lazyloading {opacity: 0;}.lazyloaded {opacity: 1;transition: opacity 0.3s ease;}</style> 

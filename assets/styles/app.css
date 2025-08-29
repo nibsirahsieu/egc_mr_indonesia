@@ -1,0 +1,243 @@
+@font-face {
+  font-family: "DM Sans Variable";
+  src: url("../fonts/dm-sans-latin-wght-normal.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothamblackitalic-webfont.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothamblack-webfont.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothambolditalic-webfont.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothambold-webfont.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothambookitalic-webfont.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothambook-webfont.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothammediumitalic-webfont.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothammedium-webfont.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothamthinitalic-webfont.woff2") format("woff2");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothamthin-webfont.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothamxlightitalic-webfont.woff2") format("woff2");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothamxlight-webfont.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothamlightitalic-webfont.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothamlight-webfont.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothamultraitalic-webfont.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/gotham/gothamultra-webfont.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  @apply scroll-smooth scroll-mt-32 text-big-stone-950;
+}
+
+[x-cloak] {
+  @apply !hidden;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    @apply font-bold font-heading tracking-tighter;
+  }
+
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold font-sans;
+  }
+
+  strong {
+    @apply font-semibold;
+  }
+
+  section {
+    @apply overflow-hidden;
+  }
+  :root {
+    --radius: 0.5rem;
+  }
+
+  section,
+  article :is(h2, h3) {
+    @apply scroll-mt-16;
+  }
+}
+
+@layer components {
+  .heading-1,
+  .heading-2,
+  .heading-3 {
+    @apply !tracking-[-0.06em] !leading-none;
+  }
+  .list-arrow {
+    @apply space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-2 mb-4;
+  }
+}
+
+@layer utilities {
+  .bg-overlay-hero {
+    background: radial-gradient(100% 125% at 125% 50%, #02203705, #ffffff00);
+  }
+  .bg-mask-header {
+    mask-image: linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+  }
+  .bg-mask-france {
+    mask-image: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) 30%,
+      rgba(0, 0, 0, 1) 60%
+    );
+  }
+  .bg-mask-hero {
+    mask-image: radial-gradient(
+      190% 110% at 50% 110%,
+      #000 60%,
+      #e7e7e7 0,
+      hsla(0, 0%, 0%, 0) 100%
+    );
+  }
+  /* .bg-mask-hero {
+      mask-image: radial-gradient(
+        160% 100% at 110% -10%,
+        #000 50%,
+        #e7e7e7 0,
+        hsla(0, 0%, 0%, 0) 100%
+      );
+    } */
+  .bg-mask {
+    mask-image: linear-gradient(#000, #000);
+  }
+  .ecosystem-shadow {
+    box-shadow: 0px -24px 48px -16px rgba(0, 173, 233, 0.6) inset;
+    @apply duration-300 ease-out;
+  }
+  .ecosystem-shadow:hover {
+    box-shadow: 0px -32px 72px -16px rgba(0, 173, 233, 0.6) inset;
+  }
+  .ecosystem-shadow-home {
+    box-shadow: 0px -24px 32px -16px rgba(0, 173, 233, 0.6) inset;
+    @apply duration-300 ease-out;
+  }
+  .ecosystem-shadow-home:hover {
+    box-shadow: 0px -32px 56px -16px rgba(0, 173, 233, 0.6) inset;
+  }
+}
+
+@media (min-width: 1024px) {.lg\:h-96 {height: 24rem;}}@media (min-width: 1024px) {.lg\:mb-6 {margin-bottom: 1.5rem;}}.h-80 {height: 20rem;}

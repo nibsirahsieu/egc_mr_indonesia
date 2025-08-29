@@ -102,5 +102,6 @@ RUN set -eux; \
 	composer dump-autoload --classmap-authoritative --no-dev; \
 	composer dump-env prod; \
 	composer run-script --no-dev post-install-cmd; \
+	php bin/console tailwind:build \
 	php bin/console asset-map:compile; \
 	chmod +x bin/console; sync;

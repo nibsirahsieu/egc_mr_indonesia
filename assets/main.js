@@ -3,7 +3,7 @@ lazySizes.cfg.lazyClass = 'lazy';
 
 import './js/ls.respimg.js';
 import './js/frontend.min.js';
-import './styles/frontend.min.css'
+import './styles/app.css'
 
 //https://stackoverflow.com/questions/58982072/recaptcha-v3-assets-cause-pagespeed-issues-how-to-defer
 var fired = false;
