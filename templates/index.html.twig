@@ -46,6 +46,19 @@
 {% endblock %}
 {% block link_preload %}
     <link rel="preload" href="/_astro/gothambold-webfont.C8ocyIP7.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" as="image"
+      href="{{ path('app_upload_files_from_hash', {'hash': 'e34o{1ASv#T|MdD4,vJ5wIXmxcJO,GRii^H;v%OX$MNG%iP9s;R+tl'}) }}"
+      imagesrcset="/_astro/hero.ByVFTj-u_Z6ooGw.webp 360w,
+                   /_astro/hero.ByVFTj-u_LE9Or.webp 480w,
+                   /_astro/hero.ByVFTj-u_1U77VS.webp 768w,
+                   /_astro/hero.ByVFTj-u_1qIHz8.webp 1024w,
+                   /_astro/hero.ByVFTj-u_ZXIFv5.webp 1440w,
+                   /_astro/hero.ByVFTj-u_1pAgy9.webp 1920w"
+      imagesizes="(max-width: 480px) 360px,
+                  (max-width: 768px) 480px,
+                  (max-width: 1024px) 768px,
+                  (max-width: 1440px) 1024px,
+                  1440px">
 {% endblock %}
 
 {% block content %}
@@ -81,11 +94,16 @@
                 <img 
                     src="{{ path('app_upload_files_from_hash', {'hash': 'e34o{1ASv#T|MdD4,vJ5wIXmxcJO,GRii^H;v%OX$MNG%iP9s;R+tl'}) }}"
                     srcset="/_astro/hero.ByVFTj-u_Z6ooGw.webp 360w,
+                            /_astro/hero.ByVFTj-u_LE9Or.webp 480w,
                             /_astro/hero.ByVFTj-u_1U77VS.webp 768w,
                             /_astro/hero.ByVFTj-u_1qIHz8.webp 1024w,
                             /_astro/hero.ByVFTj-u_ZXIFv5.webp 1440w,
                             /_astro/hero.ByVFTj-u_1pAgy9.webp 1920w"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 480px) 360px,
+                            (max-width: 768px) 480px,
+                            (max-width: 1024px) 768px,
+                            (max-width: 1440px) 1024px,
+                            1440px"
                     alt="Market research background"
                     width="1920" height="1080"
                     fetchpriority="high"
