@@ -47,6 +47,7 @@
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     <link rel="preconnect" href="https://www.clarity.ms" crossorigin>  
   {% endblock %}
+  <link rel="preload" href="{{ asset('fonts/dm-sans-latin-wght-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
   {% block link_preload %}{% endblock %}
   {% if app.environment == 'prod' %}
     {{ headerFooterScript ? headerFooterScript.headerScript | raw : '' }}
@@ -77,7 +78,9 @@
           <nav>
               <div class="block lg:hidden" x-data="{ open: false, openedWithKeyboard: false }">
                 <div class="relative" @keydown.esc.window="subMenuIsOpen = false, openedWithKeyboard = false">
-                    <button aria-label="Menu" type="button" @click="subMenuIsOpen = ! subMenuIsOpen" aria-haspopup="true" @keydown.space.prevent="openedWithKeyboard = true" @keydown.enter.prevent="openedWithKeyboard = true" @keydown.down.prevent="openedWithKeyboard = true" :aria-expanded="subMenuIsOpen || openedWithKeyboard"> <i data-lucide="menu" data-size="30" class="scrollPos || subMenuIsOpen ? ' text-big-stone-950' : 'text-white'"></i> </button> 
+                    <button aria-label="Menu" type="button" @click="subMenuIsOpen = ! subMenuIsOpen" aria-haspopup="true" @keydown.space.prevent="openedWithKeyboard = true" @keydown.enter.prevent="openedWithKeyboard = true" @keydown.down.prevent="openedWithKeyboard = true" :aria-expanded="subMenuIsOpen || openedWithKeyboard"> 
+                      {{ ux_icon('lucide:menu', {'class': 'text-big-stone-950 w-[30px] h-[30px]', 'x-bind:class': "scrollPos || subMenuIsOpen ? 'text-white' : 'text-big-stone-950'"}) }}
+                    </button> 
                     <div x-cloak x-show="subMenuIsOpen || openedWithKeyboard" x-transition x-trap.noscroll="subMenuIsOpen || openedWithKeyboard" x-trap="openedWithKeyboard" @click.outside="subMenuIsOpen = false, openedWithKeyboard = false" @keydown.down.prevent="$focus.wrap().next()" @keydown.up.prevent="$focus.wrap().previous()" class="absolute top-[48px] -right-4 flex w-dvw overflow-y-scroll min-h-[calc(100dvh-72px)] h-full flex-col overflow-hidden border border-big-stone-950/10 bg-white p-4 gap-3" role="menu">  
                     <a href="/" class="text-base font-normal text-black hover:text-picton-blue-500">Home</a>  
                     <a href="/about-us" class="text-base font-normal text-black hover:text-picton-blue-500">About</a>  
@@ -111,7 +114,7 @@
               <li> <a href="/about-us" class="font-medium hover:text-picton-blue-500 duration-300 ease-out h-full"> About </a> </li>
               <li x-data="{ isOpen: false, openedWithKeyboard: false, leaveTimeout: null }" @mouseleave.prevent="leaveTimeout = setTimeout(() => { isOpen = false }, 0)" @mouseenter="leaveTimeout ? clearTimeout(leaveTimeout) : true" @keydown.esc.prevent="isOpen = false, openedWithKeyboard = false" @click.outside="isOpen = false, openedWithKeyboard = false" class="relative">  
                 <button type="button" @mouseover="isOpen = true" @keydown.space.prevent="openedWithKeyboard = true" @keydown.enter.prevent="openedWithKeyboard = true" @keydown.down.prevent="openedWithKeyboard = true" class="inline-flex gap-2 h-12 items-center font-medium hover:text-picton-blue-500 cursor-pointer" :class="isOpen || openedWithKeyboard ? 'text-picton-blue-500' : ''" :aria-expanded="isOpen || openedWithKeyboard" aria-haspopup="true"> 
-                  <a href="/sectors" class="">Sectors</a> <i data-lucide="chevron-down" class="size-4"></i> 
+                  <a href="/sectors" class="">Sectors</a> {{ ux_icon('lucide:chevron-down', {'class': 'size-4'}) }}
                 </button>  
                 <div x-cloak x-show="isOpen || openedWithKeyboard" x-transition x-trap="openedWithKeyboard" @click.outside="isOpen = false, openedWithKeyboard = false" @keydown.down.prevent="$focus.wrap().next()" @keydown.up.prevent="$focus.wrap().previous()" class="absolute top-7 left-0 pt-[36px]" role="menu"> 
                   <div class="flex items-start text-left gap-2 w-full min-w-80 flex-col overflow-hidden border border-big-stone-950/10 bg-white p-4"> 
@@ -123,7 +126,7 @@
               </li>
               <li x-data="{ isOpen: false, openedWithKeyboard: false, leaveTimeout: null }" @mouseleave.prevent="leaveTimeout = setTimeout(() => { isOpen = false }, 0)" @mouseenter="leaveTimeout ? clearTimeout(leaveTimeout) : true" @keydown.esc.prevent="isOpen = false, openedWithKeyboard = false" @click.outside="isOpen = false, openedWithKeyboard = false" class="relative">  
                 <button type="button" @mouseover="isOpen = true" @keydown.space.prevent="openedWithKeyboard = true" @keydown.enter.prevent="openedWithKeyboard = true" @keydown.down.prevent="openedWithKeyboard = true" class="inline-flex gap-2 h-12 items-center font-medium hover:text-picton-blue-500 cursor-pointer" :class="isOpen || openedWithKeyboard ? 'text-picton-blue-500' : ''" :aria-expanded="isOpen || openedWithKeyboard" aria-haspopup="true"> 
-                  <a href="/services" class="">Our Services</a> <i data-lucide="chevron-down" class="size-4"></i> 
+                  <a href="/services" class="">Our Services</a> {{ ux_icon('lucide:chevron-down', {'class': 'size-4'}) }}
                 </button>  
                 <div x-cloak x-show="isOpen || openedWithKeyboard" x-transition x-trap="openedWithKeyboard" @click.outside="isOpen = false, openedWithKeyboard = false" @keydown.down.prevent="$focus.wrap().next()" @keydown.up.prevent="$focus.wrap().previous()" class="absolute top-7 left-0 pt-[36px]" role="menu"> 
                   <div class="flex items-start text-left gap-2 w-full min-w-80 flex-col overflow-hidden border border-big-stone-950/10 bg-white p-4"> 
@@ -137,7 +140,7 @@
               {% if postTypes|length > 0 %}
                 <li x-data="{ isOpen: false, openedWithKeyboard: false, leaveTimeout: null }" @mouseleave.prevent="leaveTimeout = setTimeout(() => { isOpen = false }, 0)" @mouseenter="leaveTimeout ? clearTimeout(leaveTimeout) : true" @keydown.esc.prevent="isOpen = false, openedWithKeyboard = false" @click.outside="isOpen = false, openedWithKeyboard = false" class="relative">  
                   <button type="button" @mouseover="isOpen = true" @keydown.space.prevent="openedWithKeyboard = true" @keydown.enter.prevent="openedWithKeyboard = true" @keydown.down.prevent="openedWithKeyboard = true" class="inline-flex gap-2 h-12 items-center font-medium hover:text-picton-blue-500 cursor-pointer" :class="isOpen || openedWithKeyboard ? 'text-picton-blue-500' : ''" :aria-expanded="isOpen || openedWithKeyboard" aria-haspopup="true"> 
-                    <a href="/insights" class="">Insights</a> <i data-lucide="chevron-down" class="size-4"></i> 
+                    <a href="/insights" class="">Insights</a> {{ ux_icon('lucide:chevron-down', {'class': 'size-4'}) }}
                   </button>  
                   <div x-cloak x-show="isOpen || openedWithKeyboard" x-transition x-trap="openedWithKeyboard" @click.outside="isOpen = false, openedWithKeyboard = false" @keydown.down.prevent="$focus.wrap().next()" @keydown.up.prevent="$focus.wrap().previous()" class="absolute top-7 left-0 pt-[36px]" role="menu"> 
                     <div class="flex items-start text-left gap-2 w-full min-w-80 flex-col overflow-hidden border border-big-stone-950/10 bg-white p-4"> 
@@ -181,8 +184,8 @@
                                   href="mailto:{{ app_contact_email }}"
                                   class="text-white inline-flex items-center gap-2 hover:underline"
                                 >
-                                  <i data-lucide="mail" class="size-6">
-                                  </i>{{ app_contact_email }}</a
+                                  {{ ux_icon('lucide:mail', {'class': 'size-6'}) }}
+                                  {{ app_contact_email }}</a
                                 >
                               </div>
                           </div>
@@ -197,7 +200,14 @@
                                       <div class="input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&#38;_span]:text-picton-blue-500 text-white">Phone Number<span>*</span></label><input required x-model="formData.phoneNumber" type="tel" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/60 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Phone Number" name="phoneNumber" aria-invalid="false" value=""> </div>
                                       <div class="lg:col-span-2"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&#38;_span]:text-picton-blue-500 text-white">Email Address<span>*</span></label><input required x-model="formData.emailAddress" type="email" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/60 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Email Address" name="emailAddress" aria-invalid="false" value=""> </div>
                                       <div class="lg:col-span-2 input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&#38;_span]:text-picton-blue-500 text-white">Message<span>*</span></label><textarea required name="message" x-model="formData.message" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/60 focus-within:border-white text-white placeholder:text-white/60" role="textbox" rows="5" placeholder="Write Your Message Here..." aria-invalid="false">      </textarea> </div>
-                                      <div class="lg:col-span-2"> <button class="group inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-white dark:focus-visible:ring-white dark:bg-white dark:text-white dark:hover:bg-white/90 h-10 px-4 py-2 bg-picton-blue-500 text-white text-sm gap-3 hover:bg-picton-blue-500/80 w-max" type="submit" :disabled="isLoading"> <span x-show="!isLoading" x-cloak>Send Inquiry</span> <i data-lucide="arrow-right" class="size-4 group-hover:translate-x-1 duration-200 ease-out" x-show="!isLoading" x-cloak></i> <i data-lucide="loader-circle" class="size-4 animate-spin" x-show="isLoading" x-cloak></i> <span x-show="isLoading" x-cloak>Sending Inquiry...</span> </button> </div>
+                                      <div class="lg:col-span-2"> 
+                                        <button class="group inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-white dark:focus-visible:ring-white dark:bg-white dark:text-white dark:hover:bg-white/90 h-10 px-4 py-2 bg-picton-blue-500 text-white text-sm gap-3 hover:bg-picton-blue-500/80 w-max" type="submit" :disabled="isLoading"> 
+                                          <span x-show="!isLoading" x-cloak>Send Inquiry</span> 
+                                            {{ ux_icon('lucide:arrow-right', {'class': 'size-4 group-hover:translate-x-1 duration-200 ease-out', 'x-show': '!isLoading', 'x-cloak': ''}) }}
+                                            {{ ux_icon('lucide:loader-circle', {'class': 'size-4 animate-spin', 'x-show': 'isLoading', 'x-cloak': ''}) }}
+                                            <span x-show="isLoading" x-cloak>Sending Inquiry...</span> 
+                                          </button> 
+                                        </div>
                                   </form>
                                   <div x-data="notification" x-on:notify.window="addNotification({variant: $event.detail.variant,sender: $event.detail.sender,title: $event.detail.title,message: $event.detail.message,})">
                                       <div x-on:mouseenter="$dispatch('pause-auto-dismiss')" x-on:mouseleave="$dispatch('resume-auto-dismiss')" class="group pointer-events-none fixed inset-x-8 top-0 z-[99] flex max-w-full flex-col gap-2 bg-transparent px-6 py-6 md:bottom-0 md:left-[unset] md:right-0 md:top-[unset] md:max-w-sm">

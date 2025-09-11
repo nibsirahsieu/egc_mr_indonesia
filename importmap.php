@@ -169,7 +169,4 @@ return [
     'just-validate' => [
         'version' => '4.3.0',
     ],
-    'lucide' => [
-        'version' => '0.542.0',
-    ],
 ];

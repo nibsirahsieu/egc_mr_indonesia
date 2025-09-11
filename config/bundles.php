@@ -22,4 +22,5 @@ return [
     Hpatoio\DeployBundle\DeployBundle::class => ['dev' => true, 'test' => true],
     Sensiolabs\MinifyBundle\SensiolabsMinifyBundle::class => ['all' => true],
     Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle::class => ['all' => true],
+    Symfony\UX\Icons\UXIconsBundle::class => ['all' => true],
 ];

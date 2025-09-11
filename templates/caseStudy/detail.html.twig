@@ -45,7 +45,9 @@
         <div class="w-full h-full absolute inset-0 bg-gradient-to-b from-big-stone-950/80 to-big-stone-500/30"></div>
         <div class="relative mt-[72px] lg:mt-[83px] container py-32 lg:py-32">
             <div class="flex flex-wrap gap-2.5 justify-start lg:justify-center items-center mb-4">
-                <a href="/" class="flex items-center" aria-label="Home"><i data-lucide="home" class="size-3.5 text-white"></i></a>
+                <a href="/" class="flex items-center" aria-label="Home">
+                    {{ ux_icon('lucide:homw', {'class': 'size-3.5 text-white'}) }} 
+                </a>
                 <span class="text-picton-blue-500">/</span>
                 <a href="{{ path('app_case_studies_index') }}" class="text-sm text-white hover:underline">Case Study</a>
                 <span class="text-picton-blue-500">/</span>
@@ -60,7 +62,7 @@
     <section id="content"> 
         <div class="container py-8 lg:py-14 space-y-8">
             <div class="space-y-1">
-                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> <i data-lucide="briefcase" class="size-8"></i>
+                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> {{ ux_icon('lucide:briefcase', {'class': 'size-8'}) }}
                     Client
                 </h3> 
                 <div class="prose max-w-full prose-li:my-0 prose-p:mb-1 prose-ul:mt-1">
@@ -68,7 +70,7 @@
                 </div>
             </div>
             <div class="space-y-1">
-                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> <i data-lucide="triangle-alert" class="size-8"></i>
+                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> {{ ux_icon('lucide:triangle-alert', {'class': 'size-8'}) }}
                     Issues
                 </h3>
                 <div class="prose max-w-full prose-li:my-0 prose-p:mb-1 prose-ul:mt-1">
@@ -76,7 +78,7 @@
                 </div>
             </div>
             <div class="space-y-1">
-                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> <i data-lucide="puzzle" class="size-8"></i>
+                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> {{ ux_icon('lucide:puzzle', {'class': 'size-8'}) }}
                     Solution
                 </h3>
                 <div class="prose max-w-full prose-li:my-0 prose-p:mb-1 prose-ul:mt-1">
@@ -84,7 +86,7 @@
                 </div>
             </div>
             <div class="space-y-1">
-                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> <i data-lucide="user-cog" class="size-8"></i>
+                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> {{ ux_icon('lucide:user-cog', {'class': 'size-8'}) }}
                     Approach
                 </h3>
                 <div class="prose max-w-full prose-li:my-0 prose-p:mb-1 prose-ul:mt-1">
@@ -92,7 +94,7 @@
                 </div>
             </div>
             <div class="space-y-1">
-                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> <i data-lucide="list-todo" class="size-8"></i>
+                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> {{ ux_icon('lucide:list-todo', {'class': 'size-8'}) }}
                     Recommendations
                 </h3>
                 <div class="prose max-w-full prose-li:my-0 prose-p:mb-1 prose-ul:mt-1">
@@ -100,7 +102,7 @@
                 </div>
             </div>
             <div class="space-y-1">
-                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> <i data-lucide="chart-no-axes-combined" class="size-8"></i>
+                <h3 class="text-2xl lg:text-3xl heading-3 inline-flex items-center gap-3"> {{ ux_icon('lucide:chart-no-axes-combined', {'class': 'size-8'}) }}
                     Engagement ROI
                 </h3>
                 <div class="prose max-w-full prose-li:my-0 prose-p:mb-1 prose-ul:mt-1">
