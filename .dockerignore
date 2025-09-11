@@ -34,4 +34,5 @@ vendor/
 .env.local.php
 .env.test
 data/
+node_modules/
 #assets/
