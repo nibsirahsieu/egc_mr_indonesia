@@ -2,7 +2,7 @@
 module.exports = {
   darkMode: ['class'],
   content: [
-    "./assets/**/*.js",
+    "./assets/js/frontend/*.js",
     "./templates/**/*.html.twig",
   ],
   theme: {

@@ -157,4 +157,19 @@ return [
     '@erwinstone/bs-toast' => [
         'version' => '1.0.1',
     ],
+    'alpinejs' => [
+        'version' => '3.15.0',
+    ],
+    '@alpinejs/collapse' => [
+        'version' => '3.15.0',
+    ],
+    '@alpinejs/focus' => [
+        'version' => '3.15.0',
+    ],
+    'just-validate' => [
+        'version' => '4.3.0',
+    ],
+    'lucide' => [
+        'version' => '0.542.0',
+    ],
 ];

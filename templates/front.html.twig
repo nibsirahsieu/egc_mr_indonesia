@@ -5,7 +5,7 @@
 {% set contact_email = app_contact_email | obfuscate_email %} 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-sitekey="{{ google_recaptcha_site_key }}">
   <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">

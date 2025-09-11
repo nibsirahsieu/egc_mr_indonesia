@@ -188,6 +188,7 @@ body {
   }
   .list-arrow {
     @apply space-y-1 list-['↘'] marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-2 mb-4;
+    /*@apply space-y-1 list-disc marker:text-picton-blue-500 marker:pr-5 [&_li]:ps-4 ml-4 marker:text-xl mt-2 mb-4;*/
   }
 }
 
@@ -240,4 +241,4 @@ body {
   }
 }
 
-@media (min-width: 1024px) {.lg\:h-96 {height: 24rem;}}@media (min-width: 1024px) {.lg\:mb-6 {margin-bottom: 1.5rem;}}.h-80 {height: 20rem;}
+/*@media (min-width: 1024px) {.lg\:h-96 {height: 24rem;}}@media (min-width: 1024px) {.lg\:mb-6 {margin-bottom: 1.5rem;}}.h-80 {height: 20rem;}*/

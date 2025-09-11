@@ -22,6 +22,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	file \
 	gettext \
 	git \
+	curl \
+	ca-certificates \
+	# Node.js & npm (LTS, ambil dari repo Debian)
+	nodejs \
+	npm \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
@@ -89,9 +94,10 @@ COPY --link frankenphp/conf.d/20-app.prod.ini $PHP_INI_DIR/app.conf.d/
 COPY --link frankenphp/worker.Caddyfile /etc/caddy/worker.Caddyfile
 
 # prevent the reinstallation of vendors at every changes in the source code
-COPY --link composer.* symfony.* ./
+COPY --link composer.* symfony.* package*.json ./
 RUN set -eux; \
-	composer install --no-cache --prefer-dist --no-dev --no-autoloader --no-scripts --no-progress
+	composer install --no-cache --prefer-dist --no-dev --no-autoloader --no-scripts --no-progress; \
+	npm install
 
 # copy sources
 COPY --link . ./
@@ -102,6 +108,6 @@ RUN set -eux; \
 	composer dump-autoload --classmap-authoritative --no-dev; \
 	composer dump-env prod; \
 	composer run-script --no-dev post-install-cmd; \
-	php bin/console tailwind:build \
+	php bin/console tailwind:build --minify \
 	php bin/console asset-map:compile; \
 	chmod +x bin/console; sync;
