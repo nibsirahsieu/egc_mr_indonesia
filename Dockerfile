@@ -22,11 +22,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	file \
 	gettext \
 	git \
-	curl \
-	ca-certificates \
-	# Node.js & npm (LTS, ambil dari repo Debian)
-	nodejs \
-	npm \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
@@ -93,6 +88,14 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY --link frankenphp/conf.d/20-app.prod.ini $PHP_INI_DIR/app.conf.d/
 COPY --link frankenphp/worker.Caddyfile /etc/caddy/worker.Caddyfile
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+	curl \
+	ca-certificates \
+	# Node.js & npm (LTS, ambil dari repo Debian)
+	nodejs \
+	npm \
+	&& rm -rf /var/lib/apt/lists/*
+	
 # prevent the reinstallation of vendors at every changes in the source code
 COPY --link composer.* symfony.* package*.json ./
 RUN set -eux; \
