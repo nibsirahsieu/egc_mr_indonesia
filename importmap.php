@@ -79,16 +79,16 @@ return [
         'version' => '4.29.2',
     ],
     'perfect-scrollbar/dist/perfect-scrollbar.js' => [
-        'version' => '1.5.5',
+        'version' => '1.5.6',
     ],
     'bootstrap' => [
-        'version' => '5.3.3',
+        'version' => '5.3.8',
     ],
     '@popperjs/core' => [
         'version' => '2.11.8',
     ],
     'bootstrap/dist/css/bootstrap.min.css' => [
-        'version' => '5.3.3',
+        'version' => '5.3.8',
         'type' => 'css',
     ],
     'parsleyjs' => [
@@ -98,40 +98,40 @@ return [
         'version' => '6.0.0',
     ],
     'datatables.net-bs5' => [
-        'version' => '2.1.5',
+        'version' => '2.3.3',
     ],
     'datatables.net' => [
-        'version' => '2.1.5',
+        'version' => '2.3.3',
     ],
     'datatables.net-bs5/css/dataTables.bootstrap5.min.css' => [
-        'version' => '2.1.5',
+        'version' => '2.3.3',
         'type' => 'css',
     ],
     'datatables.net-fixedheader-bs5' => [
-        'version' => '4.0.1',
+        'version' => '4.0.3',
     ],
     'datatables.net-fixedheader' => [
-        'version' => '4.0.1',
+        'version' => '4.0.3',
     ],
     'datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css' => [
-        'version' => '4.0.1',
+        'version' => '4.0.3',
         'type' => 'css',
     ],
     'datatables.net-responsive-bs5' => [
-        'version' => '3.0.3',
+        'version' => '3.0.6',
     ],
     'datatables.net-responsive' => [
-        'version' => '3.0.3',
+        'version' => '3.0.6',
     ],
     'datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css' => [
-        'version' => '3.0.3',
+        'version' => '3.0.6',
         'type' => 'css',
     ],
     'autosize' => [
         'version' => '6.0.1',
     ],
     'bootstrap-maxlength' => [
-        'version' => '1.10.1',
+        'version' => '2.0.0',
     ],
     '@toyokumo/fos-router' => [
         'version' => '1.0.5',
@@ -140,7 +140,7 @@ return [
         'version' => '5.3.2',
     ],
     'infinite-scroll' => [
-        'version' => '4.0.1',
+        'version' => '5.0.0',
     ],
     'ev-emitter' => [
         'version' => '2.1.2',
