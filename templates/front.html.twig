@@ -47,7 +47,6 @@
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     <link rel="preconnect" href="https://www.clarity.ms" crossorigin>  
   {% endblock %}
-  <link rel="preload" href="{{ asset('fonts/dm-sans-latin-wght-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
   {% block link_preload %}{% endblock %}
   {% if app.environment == 'prod' %}
     {{ headerFooterScript ? headerFooterScript.headerScript | raw : '' }}
