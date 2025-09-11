@@ -95,7 +95,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	nodejs \
 	npm \
 	&& rm -rf /var/lib/apt/lists/*
-	
+
 # prevent the reinstallation of vendors at every changes in the source code
 COPY --link composer.* symfony.* package*.json ./
 RUN set -eux; \
@@ -111,6 +111,6 @@ RUN set -eux; \
 	composer dump-autoload --classmap-authoritative --no-dev; \
 	composer dump-env prod; \
 	composer run-script --no-dev post-install-cmd; \
-	php bin/console tailwind:build --minify \
+	php bin/console tailwind:build --minify; \
 	php bin/console asset-map:compile; \
 	chmod +x bin/console; sync;
