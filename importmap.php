@@ -169,4 +169,11 @@ return [
     'just-validate' => [
         'version' => '4.3.0',
     ],
+    '@fontsource-variable/dm-sans' => [
+        'version' => '5.2.6',
+    ],
+    '@fontsource-variable/dm-sans/index.min.css' => [
+        'version' => '5.2.6',
+        'type' => 'css',
+    ],
 ];
