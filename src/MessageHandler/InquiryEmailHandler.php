@@ -2,6 +2,7 @@
 
 namespace App\MessageHandler;
 
+use App\Common\UploadHelper;
 use App\Entity\Inquiry;
 use App\Message\InquiryEmail;
 use App\Repository\InquiryRepository;
@@ -9,6 +10,8 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
+use Symfony\Component\Mime\Part\DataPart;
+use Symfony\Component\Mime\Part\File;
 
 #[AsMessageHandler()]
 final class InquiryEmailHandler
@@ -16,6 +19,7 @@ final class InquiryEmailHandler
     public function __construct(
         private InquiryRepository $inquiryRepository, 
         private MailerInterface $mailer,
+        private UploadHelper $uploadHelper,
         #[Autowire('%env(string:APP_SENDER)%')]
         private string $sender,
         #[Autowire('%env(string:APP_INQUIRY_RECIPIENT)%')]
@@ -52,6 +56,11 @@ final class InquiryEmailHandler
                 'contact_email' => $inquiry->getEmail()
             ]);
 
+        foreach ($inquiry->getRfpFiles() as $rfpFile) {
+            $attachment = $this->uploadHelper->getPublicPath($rfpFile->getRelativePath());
+            $email->addPart(new DataPart(new File($attachment), $rfpFile->getOriginalName(), $rfpFile->getMimeType()));
+        }
+        
         $this->mailer->send($email);
     }
 

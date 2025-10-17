@@ -46,7 +46,9 @@ final class InquiryRequest
         public string $recaptcha,
 
         #[Assert\Length(max: 255)]
-        public ?string $fromPage
+        public ?string $fromPage,
+
+        public array $rfpFileIds
     )
     {
     }

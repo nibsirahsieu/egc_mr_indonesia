@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\InquiryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -43,6 +45,17 @@ class Inquiry
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $fromPage = null;
+
+    /**
+     * @var Collection<int, FileUploaded>
+     */
+    #[ORM\ManyToMany(targetEntity: FileUploaded::class)]
+    private Collection $rfpFiles;
+
+    public function __construct()
+    {
+        $this->rfpFiles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -153,6 +166,30 @@ class Inquiry
     public function setFromPage(?string $fromPage): static
     {
         $this->fromPage = $fromPage;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FileUploaded>
+     */
+    public function getRfpFiles(): Collection
+    {
+        return $this->rfpFiles;
+    }
+
+    public function addRfpFile(FileUploaded $rfpFile): static
+    {
+        if (!$this->rfpFiles->contains($rfpFile)) {
+            $this->rfpFiles->add($rfpFile);
+        }
+
+        return $this;
+    }
+
+    public function removeRfpFile(FileUploaded $rfpFile): static
+    {
+        $this->rfpFiles->removeElement($rfpFile);
 
         return $this;
     }

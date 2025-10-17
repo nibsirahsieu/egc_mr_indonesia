@@ -25,12 +25,15 @@ Alpine.data("formHandler", (fromPage = "") => ({
     emailAddress: "",
     message: "",
     recaptcha: "",
+    rfpFileIds: [],
     fromPage: fromPage
   },
   responseMessage: "",
+  uploadedFiles: [],
   validation: null,
   isLoading: false,
   isSuccess: false,
+  isUploading: false,
   init() {
     // Initialize Just-validate on the form
     this.validation = new JustValidate(this.$refs.form, {
@@ -108,6 +111,52 @@ Alpine.data("formHandler", (fromPage = "") => ({
         }
       ])
   },
+  async handleFile(event) {
+    const files = event.target.files;
+    if (!files.length) return;
+
+    this.isUploading = true;
+
+    for (const file of files) {
+      const data = new FormData();
+      data.append('file', file);
+
+      try {
+        const res = await fetch('/upload-files', {
+          method: 'POST',
+          body: data,
+        });
+        if (!res.ok) throw new Error('Upload failed');
+
+        const result = await res.json();
+        
+        // Tambahkan ke list uploadedFiles
+        this.uploadedFiles.push({
+          id: result.id,
+          name: file.name,
+          url: result.url ?? null,
+        });
+
+        this.formData.rfpFileIds.push(result.id)
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    
+    this.isUploading = false;
+    this.$refs.fileInput.value = '';
+  },
+  async removeFile(index, file) {
+    try {
+      const res = await fetch(`/upload-files/${file.id}/delete`, { method: 'DELETE' });
+      if (!res.ok) throw new Error('Failed to remove file');
+
+      this.uploadedFiles.splice(index, 1);
+      this.formData.rfpFileIds = this.uploadedFiles.map(f => f.id);
+    } catch (e) {
+      console.error(e);
+    }
+  },
   async validateForm() {
     const that = this
     const isValid = await this.validation.isValid
@@ -179,8 +228,12 @@ Alpine.data("formHandler", (fromPage = "") => ({
       emailAddress: "",
       message: "",
       recaptcha: "",
+      rfpFileIds: [],
       fromPage: fromPage || ""
     }
+    // Reset file input di DOM
+    this.$refs.fileInput.value = '';
+    this.uploadedFiles = [];
     this.validation.destroy()
   }
 }))

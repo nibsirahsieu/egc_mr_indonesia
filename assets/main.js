@@ -2,6 +2,7 @@ import lazySizes from 'lazysizes';
 lazySizes.cfg.lazyClass = 'lazy';
 
 import "@fontsource-variable/dm-sans/index.min.css"
+import './js/ls.native-loading.js';
 import './js/ls.respimg.js';
 import './js/frontend/main.js';
 import './styles/app.css'
