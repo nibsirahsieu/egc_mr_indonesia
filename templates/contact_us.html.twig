@@ -28,6 +28,10 @@
         href="{{ preload('/_astro/getty-images-Oe7MfGGO_h0-unsplash.D-At4Vgx_1qlAmb.webp', {as: 'image'}) }}"
     >
 {% endblock %}
+{% block schema_org %}
+   {{ parent() }}
+   {{ contact_schema(metaPage.metaTitle ?: '') | raw }}
+{% endblock %}
 {% block inline_stylesheets %}
     <style>
         .contact-us {background-image: url('{{ asset("images/ant-rozetsky-_qWeqqmpBpU-unsplash.webp") }}');}

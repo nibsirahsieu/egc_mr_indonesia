@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Common\SchemaGenerator;
 use App\QueryService\MetaPageQueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -9,18 +10,21 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ServiceController extends AbstractController
 {
-    public function __construct(private MetaPageQueryService $metaPageQueryService)
+    public function __construct(private MetaPageQueryService $metaPageQueryService, private SchemaGenerator $schemaGenerator)
     {
     }
     
     #[Route('/services', name: 'app_services_index', methods: ['GET'])]
     public function index(): Response
     {
+        $services = $this->availableServices();
         $metaPage = $this->metaPageQueryService->metaForPage('services');
-        
+        $schema = $this->schemaGenerator->generateServicesSchema($metaPage?->getMetaTitle() ?: '', $metaPage?->getMetaDescription() ?: '', array_map(function ($key, $value) {return ['name' => $value['name'], 'slug' => $key];}, array_keys($services), $services));
+
         return $this->render("service/index.html.twig", [
             'services' => $this->availableServices(),
-            'metaPage' => $metaPage
+            'metaPage' => $metaPage,
+            'schema' => $schema
         ]);
     }
 

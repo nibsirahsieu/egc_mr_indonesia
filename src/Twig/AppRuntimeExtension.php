@@ -2,6 +2,7 @@
 
 namespace App\Twig;
 
+use App\Common\SchemaGenerator;
 use App\Entity\HeaderFooterScript;
 use App\Repository\HeaderFooterScriptRepository;
 use App\Repository\OurServiceRepository;
@@ -16,6 +17,7 @@ final class AppRuntimeExtension implements RuntimeExtensionInterface
         private readonly SectorRepository $sectorRepository,
         private readonly HeaderFooterScriptRepository $repository,
         private readonly OurServiceRepository $ourServiceRepository,
+        private readonly SchemaGenerator $schemaGenerator
     )
     {
     }
@@ -38,5 +40,20 @@ final class AppRuntimeExtension implements RuntimeExtensionInterface
     public function getPostTypes(): iterable
     {
         return $this->postRepository->postTypes();
+    }
+
+    public function rootSchema(string $title, string $logo): string
+    {
+        return $this->schemaGenerator->generateBaseSchema($title, $logo);
+    }
+
+    public function homeSchema(string $title, string $description, string $heroImage): string
+    {
+        return $this->schemaGenerator->generateHomeSchema($title, $description, $heroImage);
+    }
+
+    public function contactSchema(string $title): string
+    {
+        return $this->schemaGenerator->generateContactSchema($title);
     }
 }

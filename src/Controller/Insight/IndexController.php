@@ -2,6 +2,7 @@
 
 namespace App\Controller\Insight;
 
+use App\Common\SchemaGenerator;
 use App\QueryService\MetaPageQueryService;
 use App\QueryService\PostQueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,7 +15,7 @@ final class IndexController extends AbstractController
 {
     const MAX_POST = 12;
 
-    public function __construct(private PostQueryService $queryService, private MetaPageQueryService $metaPageQueryService)
+    public function __construct(private PostQueryService $queryService, private MetaPageQueryService $metaPageQueryService, private SchemaGenerator $schemaGenerator)
     {
     }
     
@@ -38,13 +39,15 @@ final class IndexController extends AbstractController
         }
         
         $metaPage = $this->metaPageQueryService->metaForPage($category ?: 'insights');
-        
+        $schema = $this->schemaGenerator->generateArticlesSchema($category, $metaPage?->getMetaTitle() ?: '', $metaPage?->getMetaDescription() ?: '', $this->getArticlesForSchema());
+
         return $this->render('insight/index.html.twig', [
             'metaPage' => $metaPage,
             'defaultTypeId' => $defaultTypeId,
             'postTypes' => $postTypes,
             'category' => $category,
-            'pageTitle' => $pageTitle
+            'pageTitle' => $pageTitle,
+            'schema' => $schema
         ]);
     }
 
@@ -76,5 +79,21 @@ final class IndexController extends AbstractController
             'lastId' => $lastPost->id,
             'nbData' => $nbPost
         ]);
+    }
+
+    private function getArticlesForSchema() : array 
+    {
+        $articles = [];
+        $posts = $this->queryService->recentPosts(3);
+
+        foreach ($posts as $post) {
+            $articles[] = [
+                'headline' => $post->title,
+                'url' => $this->generateUrl('app_insights_show', ['category' => $post->category->name, 'slug' => $post->slug]),
+                'datePublished' => $post->publishedAt->format('Y-m-d')
+            ];
+        }
+        
+        return $articles;
     }
 }

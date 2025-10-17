@@ -17,6 +17,11 @@
     <meta property="og:description" content="{{ metaPage.metaDescription }}" />
     <meta name="twitter:description" content="{{ metaPage.metaDescription }}" />
 {% endblock %}
+{% block schema_org %}
+   {{ parent() }}
+   {{ home_schema(metaPage.metaTitle ?: '', metaPage.metaDescription ?: '', '/_astro/hero.ByVFTj-u_ZXIFv5-1.webp') | raw }}
+{% endblock %}
+
 {% block inline_stylesheets %}
     <style>
         #case-studies img.lazy {

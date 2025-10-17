@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Common\SchemaGenerator;
 use App\QueryService\MetaPageQueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -9,18 +10,21 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class SectorController extends AbstractController
 {
-    public function __construct(private MetaPageQueryService $metaPageQueryService)
+    public function __construct(private MetaPageQueryService $metaPageQueryService, private SchemaGenerator $schemaGenerator)
     {
     }
     
     #[Route('/sectors', name: 'app_sectors_index', methods: ['GET'])]
     public function index(): Response
     {
+        $sectors = $this->availableSectors();
         $metaPage = $this->metaPageQueryService->metaForPage('sectors');
-        
+        $schema = $this->schemaGenerator->generateSectorsSchema($metaPage?->getMetaTitle() ?: '', $metaPage?->getMetaDescription() ?: '', array_map(function ($key, $value) {return ['name' => $value['name'], 'slug' => $key];}, array_keys($sectors), $sectors));
+
         return $this->render('sector/index.html.twig', [
             'sectors' => $this->availableSectors(),
-            'metaPage' => $metaPage
+            'metaPage' => $metaPage,
+            'schema' => $schema
         ]);
     }
 

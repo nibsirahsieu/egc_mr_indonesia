@@ -21,7 +21,10 @@
    <meta property="og:url" content="{{ url('app_insights_index') }}" />  
    <link rel="canonical" href="{{ url('app_insights_index') }}" />
 {% endblock %}
-
+{% block schema_org %}
+   {{ parent() }}
+   {{ schema | raw }}
+{% endblock %}
 {% block javascripts %}
     {% block importmap %}{{ importmap(['main', 'insights']) }}{% endblock %}
 {% endblock %}

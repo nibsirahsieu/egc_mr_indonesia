@@ -48,6 +48,9 @@
     <link rel="preconnect" href="https://www.clarity.ms" crossorigin>  
   {% endblock %}
   {% block link_preload %}{% endblock %}
+  {% block schema_org %}
+    {{ root_schema('Market Research Indonesia', '/_astro/market-research-indonesia-logo-black.BHyusSTD_gPJAU.svg') | raw }}
+  {% endblock %}
   {% if app.environment == 'prod' %}
     {{ headerFooterScript ? headerFooterScript.headerScript | raw : '' }}
   {% endif %}

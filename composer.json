@@ -25,6 +25,7 @@
         "runtime/frankenphp-symfony": "^0.2.0",
         "sensiolabs/minify-bundle": "^1.0",
         "slope-it/breadcrumb-bundle": "^2.1",
+        "spatie/schema-org": "^3.23",
         "stof/doctrine-extensions-bundle": "^1.12",
         "symfony/asset": "7.2.*",
         "symfony/asset-mapper": "7.2.*",

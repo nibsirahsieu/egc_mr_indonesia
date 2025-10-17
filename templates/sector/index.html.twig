@@ -21,7 +21,10 @@
    <meta property="og:url" content="{{ url('app_sectors_index') }}" />  
    <link rel="canonical" href="{{ url('app_sectors_index') }}" />
 {% endblock %}
-
+{% block schema_org %}
+   {{ parent() }}
+   {{ schema | raw }}
+{% endblock %}
 {% block inline_stylesheets %}
     <style>
         .our-sectors {background-image: url('{{ asset("images/ant-rozetsky-_qWeqqmpBpU-unsplash.webp") }}');}

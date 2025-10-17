@@ -34,6 +34,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Common\AppConfig:
+        arguments:
+            - '%env(APP_BASE_URL)%'
+            - '%env(APP_CONTACT_EMAIL)%'
+            - '%env(APP_CONTACT_PHONE_NO)%'
+            - '%env(APP_ADDRESS_COUNTRY)%'
+
     App\Common\UploadHelper:
         public: true
     App\Common\UploadNamer:

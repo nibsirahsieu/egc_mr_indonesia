@@ -41,6 +41,9 @@ final class AppExtension extends AbstractExtension implements EventSubscriberInt
             new TwigFunction('sectors', [AppRuntimeExtension::class, 'getSectors']),
             new TwigFunction('services', [AppRuntimeExtension::class, 'getServices']),
             new TwigFunction('post_types', [AppRuntimeExtension::class, 'getPostTypes']),
+            new TwigFunction('root_schema', [AppRuntimeExtension::class, 'rootSchema']),
+            new TwigFunction('home_schema', [AppRuntimeExtension::class, 'homeSchema']),
+            new TwigFunction('contact_schema', [AppRuntimeExtension::class, 'contactSchema']),
         ];
     }
 
