@@ -379,7 +379,7 @@ Alpine.data("formHandler", (fromPage = "") => ({
         },
         {
           rule: "customRegexp",
-          value: /^[^\s@]+@(?!.*\b(gmail|yahoo|hotmail|outlook|icloud|aol|protonmail|zoho)\.[a-z]+\b).*$/i,
+          value: /^[^\s@]+@(?!.*\b(gmail|yahoo|hotmail|outlook|icloud|aol|protonmail|zoho|rocketmail)\.[a-z]+\b).*$/i,
           errorMessage: "Please use a corporate email address"
         }
       ])
@@ -626,7 +626,7 @@ Alpine.data("formHandlerWhitepaper", (whitepaperId = "") => ({
         },
         {
           rule: "customRegexp",
-          value: /^[^\s@]+@(?!.*\b(gmail|yahoo|hotmail|outlook|icloud|aol|protonmail|zoho)\.[a-z]+\b).*$/i,
+          value: /^[^\s@]+@(?!.*\b(gmail|yahoo|hotmail|outlook|icloud|aol|protonmail|zoho|rocketmail)\.[a-z]+\b).*$/i,
           errorMessage: "Please use a corporate email address"
         }
       ])
