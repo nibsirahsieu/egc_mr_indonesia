@@ -14,7 +14,7 @@ final class WpRequestQueryService
     {
     }
 
-    public function all(?PageData $pageData): PaginateResult
+    public function all(?PageData $pageData = null): PaginateResult
     {
         $result = [];
         $rows = $this->reqpository->listForAdmin($pageData);

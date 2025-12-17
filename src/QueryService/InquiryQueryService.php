@@ -13,7 +13,7 @@ final class InquiryQueryService
     {
     }
 
-    public function all(?PageData $pageData): PaginateResult
+    public function all(?PageData $pageData = null): PaginateResult
     {
         $result = [];
         $rows = $this->inquiryRepository->listForAdmin($pageData);

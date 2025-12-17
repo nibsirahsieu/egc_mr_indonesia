@@ -189,6 +189,40 @@
                                   {{ ux_icon('lucide:mail', {'class': 'size-6'}) }}
                                   {{ app_contact_email }}</a
                                 >
+
+                                <div class="mt-8">
+                                  <p class="text-white mb-2 uppercase text-xs tracking-[0.1em]"> <span class="text-picton-blue-500">/</span> {{"Follow Us"|trans}}</p>
+
+                                  <!-- Social Media -->
+                                  <div class="flex items-center gap-4 mt-2">
+                                    <!-- Instagram -->
+                                    <a href="https://www.instagram.com/eurogroupconsultingmea/"
+                                      target="_blank"
+                                      rel="noopener"
+                                      class="inline-flex items-center gap-2 text-white/80 hover:text-white transition">
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24" fill="none"
+                                          stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+                                      </svg>
+                                      Instagram
+                                    </a>
+
+                                    <!-- YouTube -->
+                                    <a href="https://www.youtube.com/channel/UCYImHJeUSrr_zryPo1GeZ5A"
+                                      target="_blank"
+                                      rel="noopener"
+                                      class="inline-flex items-center gap-2 text-white/80 hover:text-white transition">
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24" fill="none"
+                                          stroke="currentColor" stroke-width="2">
+                                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58Z"></path>
+                                        <polygon points="9 15 15 12 9 9 9 15"></polygon>
+                                      </svg>
+                                      YouTube
+                                    </a>
+                                  </div>
+                                </div>
                               </div>
                           </div>
                           <div class="lg:w-1/2 w-full">
@@ -198,7 +232,38 @@
                                       <div class="input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&#38;_span]:text-picton-blue-500 text-white">Last Name<span>*</span></label><input required x-model="formData.lastName" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/60 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Last Name" name="lastName" aria-invalid="false" value=""> </div>
                                       <div class="input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&#38;_span]:text-picton-blue-500 text-white">Company Name<span>*</span></label><input required x-model="formData.companyName" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/60 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Company Name" name="companyName" aria-invalid="false" value=""> </div>
                                       <div class="input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&#38;_span]:text-picton-blue-500 text-white">Job Title<span>*</span></label><input required x-model="formData.jobTitle" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/60 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Job Title" name="jobTitle" aria-invalid="false" value=""> </div>
-                                      <div class="input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&#38;_span]:text-picton-blue-500 text-white">Country<span>*</span></label><input required x-model="formData.country" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/60 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Your Country" name="country" aria-invalid="false" value=""> </div>
+                                      {#<div class="input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&#38;_span]:text-picton-blue-500 text-white">Country<span>*</span></label><input required x-model="formData.country" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/60 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Your Country" name="country" aria-invalid="false" value=""> </div>#}
+                                      <div class="relative input-class" x-data="countrySelect(formData, 'country')">
+                                        <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&#38;_span]:text-picton-blue-500 text-white">Country<span>*</span></label>
+                                        <input 
+                                          name="country"
+                                          autocomplete="off"
+                                          x-model="search"
+                                          @focus="open = true"
+                                          @input="filterCountries"
+                                          @click.outside="open = false"
+                                          type="text"
+                                          class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/60 focus-within:border-white text-white placeholder:text-white/60"
+                                          placeholder="Type or select a country..."
+                                          required
+                                        >
+
+                                        <ul 
+                                          x-show="open" 
+                                          class="absolute z-10 mt-1 w-full bg-white border border-big-stone-950/20 rounded-md shadow-lg max-h-40 overflow-auto"
+                                        >
+                                          <template x-for="country in filtered" :key="country">
+                                            <li 
+                                              @click="selectCountry(country)"
+                                              class="px-3 py-2 cursor-pointer hover:bg-picton-blue-50 text-sm text-big-stone-950"
+                                              x-text="country"
+                                            ></li>
+                                          </template>
+                                          <li x-show="filtered.length === 0" class="px-3 py-2 text-sm text-gray-500">
+                                            No results found
+                                          </li>
+                                        </ul>
+                                      </div>
                                       <div class="input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&#38;_span]:text-picton-blue-500 text-white">Phone Number<span>*</span></label><input required x-model="formData.phoneNumber" type="tel" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/60 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Phone Number" name="phoneNumber" aria-invalid="false" value=""> </div>
                                       <div class="lg:col-span-2"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&#38;_span]:text-picton-blue-500 text-white">Email Address<span>*</span></label><input required x-model="formData.emailAddress" type="email" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/60 focus-within:border-white text-white placeholder:text-white/60" placeholder="Enter Email Address" name="emailAddress" aria-invalid="false" value=""> </div>
                                       <div class="lg:col-span-2 input-class"> <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm [&#38;_span]:text-picton-blue-500 text-white">Message<span>*</span></label><textarea required name="message" x-model="formData.message" class="flex h-auto w-full outline-none ring-0 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent px-0 py-3 text-sm rounded-none border-b duration-300 ease-out border-white/60 focus-within:border-white text-white placeholder:text-white/60" role="textbox" rows="5" placeholder="Write Your Message Here..." aria-invalid="false">      </textarea> </div>

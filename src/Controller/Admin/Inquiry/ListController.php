@@ -10,7 +10,6 @@ use App\View\InquiryView;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\String\UnicodeString;
 
 #[Route('/inquiries', name: 'app_admin_inquries_')]
 final class ListController extends BaseController
@@ -49,7 +48,6 @@ final class ListController extends BaseController
                 'Email' => $inquiry->email,
                 'Country' => $inquiry->country,
                 'PhoneNumber' => $inquiry->phoneNumber,
-                //'Message' => (new UnicodeString($inquiry->message))->truncate(500, '...', false),
                 'FromPage' => $inquiry->fromPage ?: 'N/A',
                 'FullMessage' => $inquiry->message,
                 'CreatedAt' => $inquiry->createdAt->format('M d, Y'),

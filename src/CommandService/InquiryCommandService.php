@@ -5,6 +5,7 @@ namespace App\CommandService;
 use App\Entity\FileUploaded;
 use App\Entity\Inquiry;
 use App\Message\InquiryEmail;
+use App\Message\SaveToOasis;
 use App\Request\InquiryRequest;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -37,5 +38,6 @@ final class InquiryCommandService
         $this->entityManager->flush();
 
         $this->messageBus->dispatch(new InquiryEmail($inquiry->getId()));
+        $this->messageBus->dispatch(new SaveToOasis($inquiry->getId()));
     }
 }
